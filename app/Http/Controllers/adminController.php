@@ -14,7 +14,49 @@ class adminController extends Controller
         return view('admin.index');
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function edit(){
+
         return view('product.edit');
     }
 }

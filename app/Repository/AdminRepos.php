@@ -15,6 +15,26 @@ class AdminRepos
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static function getAdminById($user_name){
         $sql = 'select a.* ';
         $sql .= 'from admin as a ';
