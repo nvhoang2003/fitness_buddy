@@ -12,7 +12,7 @@ class manualController extends Controller
     //
     public function ask(){
 
-        return view('Furniture_shop.Auth.login');
+        return view('Auth.login');
     }
 
     public function signin(Request $request){
