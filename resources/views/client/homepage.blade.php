@@ -264,7 +264,8 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-8.jpg" alt="..."></a>
+                            <div class="badge text-white bg-"></div><a class="d-block" href="detail.html">
+                                <img class="img-fluid w-100" src="img/product-8.jpg" alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
                                     <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
@@ -382,7 +383,7 @@
                         <p class="small text-muted mb-0">&copy; 2021 All rights reserved.</p>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
-                        <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://bootstrapious.com/p/boutique-bootstrap-e-commerce-template">Bootstrapious</a></p>
+{{--                        <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://bootstrapious.com/p/boutique-bootstrap-e-commerce-template">Bootstrapious</a></p>--}}
                         <!-- If you want to remove the backlink, please purchase the Attribution-Free License. See details in readme.txt or license.txt. Thanks!-->
                     </div>
                 </div>
