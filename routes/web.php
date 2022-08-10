@@ -39,7 +39,9 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
 //            'as' => 'admin.update'
 //        ]);
     });
+    Route::group(['prefix'=>'product'], function (){
 
+    });
 //
 
 });
