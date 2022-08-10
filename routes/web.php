@@ -16,3 +16,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'auth'], function(){
+
+    Route::get('login',[
+        'uses' => 'manualControllerWithRepos@ask',
+        'as' => 'auth.ask'
+    ]);
+
+    Route::post('login',[
+        'uses' => 'manualControllerWithRepos@signin',
+        'as' => 'auth.signin'
+    ]);
+
+    Route::get('logout', [
+        'uses' => 'manualControllerWithRepos@signout',
+        'as' => 'auth.signout'
+    ]);
+
+});
