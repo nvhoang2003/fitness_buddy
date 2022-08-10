@@ -12,7 +12,7 @@ class manualController extends Controller
     //
     public function ask(){
 
-        return view('Auth.login');
+        return view('auth.login');
     }
 
     public function signin(Request $request){
@@ -29,7 +29,7 @@ class manualController extends Controller
             if ($u->user_name === $userName&&
                 $u->password ===  $passwordHash){
                 Session::put('username', $request->input('user_name'));
-                return redirect()->action('productControllerWithRepos@index');
+                return redirect()->action('adminController@index');
             }
         }
 

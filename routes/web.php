@@ -17,8 +17,34 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'auth'], function(){
+Route::group(['prefix' => 'ThriftFashion'], function() {
+    Route::group(['prefix' => 'admin'], function() {
+        Route::get('',[
+            'uses' => 'adminController@index',
+            'as' => 'admin.index'
+        ]);
 
+//        Route::get('show/{user_name}', [
+//            'uses' => 'adminControllerWithRepos@show',
+//            'as' => 'admin.show'
+//        ]);
+//
+//        Route::get('update/{user_name}',[
+//            'uses' => 'adminControllerWithRepos@edit',
+//            'as' => 'admin.edit'
+//        ]);
+//
+//        Route::post('update/{user_name}', [
+//            'uses' => 'adminControllerWithRepos@update',
+//            'as' => 'admin.update'
+//        ]);
+    });
+
+//
+
+});
+
+Route::group(['prefix' => 'auth'], function(){
     Route::get('login',[
         'uses' => 'manualController@ask',
         'as' => 'auth.ask'
@@ -33,5 +59,4 @@ Route::group(['prefix' => 'auth'], function(){
         'uses' => 'manualController@signout',
         'as' => 'auth.signout'
     ]);
-
 });
