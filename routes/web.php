@@ -20,17 +20,17 @@ Route::get('/', function () {
 Route::group(['prefix' => 'auth'], function(){
 
     Route::get('login',[
-        'uses' => 'manualControllerWithRepos@ask',
+        'uses' => 'manualController@ask',
         'as' => 'auth.ask'
     ]);
 
     Route::post('login',[
-        'uses' => 'manualControllerWithRepos@signin',
+        'uses' => 'manualController@signin',
         'as' => 'auth.signin'
     ]);
 
     Route::get('logout', [
-        'uses' => 'manualControllerWithRepos@signout',
+        'uses' => 'manualController@signout',
         'as' => 'auth.signout'
     ]);
 
