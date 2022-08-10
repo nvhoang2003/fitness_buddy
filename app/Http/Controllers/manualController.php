@@ -29,7 +29,7 @@ class manualController extends Controller
             if ($u->user_name === $userName&&
                 $u->password ===  $passwordHash){
                 Session::put('username', $request->input('user_name'));
-                return redirect()->action('adminController@index');
+                return redirect()->action('productController@index');
             }
         }
 
