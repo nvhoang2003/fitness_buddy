@@ -39,11 +39,37 @@ body {
     padding-bottom: 10px;
 }
 
-
 .image{
     display: inline-block;
     position: static;
     top: 0px;
     width: 100%;
     height: 100%;
+}
+
+.account{
+    display:block;
+    position: relative;
+    font-weight: 600;
+    font-size: 17px;
+    color: #606162;
+}
+
+.end-icon {
+    float: right;
+    margin: auto;
+    color: #606162;
+
+}
+
+.end-icon:hover {
+    background-color: rgba(94, 94, 94, 0.24);
+    border-color: black;
+    color: black;
+    border-radius: 8px;
+    width: 30px;
+    height: 30px;
+    padding-left: 7px;
+    transition-property: background, color;
+    transition-duration: 1s;
 }
