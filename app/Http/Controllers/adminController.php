@@ -162,7 +162,7 @@ class adminController extends Controller
 
         $this->formValidate($request)->validate();
 
-        $stylist = (object)[
+        $style = (object)[
             'styleID' => $request->input('styleID'),
             'style_name' => $request->input('style_name'),
             'image' => $request->input('image'),
@@ -170,7 +170,7 @@ class adminController extends Controller
         ];
         if($request->hasFile('image')){
             $image = $request->file('image');
-            $stylist->urlimg = $image->getClientOriginalName();
+            $style->urlimg = $image->getClientOriginalName();
             $image->move('images/style', $image->getClientOriginalName());
 
         }
