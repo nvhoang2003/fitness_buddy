@@ -61,6 +61,7 @@ class AdminRepos
         return DB::select($sql, [$styleID]);
     }
 
+
     public static function getProductByStyleId($styleID){
         $sql = 'select s.*, s.styleID ';
         $sql .= 'from style as s ';
@@ -77,6 +78,34 @@ class AdminRepos
         return DB::delete($sql, [$styleID]);
 
     }
+
+    // insert into style by id form DB - Do Khac Duong
+    public static function insertstyle($style)
+    {
+        $sql = 'insert into style ';
+        $sql .= '(style_name, image, description) ';
+        $sql .= 'values(?, ?, ?) ';
+
+        $result = DB::insert($sql, [$style->style_name, $style->image, $style->description]);
+        if ($result){
+            return DB::getPdo()->lastInsertID();
+        }else {
+            return -1;
+        }
+    }
+
+
+    // update style by id form DB - Do Khac Duong
+    public static function updatestyle($style)
+    {
+        $sql = 'update style ';
+        $sql .= 'set style_name = ?, image = ?, description = ? ';
+        $sql .= 'where styleID = ? ';
+
+        DB::update($sql, [style->name, style->dob, style->contact, style->styleID]);
+    }
+
+
 
 }
 
