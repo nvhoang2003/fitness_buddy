@@ -60,7 +60,7 @@
         @endphp
         <ul class="navbar-nav">
             <li class="nav-item mr-3">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('admin.adminIndex', ['username' => $userSession])}}">
                     <i class="bi bi-person-fill"></i>
                     {{$userSession}}
                 </a>

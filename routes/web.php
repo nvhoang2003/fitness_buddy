@@ -20,16 +20,16 @@ Route::get('/', function () {
 Route::group(['prefix' => 'ThriftFashion'], function() {
     Route::group(['prefix' => 'admin'], function() {
         Route::get('/{username}',[
-            'uses' => 'adminController@index',
-            'as' => 'admin.index'
+            'uses' => 'adminController@adminIndex',
+            'as' => 'admin.adminIndex'
         ]);
 
-        Route::post('update/{user_name}', [
+        Route::post('updateInfo/{user_name}', [
             'uses' => 'adminController@adminUpdateInfo',
             'as' => 'admin.adminUpdateInfo'
         ]);
 
-        Route::post('update/{user_name}', [
+        Route::post('updatePassword/{user_name}', [
             'uses' => 'adminController@adminChangePassword',
             'as' => 'admin.adminChangePassword'
         ]);

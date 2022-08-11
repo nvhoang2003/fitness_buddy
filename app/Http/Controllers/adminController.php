@@ -88,7 +88,7 @@ class adminController extends Controller
                     function($attribute, $fails, $value){
                         global $request;
                         if($value !== $request->input('new_password')){
-                            $fails('Retire Password must equal New Password');
+                            $fails('Retire Password must same New Password');
                         }
                     }
                 ]
