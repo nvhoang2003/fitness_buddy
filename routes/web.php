@@ -68,3 +68,20 @@ Route::group(['prefix' => 'auth'], function(){
         'as' => 'auth.signout'
     ]);
 });
+
+Route::group(['prefix' => 'style/index'], function (){
+    Route::get('', [
+        'uses' => 'adminController@styleindex',
+        'as' => 'style.index'
+    ]);
+
+    Route::get('delete/{style_id}', [
+        'uses' => 'adminController@confirm',
+        'as' => 'style.confirm'
+    ]);
+
+    Route::post('delete/{style_id}', [
+        'uses' => 'adminController@destroy',
+        'as' => 'style.destroy'
+    ]);
+});
