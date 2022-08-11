@@ -231,9 +231,9 @@ class adminController extends Controller
     }
 
     // delete style - Bui Anh Tuan
-    public function styleConfirm($style_id){
-        $style = AdminRepos::getStyleById($style_id);
-        $styleHaveProduct = AdminRepos::getProductByStyleId($style_id);
+    public function styleConfirm($styleID){
+        $style = AdminRepos::getStyleById($styleID);
+        $styleHaveProduct = AdminRepos::getProductByStyleId($styleID);
 
         if ($style === []){
             return view('notFound');
