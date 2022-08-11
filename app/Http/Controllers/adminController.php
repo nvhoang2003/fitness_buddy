@@ -60,7 +60,7 @@ class adminController extends Controller
         // update from admin with data "$user"
         AdminRepos::adminUpdateInfo($user);
         return redirect()
-            ->action('adminController@adminConfirmUpdateInfo')
+            ->action('adminController@adminConfirmUpdateInfo',['username' => $user->username])
             ->with('msg', 'Update Successfully');
     }
 
