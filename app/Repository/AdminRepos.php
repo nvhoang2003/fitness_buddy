@@ -90,6 +90,7 @@ class AdminRepos
 
     }
 
+    // insert into style by id form DB - Do Khac Duong
     public static function insertstyle($style)
     {
         $sql = 'insert into style ';
@@ -104,6 +105,7 @@ class AdminRepos
         }
     }
 
+    // update style by id form DB - Do Khac Duong
     public static function updatestyle($style)
     {
         $sql = 'update style ';

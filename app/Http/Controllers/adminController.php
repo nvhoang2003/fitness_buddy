@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Repository\AdminRepos;
 use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 
 class adminController extends Controller
 {
@@ -27,24 +27,36 @@ class adminController extends Controller
         if ($username != $request->input('username')) {
             return redirect()->action('adminController@adminIndex');
         }
-        // check username, contact, email not emty and email correct validate
+        // check username, contact, email not emty, email correct validate and confirm password for accept
         $this->validate($request,
             [
                 'contact' => ['required'],
-                'email' => ['required', 'email:rfc,dns']
+                'email' => ['required', 'email:rfc,dns'],
+                'password' => ['required',
+                    function($attribute, $value, $fails){
+                        global $request;
+                        $user = AdminRepos::getAdminById($request->input('username'));
+                        $passwordHash = sha1($request->input('password'));
+
+                        if ($user[0]->password !== $passwordHash){
+                            $fails('Wrong password! Please try again');
+                        }
+                    },
+                ],
             ],
             [
                 'contact.required' => 'Contact not be empty',
                 'email.required' => 'Email not be empty',
+                'password.required' => 'Please confirm password for accept!'
             ]
         );
-
+        // create user with type varaiable is object
         $user = (object)[
             'username' => $request->input('username'),
             'contact' => $request->input('contact'),
             'email' => $request->input('email'),
         ];
-
+        // update from admin with data "$user"
         AdminRepos::adminUpdateInfo($user);
         return redirect()->action('adminController@adminIndex');
     }
@@ -59,13 +71,24 @@ class adminController extends Controller
         // Check old_password's input equal password from database
         $this->validate($request,
             [
-                'password' => ['required'],
+                'password' => ['required',
+//
+                    function($attribute, $value, $fails){
+                        global $request;
+                        $user = AdminRepos::getAdminById($request->input('username'));
+                        $passwordHash = sha1($request->input('password'));
+
+                        if ($user[0]->password !== $passwordHash){
+                            $fails('Wrong password! Please try again');
+                        }
+                    },
+                ],
                 'new_password' => ['required'],
                 'retire_password' => ['required',
                     function($attribute, $fails, $value){
                         global $request;
                         if($value !== $request->input('new_password')){
-                            $fails("Retire Password must equal New Password");
+                            $fails('Retire Password must same New Password');
                         }
                     }
                 ]
@@ -210,6 +233,9 @@ class adminController extends Controller
     }
 
     //product
+    public function productIndex(){
+        return view('product.index');
+    }
     public function show($productID)
     {
         $product = ProductRepos::getProductById($productID);
@@ -248,15 +274,10 @@ class adminController extends Controller
     public function store(Request $request){
         if($request->has('image')){
             $file = $request-> image;
-//            $ext = $request->file_upload->extension();
             $file_name = $file->getClientoriginalName();
-//            dd($ext);
             $file->move(public_path('product'), $file_name);
             $request->merge(['product' => $file_name]);
         }
-//        dd($request->all());
-//        $this->formValidate($request)->validate(); //shortcut
-
         $product = (object)[
             'product_name' => $request->input('name'),
             'image' => $request->input('image'),
@@ -269,7 +290,7 @@ class adminController extends Controller
             'colorID' => $request->input('color'),
             'SID' => $request->input('styleID'),
         ];
-
+//        dd($request->all());
         $newId = ProductRepos::insert($product);
 
 
@@ -300,4 +321,34 @@ class adminController extends Controller
 
         return view('product.edit');
     }
+
+    public function confirm_product($productID)
+    {
+        $product = ProductRepos::getProductById($productID);
+        $color = ProductRepos::getColorByProductId($productID);
+        $size = ProductRepos::getSizeByProductId($productID);
+
+        return view('product.confirm',
+            [
+                'product' => $product[0],
+                'color' => $color[0],
+                'size' => $size[0]
+            ]
+        );
+    }
+
+    public function destroy_product(Request $request, $productID){
+        if($productID != $request->input('productID')){
+            return redirect()->action('productController@index');
+        }
+
+
+        ProductRepos::delete($productID);
+
+
+        return redirect()
+            ->action('adminController@index')
+            ->with('msg', 'Delete successfully');
+    }
+
 }

@@ -20,21 +20,26 @@ Route::get('/', function () {
 Route::group(['prefix' => 'ThriftFashion'], function() {
     Route::group(['prefix' => 'admin'], function() {
         Route::get('/{username}',[
-            'uses' => 'adminController@index',
-            'as' => 'admin.index'
+            'uses' => 'adminController@adminIndex',
+            'as' => 'admin.adminIndex'
         ]);
 
-        Route::post('update/{user_name}', [
+        Route::post('updateInfo/{user_name}', [
             'uses' => 'adminController@adminUpdateInfo',
             'as' => 'admin.adminUpdateInfo'
         ]);
 
-        Route::post('update/{user_name}', [
+        Route::post('updatePassword/{user_name}', [
             'uses' => 'adminController@adminChangePassword',
             'as' => 'admin.adminChangePassword'
         ]);
     });
     Route::group(['prefix'=>'product'], function (){
+        Route::get('',[
+            'uses' => 'adminController@productIndex',
+            'as' => 'product.index'
+        ]);
+
         Route::get('show/{productID}',[
             'uses' => 'adminController@show',
             'as' => 'product.show'
@@ -56,6 +61,16 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
         Route::get('update',[
             'uses'=> 'adminController@edit',
             'as'=> 'product.edit'
+        ]);
+
+        Route::get('delete/{productID}', [
+            'uses' => 'adminController@confirm',
+            'as' => 'product.confirm_product'
+        ]);
+
+        Route::post('delete/{productID}', [
+            'uses' => 'adminCOntroller@destroy',
+            'as' => 'product.destroy_product'
         ]);
     });
 //
