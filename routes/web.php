@@ -40,6 +40,9 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
 //        ]);
     });
     Route::group(['prefix'=>'product'], function (){
+
+
+
         Route::get('update',[
            'uses'=> 'adminController@edit',
            'as'=> 'product.edit'

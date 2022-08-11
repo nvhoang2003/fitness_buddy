@@ -14,32 +14,23 @@ class AdminRepos
         return DB::select($sql);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static function getAdminById($user_name){
         $sql = 'select a.* ';
         $sql .= 'from admin as a ';
         $sql .= 'where a.user_name = ? ';
 
         return DB::select($sql, [$user_name]);
+    }
+
+
+
+
+
+    public static function getProductById($productID){
+        $sql = 'select p.* ';
+        $sql .= 'from product as p ';
+        $sql .= 'where p.productID =? ';
+
+        return DB::select($sql, [$productID]);
     }
 }
