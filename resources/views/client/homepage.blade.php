@@ -2,50 +2,6 @@
 
 @section('main')
 <div class="page-holder">
-    <!-- navbar-->
-    <header class="header bg-white">
-        <div class="container px-lg-3">
-            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a
-                    class="navbar-brand" href="{{asset("client/homepage.blade.php")}}"><span class="fw-bold text-uppercase text-dark">Boutique</span></a>
-                <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <!-- Link--><a class="nav-link active"
-                                           href={{asset("client\homepage.blade.php")}}>Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Link--><a class="nav-link"
-                                           href={{asset("client\shop.blade.php")}}>Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href={{asset("client\details.blade.php")}}>Product detail</a>
-                        </li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-                                                         id="pagesDropdown" href="#" data-bs-toggle="dropdown"
-                                                         aria-haspopup="true" aria-expanded="false">Pages</a>
-                            <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
-                                <a class="dropdown-item border-0 transition-link"
-                                   href={{asset("client\homepage.blade.php")}}>Homepage</a>
-                                <a class="dropdown-item border-0 transition-link"
-                                   href={{asset("client\shop.blade.php")}}}>Category</a>
-                                <a class="dropdown-item border-0 transition-link" href={{asset("client\details.blade.php")}}>Product detail</a>
-                                <a class="dropdown-item border-0 transition-link" href={{asset("client\cart.blade.php")}}>Shopping cart</a>
-                                <a class="dropdown-item border-0 transition-link" href={{asset("client\details.blade.php")}}>Checkout</a></div>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href={{asset("client\cart.blade.php")}}>
-                                <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small class="text-gray fw-normal">(2)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!"> <i class="far fa-heart me-1"></i><small class="text-gray fw-normal"> (0)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
     <!--  Modal -->
     <div class="modal fade" id="productView" tabindex="-1">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -152,16 +108,21 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-1.jpg" alt="..."></a>
+                            <div class="badge text-white bg-"></div><a class="d-block"
+                               href={{route("viewC1.details")}}>
+                                <img class="img-fluid w-100"
+                                     src={{asset("img/product-1.jpg")}} alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
-                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark"
+                                    href="#!"><i class="far fa-heart"></i></a></li>
                                     <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
                                     <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <h6> <a class="reset-anchor" href="detail.html">Kui Ye Chen’s AirPods</a></h6>
+                        <h6> <a class="reset-anchor"
+                                href={{route("viewC1.details")}}>Kui Ye Chen’s AirPods</a></h6>
                         <p class="small text-muted">$250</p>
                     </div>
                 </div>
@@ -169,16 +130,21 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-primary">Sale</div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-2.jpg" alt="..."></a>
+                            <div class="badge text-white bg-primary">Sale</div>
+                            <a class="d-block" href={{route("viewC1.details")}}>
+                                <img class="img-fluid w-100" src={{asset("img/product-2.jpg")}} alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
-                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0">
+                                        <a class="btn btn-sm btn-outline-dark" href="#!">
+                                            <i class="far fa-heart"></i></a></li>
                                     <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
                                     <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <h6> <a class="reset-anchor" href="detail.html">Air Jordan 12 gym red</a></h6>
+                        <h6> <a class="reset-anchor"
+                                href={{route("viewC1.details")}}>Air Jordan 12 gym red</a></h6>
                         <p class="small text-muted">$300</p>
                     </div>
                 </div>
@@ -186,7 +152,10 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-3.jpg" alt="..."></a>
+                            <div class="badge text-white bg-"></div><a class="d-block"
+                                   href={{route("viewC1.details")}}>
+                                <img class="img-fluid w-100"
+                                     src={{asset("img/product-3.jpg")}} alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
                                     <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
@@ -195,7 +164,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <h6> <a class="reset-anchor" href="detail.html">Cyan cotton t-shirt</a></h6>
+                        <h6> <a class="reset-anchor" href={{route("viewC1.details")}}>Cyan cotton t-shirt</a></h6>
                         <p class="small text-muted">$25</p>
                     </div>
                 </div>
@@ -203,16 +172,23 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-info">New</div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-4.jpg" alt="..."></a>
+                            <div class="badge text-white bg-info">New</div><a class="d-block"
+                                  href={{route("viewC1.details")}}>
+                                <img class="img-fluid w-100"
+                                     src={{asset("img/product-4.jpg")}} alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
-                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
-                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                    <li class="list-inline-item m-0 p-0">
+                                        <a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0">
+                                        <a class="btn btn-sm btn-dark"
+                                        href="cart.html"
+                                    >Add to cart</a></li>
                                     <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <h6> <a class="reset-anchor" href="detail.html">Timex Unisex Originals</a></h6>
+                        <h6> <a class="reset-anchor" href={{route("viewC1.details")}}>Timex Unisex Originals</a></h6>
                         <p class="small text-muted">$351</p>
                     </div>
                 </div>
@@ -229,7 +205,8 @@
                                 </ul>
                             </div>
                         </div>
-                        <h6> <a class="reset-anchor" href={{asset("views\client\details.blade.php")}}>Red digital smartwatch</a></h6>
+                        <h6> <a class="reset-anchor" href={{route("viewC1.details")}}>
+                                Red digital smartwatch</a></h6>
                         <p class="small text-muted">$250</p>
                     </div>
                 </div>
@@ -237,16 +214,23 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-6.jpg" alt="..."></a>
+                            <div class="badge text-white bg-"></div><a class="d-block"
+                                       href={{route("viewC1.details")}}><img class="img-fluid w-100"
+                                                     src={{asset("img/product-6.jpg")}}
+                                                     alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
-                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
-                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
-                                    <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!">
+                                            <i class="far fa-heart"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark"
+                                    href="cart.html">Add to cart</a></li>
+                                    <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark"
+                                    href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <h6> <a class="reset-anchor" href="detail.html">Nike air max 95</a></h6>
+                        <h6> <a class="reset-anchor"
+                                href={{route("viewC1.details")}}>Nike air max 95</a></h6>
                         <p class="small text-muted">$300</p>
                     </div>
                 </div>
@@ -254,7 +238,9 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-"></div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-7.jpg" alt="..."></a>
+                            <div class="badge text-white bg-"></div><a class="d-block"
+                               href={{route("viewC1.details")}}>
+                                <img class="img-fluid w-100" src={{asset("img/product-7.jpg")}} alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
                                     <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
@@ -263,7 +249,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <h6> <a class="reset-anchor" href="detail.html">Joemalone Women prefume</a></h6>
+                        <h6> <a class="reset-anchor" href={{route("viewC1.details")}}>Joemalone Women prefume</a></h6>
                         <p class="small text-muted">$25</p>
                     </div>
                 </div>
