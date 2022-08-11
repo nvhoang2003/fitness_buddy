@@ -71,4 +71,31 @@ class ProductRepos
         }
 
     }
+
+    public static function getSizeByProductId($productID){
+        $sql = 'select s.*, p.productID ';
+        $sql .= 'from size as s ';
+        $sql .= 'join product as p on s.sizeID = p.sizeID ';
+        $sql .= 'where p.productID = ? ';
+
+        return DB::select($sql, [$productID]);
+    }
+
+    public static function getColorByProductId($id){
+        $sql = 'select c.*, p.productID ';
+        $sql .= 'from Color as c ';
+        $sql .= 'join product as p on c.colerID = p.colerID ';
+        $sql .= 'where p.productID = ?';
+
+        return DB::select($sql, [$id]);
+    }
+
+
+    public static function delete($id){
+        $sql = 'delete from product ';
+        $sql .= 'where productID = ? ';
+
+        return DB::delete($sql, [$id]);
+    }
+
 }

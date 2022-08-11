@@ -321,4 +321,34 @@ class adminController extends Controller
 
         return view('product.edit');
     }
+
+    public function confirm_product($productID)
+    {
+        $product = ProductRepos::getProductById($productID);
+        $color = ProductRepos::getColorByProductId($productID);
+        $size = ProductRepos::getSizeByProductId($productID);
+
+        return view('product.confirm',
+            [
+                'product' => $product[0],
+                'color' => $color[0],
+                'size' => $size[0]
+            ]
+        );
+    }
+
+    public function destroy_product(Request $request, $productID){
+        if($productID != $request->input('productID')){
+            return redirect()->action('productController@index');
+        }
+
+
+        ProductRepos::delete($productID);
+
+
+        return redirect()
+            ->action('adminController@index')
+            ->with('msg', 'Delete successfully');
+    }
+
 }

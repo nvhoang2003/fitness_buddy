@@ -62,6 +62,16 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
             'uses'=> 'adminController@edit',
             'as'=> 'product.edit'
         ]);
+
+        Route::get('delete/{productID}', [
+            'uses' => 'adminController@confirm',
+            'as' => 'product.confirm_product'
+        ]);
+
+        Route::post('delete/{productID}', [
+            'uses' => 'adminCOntroller@destroy',
+            'as' => 'product.destroy_product'
+        ]);
     });
 //
 
