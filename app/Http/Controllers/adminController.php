@@ -98,7 +98,7 @@ class adminController extends Controller
                 ],
                 'new_password' => ['required'],
                 'retire_password' => ['required',
-                    function($attribute, $fails, $value){
+                    function($attribute, $value, $fails){
                         global $request;
                         if($value !== $request->input('new_password')){
                             $fails('Retire Password must same New Password');
@@ -113,9 +113,10 @@ class adminController extends Controller
             ]
         );
         // create user with type varaiable is object
+        $passwordHash = sha1($request->input('new_password'));
         $user = (object)[
             'username' => $request->input('username'),
-            'password' => $request->input('new_password'),
+            'password' => $passwordHash
         ];
         // change password's datatbase with varaiable is new password
         AdminRepos::adminChangePassword($user);
