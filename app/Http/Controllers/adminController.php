@@ -212,7 +212,7 @@ class adminController extends Controller
 
         AdminRepos::updatestyle($style);
 
-        return redirect()->action('adminController@stylistindex')
+        return redirect()->action('adminController@styleindex')
             ->with('msg', 'Update Successfully');
     }
 
