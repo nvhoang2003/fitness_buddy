@@ -159,11 +159,15 @@ Route::group(['prefix' => 'style/index'], function (){
     ]);
 });
 
+
+//client routes
+
+
 Route::get('shop',[
     'uses' =>'clientControllerWithRepos@shop',
     'as' => 'client.shop'
 ]);
-Route::get('detail',[
+Route::get('details',[
     'uses' =>'clientControllerWithRepos@detail',
     'as' => 'client.details'
 ]);
