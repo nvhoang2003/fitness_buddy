@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repository\AdminRepos;
+use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
 
 class adminController extends Controller
@@ -60,38 +61,74 @@ class adminController extends Controller
         return redirect()->action('adminController@styleindex');
     }
 
+    //product
+    public function show($productID)
+    {
+        $product = ProductRepos::getProductById($productID);
+//        $brand = BrandRepos::getBrandByProductId($product_id);
+//        $category = CategoryRepos::getCategoryByProductId($product_id);
+
+        return view('product.show',
+            [
+                'product' => $product[0]
+
+            ]
+        );
+    }
+
+    public function create(){
+        $size = ProductRepos::getAllSize();
+        $color = ProductRepos::getAllColor();
+        $style = ProductRepos::getAllStyle();
+        return view('product.create', [
+            'product'=> (object)[
+                'productID' => '',
+                'product_name' => '',
+                'product_status' => '',
+                'price' => '',
+                'launch_date' => '',
+                'image' => '',
+                'brand' => '',
+                'material' => '',
+            ],
+            'size' => $size,
+            'color' => $color,
+            'style' => $style
+        ]);
+    }
+
+    public function store(Request $request){
+        if($request->has('image')){
+            $file = $request-> image;
+//            $ext = $request->file_upload->extension();
+            $file_name = $file->getClientoriginalName();
+//            dd($ext);
+            $file->move(public_path('product'), $file_name);
+            $request->merge(['product' => $file_name]);
+        }
+//        dd($request->all());
+//        $this->formValidate($request)->validate(); //shortcut
+
+        $product = (object)[
+            'product_name' => $request->input('name'),
+            'image' => $request->input('image'),
+            'product_status' => $request->input('product_status'),
+            'price' => $request->input('price'),
+            'launch-date' => $request->input('launch_date'),
+            'brand' => $request->input('brand'),
+            'material' => $request->input('material'),
+            'sizeID' => $request->input('size'),
+            'colorID' => $request->input('color'),
+            'SID' => $request->input('styleID'),
+        ];
+
+        $newId = ProductRepos::insert($product);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return redirect()
+            ->action('adminController@index')
+            ->with('msg', 'New Product with id: '.$newId.' has been inserted');
+    }
 
 
 
@@ -107,4 +144,36 @@ class adminController extends Controller
 
         return view('product.edit');
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

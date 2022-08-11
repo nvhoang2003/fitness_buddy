@@ -40,6 +40,21 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
 //        ]);
     });
     Route::group(['prefix'=>'product'], function (){
+        Route::get('show/{productID}',[
+            'uses' => 'adminController@show',
+            'as' => 'product.show'
+        ]);
+
+
+        Route::get('create',[
+            'uses' =>'adminController@create',
+            'as' => 'product.create'
+        ]);
+
+        Route::post('create', [
+            'uses' => 'adminController@store',
+            'as' => 'product.store'
+        ]);
 
 
 
