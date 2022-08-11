@@ -42,7 +42,7 @@ class manualController extends Controller
             Session::forget('username');
         }
 
-        return redirect()->action('manualControllers@ask');
+        return redirect()->action('manualController@ask');
     }
 
     private function formValidate($request){
