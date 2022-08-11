@@ -33,4 +33,51 @@ class AdminRepos
 
         return DB::select($sql, [$productID]);
     }
+
+    //get all style from DB - Bui Anh Tuan
+    public static function getAllStyle(){
+        $sql = 'select s.* ';
+        $sql .= 'from style as s ';
+        $sql .= 'order by s.style_name';
+
+        return DB::select($sql);
+    }
+
+    // get name of style from DB - Bui Anh Tuan
+    public static function getStyleWithName($style_name){
+        $sql = 'select * ';
+        $sql .= 'from style ';
+        $sql .= 'where style_name like ?';
+
+        return DB::select($sql, ['%'.$style_name.'%']);
+    }
+
+    // get style by id from DB -Bui Anh Tuan
+    public static function getStyleById($styleID){
+        $sql = 'select s.* ';
+        $sql .= 'from style as s ';
+        $sql .= 'where s.styleID = ? ';
+
+        return DB::select($sql, [$styleID]);
+    }
+
+    public static function getProductByStyleId($styleID){
+        $sql = 'select s.*, s.styleID ';
+        $sql .= 'from style as s ';
+        $sql .= 'join product as p on s.styleID = p.styleID ';
+        $sql .= 'where s.styleID = ? ';
+
+        return DB::select($sql, [$styleID]);
+    }
+
+    public static function delete($styleID){
+        $sql = 'delete from style ';
+        $sql .= 'where styleID = ? ';
+
+        return DB::delete($sql, [$styleID]);
+
+    }
+
 }
+
+
