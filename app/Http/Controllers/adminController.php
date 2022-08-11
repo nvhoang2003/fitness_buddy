@@ -136,7 +136,7 @@ class adminController extends Controller
     }
 
     // index of style - Bui Anh Tuan
-    public function styleIndex(){
+    public function styleindex(){
         $style = AdminRepos::getAllStyle();
         return view('style.index',[
             'style' => $style
@@ -155,7 +155,7 @@ class adminController extends Controller
     }
 
     //show style - Do Khac Duong
-    public  function showstyle($id){
+    public  function styleshow($id){
 
         $style = AdminRepos::getstylebyid($id);
         return view('style.show',[
@@ -179,7 +179,7 @@ class adminController extends Controller
 
     }
 
-    public function storestyle(Request $request)
+    public function stylestore(Request $request)
     {
         $this->formValidate($request)->validate();
 
@@ -203,10 +203,10 @@ class adminController extends Controller
     }
 
     //update style - Do Khac Duong
-    public function updatestyle(Request $request, $style)
+    public function styleUpdate(Request $request, $style)
     {
         if ($style != $request->input('styleID')) {
-            return redirect()->action('adminController@stylistindex');
+            return redirect()->action('adminController@styleindex');
         }
 
         $this->formValidate($request)->validate();
@@ -231,7 +231,7 @@ class adminController extends Controller
     }
 
     // delete style - Bui Anh Tuan
-    public function confirm($style_id){
+    public function styleConfirm($style_id){
         $style = AdminRepos::getStyleById($style_id);
         $styleHaveProduct = AdminRepos::getProductByStyleId($style_id);
 
@@ -247,7 +247,7 @@ class adminController extends Controller
         );
     }
 
-    public function destroy(Request $request, $style_id){
+    public function styleDestroy(Request $request, $style_id){
         if($style_id != $request->input('style_id')){
             return redirect()->action('adminController@styleindex');
         }

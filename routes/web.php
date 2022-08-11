@@ -77,7 +77,7 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
         ]);
 
         Route::post('delete/{productID}', [
-            'uses' => 'adminCOntroller@destroy',
+            'uses' => 'adminController@destroy',
             'as' => 'product.destroy_product'
         ]);
     });
@@ -89,6 +89,46 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
         ]);
     });
 
+    Route::group(['prefix' => 'style'], function (){
+        Route::get('', [
+            'uses' => 'adminController@styleindex',
+            'as' => 'style.index'
+        ]);
+        Route::get('show/{styleID}',[
+            'uses'=>'adminController@styleshow',
+            'as' => 'style.shows'
+        ]);
+
+        Route::get('create',[
+            'uses' => 'adminController@stylecreate',
+            'as' => 'style.create'
+        ]);
+
+        Route::post('create',[
+            'uses' => 'adminController@stylestore',
+            'as' => 'style.store'
+        ]);
+
+        Route::get('update/{styleID}',[
+            'uses' => 'adminController@styleEdit',
+            'as' => 'style.edit'
+        ]);
+        Route::post('update/{styleID}',[
+            'uses' => 'adminController@styleUpdate',
+            'as' => 'style.update'
+        ]);
+
+
+        Route::get('delete/{styleID}', [
+            'uses' => 'adminController@styleConfirm',
+            'as' => 'style.confirm'
+        ]);
+
+        Route::post('delete/{styleID}', [
+            'uses' => 'adminController@styleDestroy',
+            'as' => 'style.destroy'
+        ]);
+    });
 });
 
 Route::group(['prefix' => 'auth'], function(){
@@ -118,46 +158,6 @@ Route::group(['prefix' => 'auth'], function(){
     ]);
 });
 
-Route::group(['prefix' => 'style/index'], function (){
-    Route::get('', [
-        'uses' => 'adminController@styleindex',
-        'as' => 'style.index'
-    ]);
-    Route::get('showstyle/{id}',[
-        'uses'=>'adminController@styleshow',
-        'as' => 'style.shows'
-    ]);
-
-    Route::get('createstyle',[
-        'uses' => 'adminController@stylecreate',
-        'as' => 'style.create'
-    ]);
-
-    Route::post('createstyle',[
-        'uses' => 'adminController@stylestore',
-        'as' => 'admin.storestylist'
-    ]);
-
-    Route::get('updatestyle/{id}',[
-        'uses' => 'adminController@edit',
-        'as' => 'admin.editstyle'
-    ]);
-    Route::post('updatesyle/{id}',[
-        'uses' => 'adminController@update',
-        'as' => 'admin.updatestyle'
-    ]);
-
-
-    Route::get('delete/{style_id}', [
-        'uses' => 'adminController@confirm',
-        'as' => 'style.confirm'
-    ]);
-
-    Route::post('delete/{style_id}', [
-        'uses' => 'adminController@destroy',
-        'as' => 'style.destroy'
-    ]);
-});
 
 
 //client routes
