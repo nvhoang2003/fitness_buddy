@@ -19,33 +19,58 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'ThriftFashion'], function() {
     Route::group(['prefix' => 'admin'], function() {
-        Route::get('',[
-            'uses' => 'adminController@index',
-            'as' => 'admin.index'
+        Route::get('/{username}',[
+            'uses' => 'adminController@adminIndex',
+            'as' => 'admin.adminIndex'
         ]);
 
-//        Route::get('show/{user_name}', [
-//            'uses' => 'adminControllerWithRepos@show',
-//            'as' => 'admin.show'
-//        ]);
-//
-//        Route::get('update/{user_name}',[
-//            'uses' => 'adminControllerWithRepos@edit',
-//            'as' => 'admin.edit'
-//        ]);
-//
-//        Route::post('update/{user_name}', [
-//            'uses' => 'adminControllerWithRepos@update',
-//            'as' => 'admin.update'
-//        ]);
+        Route::post('updateInfo/{user_name}', [
+            'uses' => 'adminController@adminUpdateInfo',
+            'as' => 'admin.adminUpdateInfo'
+        ]);
+
+        Route::post('updatePassword/{user_name}', [
+            'uses' => 'adminController@adminChangePassword',
+            'as' => 'admin.adminChangePassword'
+        ]);
     });
     Route::group(['prefix'=>'product'], function (){
+        Route::get('',[
+            'uses' => 'adminController@productIndex',
+            'as' => 'product.index'
+        ]);
+
+        Route::get('show/{productID}',[
+            'uses' => 'adminController@show',
+            'as' => 'product.show'
+        ]);
+
+
+        Route::get('create',[
+            'uses' =>'adminController@create',
+            'as' => 'product.create'
+        ]);
+
+        Route::post('create', [
+            'uses' => 'adminController@store',
+            'as' => 'product.store'
+        ]);
 
 
 
         Route::get('update',[
             'uses'=> 'adminController@edit',
             'as'=> 'product.edit'
+        ]);
+
+        Route::get('delete/{productID}', [
+            'uses' => 'adminController@confirm',
+            'as' => 'product.confirm_product'
+        ]);
+
+        Route::post('delete/{productID}', [
+            'uses' => 'adminCOntroller@destroy',
+            'as' => 'product.destroy_product'
         ]);
     });
 //

@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Validator;
 
 class adminController extends Controller
 {
-    // admin's index - Pham Quang Hung
-    public function adminIndex($username)
+    // admin's info - Pham Quang Hung
+    public function adminConfirmUpdateInfo($username)
     {
         // get data from table "admin" in database and return index admin
         $user = AdminRepos::getAdminById($username);
 
-        return view('admin.index', [
+        return view('admin.confirmInfo', [
             'user' => $user[0],
         ]);
     }
@@ -59,6 +59,17 @@ class adminController extends Controller
         // update from admin with data "$user"
         AdminRepos::adminUpdateInfo($user);
         return redirect()->action('adminController@adminIndex');
+    }
+
+    // amdin's password
+    public function adminConfirmChangePassword($username)
+    {
+        // get data from table "admin" in database and return index admin
+        $user = AdminRepos::getAdminById($username);
+
+        return view('admin.confirmChangePassword', [
+            'user' => $user[0],
+        ]);
     }
 
     // change admin's password anyway - Pham Quang Hung
