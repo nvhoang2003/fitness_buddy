@@ -8,7 +8,7 @@ use Illuminate\Validation\Validator;
 
 class adminController extends Controller
 {
-    //
+    // admin's index - Pham Quang Hung
     public function adminIndex($username)
     {
         // get data from table "admin" in database and return index admin
@@ -19,6 +19,7 @@ class adminController extends Controller
         ]);
     }
 
+    // change admin's info anyway - Pham Quang Hung
     public function adminUpdateInfo(Request $request, $username)
     {
         // check username's url same as username's database
@@ -28,12 +29,10 @@ class adminController extends Controller
         // check username, contact, email not emty and email correct validate
         $this->validate($request,
             [
-                'username' => ['required'],
                 'contact' => ['required'],
                 'email' => ['required', 'email:rfc,dns']
             ],
             [
-                'username.required' => 'Username not be empty',
                 'contact.required' => 'Contact not be empty',
                 'email.required' => 'Email not be empty',
             ]
@@ -49,6 +48,7 @@ class adminController extends Controller
         return redirect()->action('adminController@adminIndex');
     }
 
+    // change admin's password anyway - Pham Quang Hung
     public function adminChangePassword(Request $request, $username)
     {
         // check username's url same as username's database
