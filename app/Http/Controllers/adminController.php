@@ -25,7 +25,7 @@ class adminController extends Controller
     {
         // check username's url same as username's database
         if ($username != $request->input('username')) {
-            return redirect()->action('adminController@adminIndex');
+            return redirect()->action('adminController@productIndex');
         }
         // check username, contact, email not emty, email correct validate and confirm password for accept
         $this->validate($request,
@@ -58,7 +58,9 @@ class adminController extends Controller
         ];
         // update from admin with data "$user"
         AdminRepos::adminUpdateInfo($user);
-        return redirect()->action('adminController@adminIndex');
+        return redirect()
+            ->action('adminController@adminConfirmUpdateInfo')
+            ->with('msg', 'Update Successfully');
     }
 
     // amdin's password
@@ -77,7 +79,7 @@ class adminController extends Controller
     {
         // check username's url same as username's database
         if ($username != $request->input('username')) {
-            return redirect()->action('adminController@adminIndex');
+            return redirect()->action('adminController@productIndex');
         }
         // Check old_password's input equal password from database
         $this->validate($request,
@@ -118,7 +120,9 @@ class adminController extends Controller
         // change password's datatbase with varaiable is new password
         AdminRepos::adminChangePassword($user);
 
-        return redirect()->action('adminController@adminIndex');
+        return redirect()
+            ->action('adminController@adminConfirmUpdateInfo')
+            ->with('msg', 'Change Password Successfully');
     }
 
     // index of style - Bui Anh Tuan

@@ -24,6 +24,16 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
             'as' => 'admin.adminIndex'
         ]);
 
+        Route::get('updateInfo/{user_name}', [
+            'uses' => 'adminController@adminConfirmUpdateInfo',
+            'as' => 'admin.adminConfirmUpdateInfo'
+        ]);
+
+        Route::get('updatePassword/{user_name}', [
+            'uses' => 'adminController@adminConfirmChangePassword',
+            'as' => 'admin.adminConfirmChangePassword'
+        ]);
+
         Route::post('updateInfo/{user_name}', [
             'uses' => 'adminController@adminUpdateInfo',
             'as' => 'admin.adminUpdateInfo'
