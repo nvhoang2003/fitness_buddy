@@ -7,6 +7,7 @@
             @csrf
             <div class="form-group">
                 <label for="username" class="account">Username: {{$user->username}}</label>
+                <input type="hidden" class="form-control" id="username" name="username" value="{{old('username') ?? $user->username}}">
             </div>
             <div class="form-group">
                 <label for="contact" class="account">Contact</label>
@@ -16,6 +17,10 @@
                 <label for="email" class="account">Email</label>
                 <input type="email" class="form-control" id="email" name="email" value="{{old('email') ?? $user->email}}">
             </div>
+            <div class="form-group">
+                <label for="password" class="account">Password for confirm</label>
+                <input type="password" class="form-control" id="password" name="password" >
+            </div>
             <button type="submit" class="btn btn-dark">Save</button>
         </form>
     </div>
@@ -24,9 +29,11 @@
         <h1 class="display-6">Change Password</h1>
         <form action="{{route('admin.updateInfo',['username' => old('username') ?? $user->username])}}" method="post">
             @csrf
+            <input type="hidden" class="form-control" id="username" name="username" value="{{old('username') ?? $user->username}}">
+
             <div class="form-group">
                 <label for="password" class="account">Old Password</label>
-                <input type="password" class="form-control" id="password" name="password" value="{{old('password') ?? $product->password}}">
+                <input type="password" class="form-control" id="password" name="password">
             </div>
 
             <div class="form-group">
