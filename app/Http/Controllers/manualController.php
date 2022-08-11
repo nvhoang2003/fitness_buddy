@@ -19,16 +19,16 @@ class manualController extends Controller
 //  check input can't empty, correct user name and password
         $this->formValidate($request)->validate();
 //  put variable userName and password equal request input
-        $userName = $request->input('user_name');
+        $userName = $request->input('username');
         $passwordHash = sha1($request->input('password'));
 
 //  get data of admin from database
         $user = AdminRepos::getAllAdmin();
 //  check request input, if true return index of product's page, if false return login's page
         foreach ($user as $u){
-            if ($u->user_name === $userName&&
+            if ($u->username === $userName&&
                 $u->password ===  $passwordHash){
-                Session::put('username', $request->input('user_name'));
+                Session::put('username', $request->input('username'));
                 return redirect()->action('productController@index');
             }
         }
@@ -67,10 +67,10 @@ class manualController extends Controller
                     function($attribute, $value, $fails){
                         global $request;
                         $user = AdminRepos::getAllAdmin();
-                        $userName = $request->input('user_name');
+                        $userName = $request->input('username');
                         $passwordHash = sha1($request->input('password'));
                         foreach ($user as $u){
-                            if ($u->password !== $passwordHash && $u->user_name === $userName){
+                            if ($u->password !== $passwordHash && $u->username === $userName){
                                 $fails('Wrong user\'s name or password! Please try again');
                             }
                         }
@@ -78,7 +78,7 @@ class manualController extends Controller
                 ]
             ],
             [
-                'user_name.required' => 'Name can not be empty.',
+                'username.required' => 'Name can not be empty.',
                 'password.required' => 'Password can not be empty.',
             ]
         );

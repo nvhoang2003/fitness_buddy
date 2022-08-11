@@ -75,7 +75,6 @@
                     <a class="nav-link" href="{{route('auth.ask')}}">Login</a>
                 </li>
             </ul>
-
         </div>
     </div>
 </nav>

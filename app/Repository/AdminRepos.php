@@ -9,17 +9,17 @@ class AdminRepos
     public static function getAllAdmin(){
         $sql = 'select a.* ';
         $sql .= 'from admin as a ';
-        $sql .= 'order by a.full_name';
+        $sql .= 'order by a.username';
 
         return DB::select($sql);
     }
 
-    public static function getAdminById($user_name){
+    public static function getAdminById($username){
         $sql = 'select a.* ';
         $sql .= 'from admin as a ';
-        $sql .= 'where a.user_name = ? ';
+        $sql .= 'where a.username = ? ';
 
-        return DB::select($sql, [$user_name]);
+        return DB::select($sql, [$username]);
     }
 
 
