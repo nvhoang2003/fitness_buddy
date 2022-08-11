@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class adminController extends Controller
 {
     //
-    public function adminIndex(){
+    public function index(){
 //        $user = AdminRepos::getAdminById($user_name);
 
-        return view('admin.adminIndex');
+        return view('admin.index');
     }
 
 
