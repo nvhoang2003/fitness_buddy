@@ -29,11 +29,11 @@ class manualController extends Controller
             if ($u->username === $userName&&
                 $u->password ===  $passwordHash){
                 Session::put('username', $request->input('username'));
-                return redirect()->action('adminController@productIndex');
+                return redirect()->route('product.index');
             }
         }
 
-        return redirect()->action('manualControllerWithRepos@ask');
+        return redirect()->action('manualController@ask');
     }
 
     public function signout(){
@@ -42,14 +42,14 @@ class manualController extends Controller
             Session::forget('username');
         }
 
-        return redirect()->action('manualControllerWithRepos@ask');
+        return redirect()->action('manualControllers@ask');
     }
 
     private function formValidate($request){
         return Validator::make(
             $request->all(),
             [
-                'username' => ['required',
+                'user_name' => ['required',
 //                    check username's request input, if username's data from database empty return messeage, if not empty continue
                     function($attribute, $value, $fails){
                         global $request;

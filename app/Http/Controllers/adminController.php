@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repository\AdminRepos;
+use App\Repository\CustomerClass;
 use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -124,6 +125,13 @@ class adminController extends Controller
         return redirect()
             ->action('adminController@adminConfirmUpdateInfo')
             ->with('msg', 'Change Password Successfully');
+    }
+
+    // index of customer - Pham Quang Hung
+    protected function customerIndex(){
+        $customers = CustomerClass::getAllCustomer();
+
+        return view('customer.index');
     }
 
     // index of style - Bui Anh Tuan
@@ -248,7 +256,16 @@ class adminController extends Controller
         return redirect()->action('adminController@styleindex');
     }
 
-    //product
+    //product index by hoang
+    public function productindex()
+    {
+        $product = ProductRepos::getAllProduct();
+        return view('product.index',
+            [
+                'product'=>$product
+            ]);
+    }
+
     public function productIndex(){
         return view('product.index');
     }
