@@ -60,7 +60,7 @@ class adminController extends Controller
         // update from admin with data "$user"
         AdminRepos::adminUpdateInfo($user);
         return redirect()
-            ->action('adminController@adminConfirmUpdateInfo')
+            ->action('adminController@adminConfirmUpdateInfo',['username' => $user->username])
             ->with('msg', 'Update Successfully');
     }
 
@@ -76,8 +76,7 @@ class adminController extends Controller
     }
 
     // change admin's password anyway - Pham Quang Hung
-    public function adminChangePassword(Request $request, $username)
-    {
+    public function adminChangePassword(Request $request, $username){
         // check username's url same as username's database
         if ($username != $request->input('username')) {
             return redirect()->action('adminController@productIndex');
@@ -123,7 +122,7 @@ class adminController extends Controller
         AdminRepos::adminChangePassword($user);
 
         return redirect()
-            ->action('adminController@adminConfirmUpdateInfo')
+            ->action('adminController@adminConfirmUpdateInfo', ['username' => $user->username])
             ->with('msg', 'Change Password Successfully');
     }
 
@@ -257,7 +256,7 @@ class adminController extends Controller
     }
 
     //product index by hoang
-    public function productindex()
+    public function productIndex()
     {
         $product = ProductRepos::getAllProduct();
         return view('product.index',
@@ -266,9 +265,6 @@ class adminController extends Controller
             ]);
     }
 
-    public function productIndex(){
-        return view('product.index');
-    }
     public function show($productID)
     {
         $product = ProductRepos::getProductById($productID);

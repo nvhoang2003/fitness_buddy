@@ -42,14 +42,14 @@ class manualController extends Controller
             Session::forget('username');
         }
 
-        return redirect()->action('manualControllers@ask');
+        return redirect()->action('manualController@ask');
     }
 
     private function formValidate($request){
         return Validator::make(
             $request->all(),
             [
-                'user_name' => ['required',
+                'username' => ['required',
 //                    check username's request input, if username's data from database empty return messeage, if not empty continue
                     function($attribute, $value, $fails){
                         global $request;

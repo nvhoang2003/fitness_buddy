@@ -55,12 +55,3 @@
 
 @endsection
 
-@section('script')
-
-@endsection
-@extends('Master.adminMaster')
-
-@section('main')
-
-@endsection
-
