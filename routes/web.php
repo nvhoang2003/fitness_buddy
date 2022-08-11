@@ -44,6 +44,7 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
             'as' => 'admin.adminChangePassword'
         ]);
     });
+
     Route::group(['prefix'=>'product'], function (){
         Route::get('',[
             'uses' => 'adminController@productIndex',
@@ -67,7 +68,6 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
         ]);
 
 
-
         Route::get('update',[
             'uses'=> 'adminController@edit',
             'as'=> 'product.edit'
@@ -84,6 +84,12 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
         ]);
     });
 //
+    Route::group(['prefix' => 'customer'], function (){
+        Route::get('',[
+            'uses' => 'adminController@customerIndex',
+            'as' => 'customer.index'
+        ]);
+    });
 
 });
 
