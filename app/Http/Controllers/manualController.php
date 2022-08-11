@@ -33,7 +33,7 @@ class manualController extends Controller
             }
         }
 
-        return redirect()->action('manualControllerWithRepos@ask');
+        return redirect()->action('manualController@ask');
     }
 
     public function signout(){
@@ -42,7 +42,7 @@ class manualController extends Controller
             Session::forget('username');
         }
 
-        return redirect()->action('manualControllerWithRepos@ask');
+        return redirect()->action('manualControllers@ask');
     }
 
     private function formValidate($request){
