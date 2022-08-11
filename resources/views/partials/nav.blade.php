@@ -7,11 +7,6 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item active">
-                <a class="nav-link" href="#">Admin
-                    <span class="sr-only">(current)</span></a>
-            </li>
-
-            <li class="nav-item active">
                 <a class="nav-link" href="#">Customer
                     <span class="sr-only">(current)</span></a>
             </li>
@@ -39,18 +34,6 @@
                     <a class="dropdown-item" href="#">New Product</a>
                 </div>
 
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Brand
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">View all Brand</a>
-                    <a class="dropdown-item" href="#">New Brand</a>
-                </div>
             </li>
 
         </ul>
