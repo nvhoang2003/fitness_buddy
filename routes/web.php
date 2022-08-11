@@ -115,9 +115,9 @@ Route::group(['prefix' => 'viewC1'], function (){
         'as' => 'viewC1.shop'
     ]);
 
-    Route::get('detail/{id}', [
+    Route::get('details/{id}', [
         'uses' => 'ViewC1Controller@detail',
-        'as' => 'viewC1.detail'
+        'as' => 'viewC1.details'
     ]);
 
     Route::get('cart', [
