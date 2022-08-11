@@ -22,9 +22,21 @@ class AdminRepos
         return DB::select($sql, [$username]);
     }
 
+    public static function adminUpdateInfo($user){
+        $sql = 'update admin ';
+        $sql .= 'set contact = ?, email = ? ';
+        $sql .= 'where username = ? ';
 
+        return DB::update($sql, [$user->contact, $user->email, $user->username]);
+    }
 
+    public static function adminChangePassword($user){
+        $sql = 'update admin ';
+        $sql .= 'set password = ? ';
+        $sql .= 'where username = ? ';
 
+        return DB::update($sql, [$user->password, $user->username]);
+    }
 
     public static function getProductById($productID){
         $sql = 'select p.* ';
@@ -76,6 +88,29 @@ class AdminRepos
 
         return DB::delete($sql, [$styleID]);
 
+    }
+
+    public static function insertstyle($style)
+    {
+        $sql = 'insert into style ';
+        $sql .= '(style_name, image, description) ';
+        $sql .= 'values(?, ?, ?) ';
+
+        $result = DB::insert($sql, [$style->style_name, $style->image, $style->description]);
+        if ($result){
+            return DB::getPdo()->lastInsertID();
+        }else {
+            return -1;
+        }
+    }
+
+    public static function updatestyle($style)
+    {
+        $sql = 'update style ';
+        $sql .= 'set style_name = ?, image = ?, description = ? ';
+        $sql .= 'where styleID = ? ';
+
+        DB::update($sql, [style->name, style->dob, style->contact, style->styleID]);
     }
 
 }
