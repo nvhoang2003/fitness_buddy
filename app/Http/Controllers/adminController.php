@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Repository\AdminRepos;
 use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
+use Illuminate\Support\Facades\Validator;
 
 class adminController extends Controller
 {
@@ -233,6 +233,9 @@ class adminController extends Controller
     }
 
     //product
+    public function productIndex(){
+        return view('product.index');
+    }
     public function show($productID)
     {
         $product = ProductRepos::getProductById($productID);
