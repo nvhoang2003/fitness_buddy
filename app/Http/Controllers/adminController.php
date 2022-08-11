@@ -257,7 +257,7 @@ class adminController extends Controller
     }
 
     //product index by hoang
-    public function productindex()
+    public function productIndex()
     {
         $product = ProductRepos::getAllProduct();
         return view('product.index',
@@ -266,9 +266,7 @@ class adminController extends Controller
             ]);
     }
 
-    public function productIndex(){
-        return view('product.index');
-    }
+
     public function show($productID)
     {
         $product = ProductRepos::getProductById($productID);

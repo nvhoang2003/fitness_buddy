@@ -49,7 +49,7 @@ class manualController extends Controller
         return Validator::make(
             $request->all(),
             [
-                'user_name' => ['required',
+                'username' => ['required',
 //                    check username's request input, if username's data from database empty return messeage, if not empty continue
                     function($attribute, $value, $fails){
                         global $request;
