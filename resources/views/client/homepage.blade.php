@@ -1,4 +1,3 @@
-
 @extends('Master.clientMaster')
 
 @section('main')
@@ -6,7 +5,8 @@
     <!-- navbar-->
     <header class="header bg-white">
         <div class="container px-lg-3">
-            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="{{asset("client/homepage.blade.php")}}"><span class="fw-bold text-uppercase text-dark">Boutique</span></a>
+            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a
+                    class="navbar-brand" href="{{asset("client/homepage.blade.php")}}"><span class="fw-bold text-uppercase text-dark">Boutique</span></a>
                 <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -27,8 +27,10 @@
                                                          id="pagesDropdown" href="#" data-bs-toggle="dropdown"
                                                          aria-haspopup="true" aria-expanded="false">Pages</a>
                             <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
-                                <a class="dropdown-item border-0 transition-link" href={{asset("client\homepage.blade.php")}}>Homepage</a>
-                                <a class="dropdown-item border-0 transition-link" href={{asset("client\shop.blade.php")}}}>Category</a>
+                                <a class="dropdown-item border-0 transition-link"
+                                   href={{asset("client\homepage.blade.php")}}>Homepage</a>
+                                <a class="dropdown-item border-0 transition-link"
+                                   href={{asset("client\shop.blade.php")}}}>Category</a>
                                 <a class="dropdown-item border-0 transition-link" href={{asset("client\details.blade.php")}}>Product detail</a>
                                 <a class="dropdown-item border-0 transition-link" href={{asset("client\cart.blade.php")}}>Shopping cart</a>
                                 <a class="dropdown-item border-0 transition-link" href={{asset("client\details.blade.php")}}>Checkout</a></div>
@@ -396,12 +398,12 @@
         </div>
     </footer>
     <!-- JavaScript files-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="vendor/nouislider/nouislider.min.js"></script>
-    <script src="vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="js/front.js"></script>
+    <script src={{asset("vendor/bootstrap/js/bootstrap.bundle.min.js")}}></script>
+    <script src={{asset("vendor/glightbox/js/glightbox.min.js")}}></script>
+    <script src={{asset("vendor/nouislider/nouislider.min.js")}}></script>
+    <script src={{asset("vendor/swiper/swiper-bundle.min.js")}}></script>
+    <script src={{asset("vendor/choices.js/public/assets/scripts/choices.min.js")}}></script>
+    <script src={{asset("js/front.js")}}></script>
     <script>
         // ------------------------------------------------------- //
         //   Inject SVG Sprite -
