@@ -256,7 +256,16 @@ class adminController extends Controller
         return redirect()->action('adminController@styleindex');
     }
 
-    //product
+    //product index by hoang
+    public function productindex()
+    {
+        $product = ProductRepos::getAllProduct();
+        return view('product.index',
+            [
+                'product'=>$product
+            ]);
+    }
+
     public function productIndex(){
         return view('product.index');
     }
