@@ -78,6 +78,29 @@ class AdminRepos
 
     }
 
+    public static function insertstyle($style)
+    {
+        $sql = 'insert into style ';
+        $sql .= '(style_name, image, description) ';
+        $sql .= 'values(?, ?, ?) ';
+
+        $result = DB::insert($sql, [$style->style_name, $style->image, $style->description]);
+        if ($result){
+            return DB::getPdo()->lastInsertID();
+        }else {
+            return -1;
+        }
+    }
+
+    public static function updatestyle($style)
+    {
+        $sql = 'update style ';
+        $sql .= 'set style_name = ?, image = ?, description = ? ';
+        $sql .= 'where styleID = ? ';
+
+        DB::update($sql, [style->name, style->dob, style->contact, style->styleID]);
+    }
+
 }
 
 
