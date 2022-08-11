@@ -171,7 +171,7 @@ class adminController extends Controller
         if($request->hasFile('image')){
             $image = $request->file('image');
             $stylist->urlimg = $image->getClientOriginalName();
-            $image->move('images/stylist', $image->getClientOriginalName());
+            $image->move('images/style', $image->getClientOriginalName());
 
         }
 
