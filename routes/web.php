@@ -20,8 +20,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'ThriftFashion'], function() {
     Route::group(['prefix' => 'admin'], function() {
         Route::get('',[
-            'uses' => 'adminController@index',
-            'as' => 'admin.index'
+            'uses' => 'adminController@adminIndex',
+            'as' => 'admin.adminIndex'
         ]);
 
 //        Route::get('show/{user_name}', [

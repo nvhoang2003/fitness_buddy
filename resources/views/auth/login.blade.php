@@ -2,7 +2,7 @@
 
 @section('main')
 
-    <div class="cotainer">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -13,7 +13,7 @@
                         <form action="{{route('auth.signin')}}" method="post">
                             @csrf
                             <div class="form-group row">
-                                <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
+                                <label for="username" class="col-md-4 col-form-label text-md-right">User Name</label>
                                 <div class="col-md-6">
                                     <input type="text" id="username" class="form-control" name="username" value="{{old('username')}}" >
                                 </div>

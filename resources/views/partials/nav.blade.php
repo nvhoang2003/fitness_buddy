@@ -66,7 +66,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="{{route("auth.ask")}}">
+                <a class="nav-link " href="{{route("auth.signout")}}">
                     <i class="bi bi-arrow-left"></i>
                     Logout
                 </a>
