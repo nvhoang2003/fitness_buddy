@@ -27,24 +27,36 @@ class adminController extends Controller
         if ($username != $request->input('username')) {
             return redirect()->action('adminController@adminIndex');
         }
-        // check username, contact, email not emty and email correct validate
+        // check username, contact, email not emty, email correct validate and confirm password for accept
         $this->validate($request,
             [
                 'contact' => ['required'],
-                'email' => ['required', 'email:rfc,dns']
+                'email' => ['required', 'email:rfc,dns'],
+                'password' => ['required',
+                    function($attribute, $value, $fails){
+                        global $request;
+                        $user = AdminRepos::getAdminById($request->input('username'));
+                        $passwordHash = sha1($request->input('password'));
+
+                        if ($user[0]->password !== $passwordHash){
+                            $fails('Wrong password! Please try again');
+                        }
+                    },
+                ],
             ],
             [
                 'contact.required' => 'Contact not be empty',
                 'email.required' => 'Email not be empty',
+                'password.required' => 'Please confirm password for accept!'
             ]
         );
-
+        // create user with type varaiable is object
         $user = (object)[
             'username' => $request->input('username'),
             'contact' => $request->input('contact'),
             'email' => $request->input('email'),
         ];
-
+        // update from admin with data "$user"
         AdminRepos::adminUpdateInfo($user);
         return redirect()->action('adminController@adminIndex');
     }
@@ -59,13 +71,24 @@ class adminController extends Controller
         // Check old_password's input equal password from database
         $this->validate($request,
             [
-                'password' => ['required'],
+                'password' => ['required',
+//
+                    function($attribute, $value, $fails){
+                        global $request;
+                        $user = AdminRepos::getAdminById($request->input('username'));
+                        $passwordHash = sha1($request->input('password'));
+
+                        if ($user[0]->password !== $passwordHash){
+                            $fails('Wrong password! Please try again');
+                        }
+                    },
+                ],
                 'new_password' => ['required'],
                 'retire_password' => ['required',
                     function($attribute, $fails, $value){
                         global $request;
                         if($value !== $request->input('new_password')){
-                            $fails("Retire Password must equal New Password");
+                            $fails('Retire Password must equal New Password');
                         }
                     }
                 ]
