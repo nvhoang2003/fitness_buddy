@@ -24,15 +24,15 @@
             <tbody>
             @foreach($style as $s)
                 <tr>
-                    <td>{{$s->name}}</td>
+                    <td>{{$s->style_name}}</td>
                     <td><a type="button" class="btn btn-success btn-sm"
                            href="
-                           {{route('category.edit', ['style_id' => $s->style_id])}}
+                           {{route('style.edit', ['styleID' => $s->styleID])}}
                            "
                         >Edit</a>
                     </td>
                                         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
-                                            @include('categories.modal')
+                                            @include('style.modal')
                                         </td>
                     <td><a type="button" class="btn btn-danger btn-sm"
                            href="
