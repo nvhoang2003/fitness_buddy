@@ -8,20 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- gLightbox gallery-->
-    <link rel="stylesheet" href="vendor/glightbox/css/glightbox.min.css">
+    <link rel="stylesheet" href="{{asset('vendor/glightbox/css/glightbox.min.css')}}">
     <!-- Range slider-->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+    <link rel="stylesheet" href="{{asset('vendor/nouislider/nouislider.min.css')}}">
     <!-- Choices CSS-->
-    <link rel="stylesheet" href="vendor/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="{{asset('vendor/choices.js/public/assets/styles/choices.min.css')}}">
     <!-- Swiper slider-->
-    <link rel="stylesheet" href="vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="{{asset('vendor/swiper/swiper-bundle.min.css')}}">
     <!-- Google fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="{{asset('css/style.default.css')}}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.png">
 </head>
@@ -230,7 +230,7 @@
 
                                         </div>
                                             <a class="d-block" href="{{route('client.details',['productID' => $p->productID])}}">
-                                                <img class="img-fluid w-100" src="images/product/{{ $p->image }}" alt="...">
+                                                <img class="img-fluid w-100" src="{{asset('images/product/'.$p->image)}}" alt="...">
                                             </a>
                                         <div class="product-overlay">
                                             <ul class="mb-0 list-inline">
@@ -315,12 +315,12 @@
         </div>
     </footer>
     <!-- JavaScript files-->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="vendor/nouislider/nouislider.min.js"></script>
-    <script src="vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="js/front.js"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/glightbox/js/glightbox.min.js')}}"></script>
+    <script src="{{asset('vendor/nouislider/nouislider.min.js')}}"></script>
+    <script src="{{asset('vendor/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/choices.js/public/assets/scripts/choices.min.js')}}"></script>
+    <script src="{{asset('js/front.js')}}"></script>
     <!-- Nouislider Config-->
     <script>
         var range = document.getElementById('range');
