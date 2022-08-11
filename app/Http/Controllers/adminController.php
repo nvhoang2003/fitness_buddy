@@ -29,7 +29,7 @@ class adminController extends Controller
 
         return view('style.index',
             [
-                'category' => $style,
+                'style' => $style,
             ]);
     }
 
@@ -44,7 +44,7 @@ class adminController extends Controller
 
         return view('style.confirm',
             [
-                'category' => $style[0],
+                'style' => $style[0],
                 'product' => $styleHaveProduct,
             ]
         );
