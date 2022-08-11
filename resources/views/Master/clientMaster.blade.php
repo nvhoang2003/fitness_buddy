@@ -42,6 +42,7 @@
 <body>
 @include('partials.navClient')
 @yield('main')
+@include('partials.client_footer')
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
                 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -53,6 +54,15 @@
 
     <script src="https://kit.fontawesome.com/5d48250cb6.js"
             crossorigin="anonymous"></script>
+
+
+    <script src={{asset("vendor/bootstrap/js/bootstrap.bundle.min.js")}}></script>
+    <script src={{asset("vendor/glightbox/js/glightbox.min.js")}}></script>
+    <script src={{asset("vendor/nouislider/nouislider.min.js")}}></script>
+    <script src={{asset("vendor/swiper/swiper-bundle.min.js")}}></script>
+    <script src={{asset("vendor/choices.js/public/assets/scripts/choices.min.js")}}></script>
+    <script src={{asset("js/front.js")}}></script>
+
 
 </body>
 </html>
