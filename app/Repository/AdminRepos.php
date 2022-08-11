@@ -22,9 +22,21 @@ class AdminRepos
         return DB::select($sql, [$username]);
     }
 
+    public static function adminUpdateInfo($user){
+        $sql = 'update admin ';
+        $sql .= 'set contact = ?, email = ? ';
+        $sql .= 'where username = ? ';
 
+        return DB::update($sql, [$user->contact, $user->email, $user->username]);
+    }
 
+    public static function adminChangePassword($user){
+        $sql = 'update admin ';
+        $sql .= 'set password = ? ';
+        $sql .= 'where username = ? ';
 
+        return DB::update($sql, [$user->password, $user->username]);
+    }
 
     public static function getProductById($productID){
         $sql = 'select p.* ';

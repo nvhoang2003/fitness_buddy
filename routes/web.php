@@ -19,25 +19,20 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'ThriftFashion'], function() {
     Route::group(['prefix' => 'admin'], function() {
-        Route::get('',[
+        Route::get('/{username}',[
             'uses' => 'adminController@index',
             'as' => 'admin.index'
         ]);
 
-//        Route::get('show/{user_name}', [
-//            'uses' => 'adminControllerWithRepos@show',
-//            'as' => 'admin.show'
-//        ]);
-//
-//        Route::get('update/{user_name}',[
-//            'uses' => 'adminControllerWithRepos@edit',
-//            'as' => 'admin.edit'
-//        ]);
-//
-//        Route::post('update/{user_name}', [
-//            'uses' => 'adminControllerWithRepos@update',
-//            'as' => 'admin.update'
-//        ]);
+        Route::post('update/{user_name}', [
+            'uses' => 'adminController@adminUpdateInfo',
+            'as' => 'admin.adminUpdateInfo'
+        ]);
+
+        Route::post('update/{user_name}', [
+            'uses' => 'adminController@adminChangePassword',
+            'as' => 'admin.adminChangePassword'
+        ]);
     });
     Route::group(['prefix'=>'product'], function (){
 
