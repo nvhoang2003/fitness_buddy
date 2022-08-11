@@ -248,15 +248,10 @@ class adminController extends Controller
     public function store(Request $request){
         if($request->has('image')){
             $file = $request-> image;
-//            $ext = $request->file_upload->extension();
             $file_name = $file->getClientoriginalName();
-//            dd($ext);
             $file->move(public_path('product'), $file_name);
             $request->merge(['product' => $file_name]);
         }
-//        dd($request->all());
-//        $this->formValidate($request)->validate(); //shortcut
-
         $product = (object)[
             'product_name' => $request->input('name'),
             'image' => $request->input('image'),
@@ -269,7 +264,7 @@ class adminController extends Controller
             'colorID' => $request->input('color'),
             'SID' => $request->input('styleID'),
         ];
-
+//        dd($request->all());
         $newId = ProductRepos::insert($product);
 
 

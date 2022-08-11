@@ -25,8 +25,8 @@
 </div>
 
 <div class="form-group">
-    <label for="date" class="font-weight-bold">Launch Date</label>
-    <input type="date" class="form-control" id="date" name="launch_date" value="{{old('launch_date') ?? $product->launch_date}}">
+    <label for="launch_date" class="font-weight-bold">Launch Date</label>
+    <input type="date" class="form-control" id="launch_date" name="launch_date" value="{{old('launch_date') ?? $product->launch_date}}">
 </div>
 
 <div class="form-group">
