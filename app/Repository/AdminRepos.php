@@ -110,7 +110,7 @@ class AdminRepos
         $sql .= 'set style_name = ?, image = ?, description = ? ';
         $sql .= 'where styleID = ? ';
 
-        DB::update($sql, [style->name, style->dob, style->contact, style->styleID]);
+        DB::update($sql, [$style->name, $style->dob, $style->contact, $style->styleID]);
     }
 
 }
