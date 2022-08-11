@@ -104,13 +104,22 @@ Route::group(['prefix' => 'auth'], function(){
     ]);
 });
 
+Route::get('shop',[
+    'uses' =>'clientControllerWithRepos@shop',
+    'as' => 'client.shop'
+]);
+Route::get('detail',[
+    'uses' =>'clientControllerWithRepos@detail',
+    'as' => 'client.details'
+]);
+
 Route::group(['prefix' => 'viewC1'], function (){
     Route::get('', [
         'uses' => 'ViewC1Controller@index',
         'as' => 'viewC1.index'
     ]);
-
-    Route::get('shop/{offset}', [
+//    /{offset}
+    Route::get('shop', [
         'uses' => 'ViewC1Controller@shop',
         'as' => 'viewC1.shop'
     ]);

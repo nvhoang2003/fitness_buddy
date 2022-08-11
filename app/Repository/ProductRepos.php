@@ -9,7 +9,7 @@ class ProductRepos
     public static function getAllProduct(){
         $sql = 'select p.* ';
         $sql .= 'from product as p ';
-        $sql .= 'order by p.pro';
+        $sql .= 'order by p.product';
 
         return DB::select($sql);
     }
