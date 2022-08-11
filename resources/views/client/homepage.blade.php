@@ -10,16 +10,14 @@
                         data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body p-0">
                     <div class="row align-items-stretch">
-                        <div class="col-lg-6 p-lg-0">
-                            <a class="glightbox product-view d-block h-100 bg-cover bg-center"
+                        <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center"
                                                         style="background: url(img/product-5.jpg)"
                                                         href={{asset("img/product-5.jpg")}} data-gallery="gallery1"
                                                         data-glightbox="Red digital smartwatch"></a>
                             <a class="glightbox d-none" href={{asset("img/product-5-alt-1.jpg")}} data-gallery="gallery1"
                                data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none"
                                                         href={{asset("img/product-5-alt-2.jpg")}} data-gallery="gallery1"
-                                                        data-glightbox="Red digital smartwatch"></a>
-                        </div>
+                                                                              data-glightbox="Red digital smartwatch"></a></div>
                         <div class="col-lg-6">
                             <div class="p-4 my-md-4">
                                 <ul class="list-inline mb-2">
@@ -46,11 +44,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-5">
-                                        <a class="btn btn-dark btn-sm w-100 h-100 d-flex align-items-center justify-content-center px-0"
-                                                             href={{route("viewC1.cart")}}>Add to cart</a></div>
-                                    </div>
-                                <a class="btn btn-link text-dark text-decoration-none p-0" href="#!"><i class="far fa-heart me-2">
+                                    <div class="col-sm-5"><a class="btn btn-dark btn-sm w-100 h-100 d-flex align-items-center justify-content-center px-0"
+                                                             href={{asset("client\cart.blade.php")}}>Add to cart</a></div>
+                                </div><a class="btn btn-link text-dark text-decoration-none p-0" href="#!"><i class="far fa-heart me-2">
 
                                     </i>Add to wish list</a>
                             </div>
@@ -120,12 +116,8 @@
                                 <ul class="mb-0 list-inline">
                                     <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark"
                                     href="#!"><i class="far fa-heart"></i></a></li>
-                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark"
-                                    href={{route('viewC1.cart')}}>Add to cart</a></li>
-                                    <li class="list-inline-item me-0">
-                                        <a class="btn btn-sm btn-outline-dark"
-                                           href="#productView"
-                                           data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                    <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -146,14 +138,8 @@
                                     <li class="list-inline-item m-0 p-0">
                                         <a class="btn btn-sm btn-outline-dark" href="#!">
                                             <i class="far fa-heart"></i></a></li>
-                                    <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-dark"
-                                           href={{route('viewC1.cart')}}>Add to cart</a></li>
-                                    <li class="list-inline-item me-0">
-                                        <a class="btn btn-sm btn-outline-dark"
-                                         href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i>
-                                        </a>
-                                    </li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                    <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -172,27 +158,13 @@
                                      src={{asset("img/product-3.jpg")}} alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
-                                    <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-outline-dark" href="#!">
-                                            <i class="far fa-heart"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-dark" href={{route('viewC1.cart')}}>
-                                            Add to cart</a>
-                                    </li>
-                                    <li class="list-inline-item me-0">
-                                        <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
-                                            <i class="fas fa-expand"></i>
-                                        </a>
-                                    </li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                    <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <h6> <a class="reset-anchor"
-                                href={{route("viewC1.details")}}>Cyan cotton t-shirt
-                            </a>
-                        </h6>
+                        <h6> <a class="reset-anchor" href={{route("viewC1.details")}}>Cyan cotton t-shirt</a></h6>
                         <p class="small text-muted">$25</p>
                     </div>
                 </div>
@@ -200,22 +172,17 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-info">New</div>
-                            <a class="d-block"
+                            <div class="badge text-white bg-info">New</div><a class="d-block"
                                   href={{route("viewC1.details")}}>
                                 <img class="img-fluid w-100"
-                                     src={{asset("img/product-4.jpg")}} alt="...">
-                            </a>
+                                     src={{asset("img/product-4.jpg")}} alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
                                     <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-outline-dark" href="#!">
-                                            <i class="far fa-heart"></i>
-                                        </a>
-                                    </li>
+                                        <a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
                                     <li class="list-inline-item m-0 p-0">
                                         <a class="btn btn-sm btn-dark"
-                                        href={{route('viewC1.cart')}}
+                                        href="cart.html"
                                     >Add to cart</a></li>
                                     <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
@@ -229,30 +196,12 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-danger">Sold</div>
-                            <a class="d-block" href="detail.html">
-                                <img class="img-fluid w-100"
-                                     src={{asset("img/product-5.jpg")}}
-                                     alt="...">
-                            </a>
+                            <div class="badge text-white bg-danger">Sold</div><a class="d-block" href="detail.html"><img class="img-fluid w-100" src="img/product-5.jpg" alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
-                                    <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-outline-dark" href="#!">
-                                            <i class="far fa-heart"></i></a>
-                                    </li>
-                                    <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-dark" href={{route('viewC1.cart')}}>
-                                            Add to cart
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item me-0">
-                                        <a class="btn btn-sm btn-outline-dark"
-                                           href="#productView"
-                                           data-bs-toggle="modal">
-                                            <i class="fas fa-expand"></i>
-                                        </a>
-                                    </li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                    <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -274,7 +223,7 @@
                                     <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!">
                                             <i class="far fa-heart"></i></a></li>
                                     <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark"
-                                    href={{route('viewC1.cart')}}>Add to cart</a></li>
+                                    href="cart.html">Add to cart</a></li>
                                     <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark"
                                     href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
@@ -294,30 +243,13 @@
                                 <img class="img-fluid w-100" src={{asset("img/product-7.jpg")}} alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
-                                    <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-outline-dark" href="#!">
-                                            <i class="far fa-heart"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-dark"
-                                           href="cart.html">Add to cart</a>
-                                    </li>
-                                    <li class="list-inline-item me-0">
-                                        <a class="btn btn-sm btn-outline-dark"
-                                           href="#productView"
-                                           data-bs-toggle="modal">
-                                            <i class="fas fa-expand"></i>
-                                        </a>
-                                    </li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
+                                    <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <h6> <a class="reset-anchor"
-                                href={{route("viewC1.details")}}>
-                                Joemalone Women prefume
-                            </a>
-                        </h6>
+                        <h6> <a class="reset-anchor" href={{route("viewC1.details")}}>Joemalone Women prefume</a></h6>
                         <p class="small text-muted">$25</p>
                     </div>
                 </div>
@@ -325,26 +257,14 @@
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                     <div class="product text-center">
                         <div class="position-relative mb-3">
-                            <div class="badge text-white bg-"></div>
-                            <a class="d-block"
-                                href={{route("viewC1.details")}}>
-                                <img class="img-fluid w-100"
-                                     src={{asset("img/product-8.jpg")}}
-                                     alt="...">
-                            </a>
+                            <div class="badge text-white bg-"></div><a class="d-block"
+                                                    href={{route("viewC1.details")}}>
+                                <img class="img-fluid w-100" src={{asset("img/product-8.jpg")}} alt="..."></a>
                             <div class="product-overlay">
                                 <ul class="mb-0 list-inline">
-                                    <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-outline-dark"
-                                           href="#!">
-                                            <i class="far fa-heart"></i>
-                                        </a>
-                                    </li>
-                                    <li class="list-inline-item m-0 p-0">
-                                        <a class="btn btn-sm btn-dark"
-                                           href={{route('viewC1.cart')}}>
-                                            Add to cart</a>
-                                    </li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!">
+                                            <i class="far fa-heart"></i></a></li>
+                                    <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
                                     <li class="list-inline-item me-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
                                 </ul>
                             </div>
@@ -421,8 +341,57 @@
             </div>
         </section>
     </div>
-
+    <footer class="bg-dark text-white">
+        <div class="container py-4">
+            <div class="row py-5">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h6 class="text-uppercase mb-3">Customer services</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li><a class="footer-link" href="#!">Help &amp; Contact Us</a></li>
+                        <li><a class="footer-link" href="#!">Returns &amp; Refunds</a></li>
+                        <li><a class="footer-link" href="#!">Online Stores</a></li>
+                        <li><a class="footer-link" href="#!">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h6 class="text-uppercase mb-3">Company</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li><a class="footer-link" href="#!">What We Do</a></li>
+                        <li><a class="footer-link" href="#!">Available Services</a></li>
+                        <li><a class="footer-link" href="#!">Latest Posts</a></li>
+                        <li><a class="footer-link" href="#!">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-uppercase mb-3">Social media</h6>
+                    <ul class="list-unstyled mb-0">
+                        <li><a class="footer-link" href="#!">Twitter</a></li>
+                        <li><a class="footer-link" href="#!">Instagram</a></li>
+                        <li><a class="footer-link" href="#!">Tumblr</a></li>
+                        <li><a class="footer-link" href="#!">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-top pt-4" style="border-color: #1d1d1d !important">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="small text-muted mb-0">&copy; 2021 All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+{{--                        <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://bootstrapious.com/p/boutique-bootstrap-e-commerce-template">Bootstrapious</a></p>--}}
+                        <!-- If you want to remove the backlink, please purchase the Attribution-Free License. See details in readme.txt or license.txt. Thanks!-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- JavaScript files-->
+    <script src={{asset("vendor/bootstrap/js/bootstrap.bundle.min.js")}}></script>
+    <script src={{asset("vendor/glightbox/js/glightbox.min.js")}}></script>
+    <script src={{asset("vendor/nouislider/nouislider.min.js")}}></script>
+    <script src={{asset("vendor/swiper/swiper-bundle.min.js")}}></script>
+    <script src={{asset("vendor/choices.js/public/assets/scripts/choices.min.js")}}></script>
+    <script src={{asset("js/front.js")}}></script>
     <script>
         // ------------------------------------------------------- //
         //   Inject SVG Sprite -

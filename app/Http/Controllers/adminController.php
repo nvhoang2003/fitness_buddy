@@ -25,7 +25,7 @@ class adminController extends Controller
     {
         // check username's url same as username's database
         if ($username != $request->input('username')) {
-            return redirect()->action('adminController@adminIndex');
+            return redirect()->action('adminController@productIndex');
         }
         // check username, contact, email not emty, email correct validate and confirm password for accept
         $this->validate($request,
@@ -58,7 +58,9 @@ class adminController extends Controller
         ];
         // update from admin with data "$user"
         AdminRepos::adminUpdateInfo($user);
-        return redirect()->action('adminController@adminIndex');
+        return redirect()
+            ->action('adminController@adminConfirmUpdateInfo')
+            ->with('msg', 'Update Successfully');
     }
 
     // amdin's password
@@ -77,7 +79,7 @@ class adminController extends Controller
     {
         // check username's url same as username's database
         if ($username != $request->input('username')) {
-            return redirect()->action('adminController@adminIndex');
+            return redirect()->action('adminController@productIndex');
         }
         // Check old_password's input equal password from database
         $this->validate($request,
@@ -96,7 +98,7 @@ class adminController extends Controller
                 ],
                 'new_password' => ['required'],
                 'retire_password' => ['required',
-                    function($attribute, $fails, $value){
+                    function($attribute, $value, $fails){
                         global $request;
                         if($value !== $request->input('new_password')){
                             $fails('Retire Password must same New Password');
@@ -111,14 +113,17 @@ class adminController extends Controller
             ]
         );
         // create user with type varaiable is object
+        $passwordHash = sha1($request->input('new_password'));
         $user = (object)[
             'username' => $request->input('username'),
-            'password' => $request->input('new_password'),
+            'password' => $passwordHash
         ];
         // change password's datatbase with varaiable is new password
         AdminRepos::adminChangePassword($user);
 
-        return redirect()->action('adminController@adminIndex');
+        return redirect()
+            ->action('adminController@adminConfirmUpdateInfo')
+            ->with('msg', 'Change Password Successfully');
     }
 
     // index of style - Bui Anh Tuan

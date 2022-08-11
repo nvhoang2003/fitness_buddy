@@ -1,7 +1,7 @@
 @extends('Master.adminMaster')
 
 @section('main')
-    <div class="container col-md-10">
+    <div class="container col-md-8">
             <h1 class="display-6">Account Info</h1>
             <form action="{{route('admin.adminUpdateInfo',['username' => old('username') ?? $user->username])}}" method="post">
                 @csrf
