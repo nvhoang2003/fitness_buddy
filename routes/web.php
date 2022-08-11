@@ -46,7 +46,7 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
     });
     Route::group(['prefix'=>'product'], function (){
         Route::get('',[
-            'uses' => 'adminController@productindex',
+            'uses' => 'adminController@productIndex',
             'as' => 'product.index'
         ]);
         Route::get('show/{productID}',[
@@ -157,7 +157,14 @@ Route::group(['prefix' => 'style/index'], function (){
         'uses' => 'adminController@destroy',
         'as' => 'style.destroy'
     ]);
+
+
 });
+
+Route::get('homepage', [
+    'uses' => 'clientControllerWithRepos@homepage',
+    'as' => 'client.homepage',
+]);
 
 Route::get('shop',[
     'uses' =>'clientControllerWithRepos@shop',
@@ -166,6 +173,14 @@ Route::get('shop',[
 Route::get('detail',[
     'uses' =>'clientControllerWithRepos@detail',
     'as' => 'client.details'
+]);
+Route::get('cart', [
+    'uses' => 'clientControllerWithRepos@cart',
+    'as' => 'client.cart'
+]);
+Route::get('login', [
+    'uses' => 'clientControllerWithRepos@login',
+    'as' => 'client.login'
 ]);
 
 Route::group(['prefix' => 'viewC1'], function (){
