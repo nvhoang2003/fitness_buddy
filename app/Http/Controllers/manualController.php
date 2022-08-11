@@ -29,7 +29,7 @@ class manualController extends Controller
             if ($u->username === $userName&&
                 $u->password ===  $passwordHash){
                 Session::put('username', $request->input('username'));
-                return redirect()->action('adminController@productIndex');
+                return redirect()->route('product.index');
             }
         }
 
@@ -49,7 +49,7 @@ class manualController extends Controller
         return Validator::make(
             $request->all(),
             [
-                'username' => ['required',
+                'user_name' => ['required',
 //                    check username's request input, if username's data from database empty return messeage, if not empty continue
                     function($attribute, $value, $fails){
                         global $request;
