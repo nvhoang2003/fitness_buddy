@@ -31,14 +31,10 @@
                            "
                         >Edit</a>
                     </td>
-                                        <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
-                                            @include('style.modal')
-                                        </td>
-                    <td><a type="button" class="btn btn-danger btn-sm"
-                           href="
-{{--                         //  {{route('category.confirm', ['category_id' => $c->category_id])}}--}}
-                           "
-                        >Delete</a>
+
+                    <td>
+                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                        @include('style.modal')
                     </td>
                 </tr>
             @endforeach

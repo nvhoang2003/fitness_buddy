@@ -17,8 +17,11 @@ class ProductRepos
     }
 
     public static function getProductById($id){
-        $sql = 'select p.* ';
+        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
         $sql .= 'from product as p ';
+        $sql.='join size as s on p.sizeID = s.sizeID ';
+        $sql.='join style on p.SID = style.styleID ';
+        $sql.='join color on p.ColorID = color.colorID ';
         $sql .= 'where p.productID = ?';
 
         return DB::select($sql, [$id]);
@@ -86,12 +89,51 @@ class ProductRepos
     public static function getColorByProductId($id){
         $sql = 'select c.*, p.productID ';
         $sql .= 'from Color as c ';
-        $sql .= 'join product as p on c.colerID = p.colerID ';
+        $sql .= 'join product as p on c.colorID = p.colorID ';
         $sql .= 'where p.productID = ?';
 
         return DB::select($sql, [$id]);
     }
+    public static function updateWithImage($product)
+    {
+        $sql = 'update product ';
+        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, image = ?, brand = ?, material = ?, SID= ?, sizeID= ?, ColorID = ? ';
+        $sql .= 'where productID = ? ';
 
+        DB::update($sql, [
+            $product->product_name,
+            $product->product_status,
+            $product->price,
+            $product->launch_date,
+            $product->image,
+            $product->brand,
+            $product->material,
+            $product->SID,
+            $product->sizeID,
+            $product->ColorID,
+            $product->productID
+        ]);
+    }
+
+    public static function updateWithoutImage($product)
+    {
+        $sql = 'update product ';
+        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, brand = ?, material = ?, SID= ?, sizeID= ?, ColorID = ? ';
+        $sql .= 'where productID = ? ';
+
+        DB::update($sql, [
+            $product->product_name,
+            $product->product_status,
+            $product->price,
+            $product->launch_date,
+            $product->brand,
+            $product->material,
+            $product->SID,
+            $product->sizeID,
+            $product->ColorID,
+            $product->productID
+        ]);
+    }
 
     public static function delete($id){
         $sql = 'delete from product ';

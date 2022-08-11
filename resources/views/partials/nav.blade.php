@@ -12,14 +12,14 @@
             </li>
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{route('style.index')}}" id="navbarDropdown" role="button"
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Category
+                    Style
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">View all</a>
-                    <a class="dropdown-item" href="#">New Category</a>
+                    <a class="dropdown-item" href="{{route('style.index')}}">View all</a>
+                    <a class="dropdown-item" href="{{route('style.create')}}">New Category</a>
                 </div>
             </li>
 
@@ -30,8 +30,8 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">View all</a>
-                    <a class="dropdown-item" href="#">New Product</a>
+                    <a class="dropdown-item" href="{{route('product.index')}}">View all</a>
+                    <a class="dropdown-item" href="{{route('product.create')}}">New Product</a>
                 </div>
 
             </li>

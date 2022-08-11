@@ -46,7 +46,7 @@
                 @endif
             </div>
             <a type="button" href="{{route('admin.confirmUpdateInfo', ['username' => $user->username])}}" class="btn btn-info">
-                <i class="bi bi-box-arrow-left"></i>
+                <i class="fa-solid fa-arrow-left"></i>
                 Return
             </a>
             <button type="submit" class="btn btn-dark">Change Password</button>

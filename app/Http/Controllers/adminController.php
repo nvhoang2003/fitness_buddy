@@ -231,9 +231,9 @@ class adminController extends Controller
     }
 
     // delete style - Bui Anh Tuan
-    public function styleConfirm($style_id){
-        $style = AdminRepos::getStyleById($style_id);
-        $styleHaveProduct = AdminRepos::getProductByStyleId($style_id);
+    public function styleConfirm($styleID){
+        $style = AdminRepos::getStyleById($styleID);
+        $styleHaveProduct = AdminRepos::getProductByStyleId($styleID);
 
         if ($style === []){
             return view('notFound');
@@ -247,12 +247,12 @@ class adminController extends Controller
         );
     }
 
-    public function styleDestroy(Request $request, $style_id){
-        if($style_id != $request->input('style_id')){
+    public function styleDestroy(Request $request, $styleID){
+        if($styleID != $request->input('styleID')){
             return redirect()->action('adminController@styleindex');
         }
 
-        AdminRepos::delete($style_id);
+        AdminRepos::delete($styleID);
 
         return redirect()->action('adminController@styleindex');
     }
@@ -267,7 +267,7 @@ class adminController extends Controller
             ]);
     }
 
-    public function show($productID)
+    public function productShow($productID)
     {
         $product = ProductRepos::getProductById($productID);
 //        $brand = BrandRepos::getBrandByProductId($product_id);
@@ -276,12 +276,11 @@ class adminController extends Controller
         return view('product.show',
             [
                 'product' => $product[0]
-
             ]
         );
     }
 
-    public function create(){
+    public function productCreate(){
         $size = ProductRepos::getAllSize();
         $color = ProductRepos::getAllColor();
         $style = ProductRepos::getAllStyle();
@@ -302,7 +301,36 @@ class adminController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function productStore(Request $request){
+
+        $this->validate($request,
+            [
+                'product_name' => 'required',
+                'image' => 'required, image',
+                'product_status' => 'required',
+                'price' => 'required',
+                'launch_date' => 'required',
+                'brand' => 'required',
+                'material' => 'required',
+                'size' => 'gt:0',
+                'color' => 'gt:0',
+                'style' => 'gt:0',
+            ],
+            [
+                'product_name.required' => 'Name not be empty',
+                'image.required' => 'Please choose your image !',
+                'image.image' => 'The file under validation must be an image (jpg, jpeg, png, bmp, gif, svg, or webp).',
+                'product_status.required' => 'Status not be empty (stock-in, stock-out)',
+                'price.required' => 'Price not be empty',
+                'launch_date.required' => 'Launch date not be empty',
+                'brand.required' => 'Brand not be empty',
+                'material.required' => 'Material not be empty',
+                'size.gt' => 'Please select a Size!',
+                'color.gt' => 'Please select a Color!',
+                'style.gt' => 'Please select a Style!',
+            ]
+        );
+
         if($request->has('image')){
             $file = $request-> image;
             $file_name = $file->getClientoriginalName();
@@ -314,20 +342,125 @@ class adminController extends Controller
             'image' => $request->input('image'),
             'product_status' => $request->input('product_status'),
             'price' => $request->input('price'),
-            'launch-date' => $request->input('launch_date'),
+            'launch_date' => $request->input('launch_date'),
             'brand' => $request->input('brand'),
             'material' => $request->input('material'),
             'sizeID' => $request->input('size'),
-            'colorID' => $request->input('color'),
-            'SID' => $request->input('styleID'),
+            'ColorID' => $request->input('color'),
+            'SID' => $request->input('style'),
         ];
-//        dd($request->all());
+
         $newId = ProductRepos::insert($product);
 
 
         return redirect()
             ->action('adminController@index')
             ->with('msg', 'New Product with id: '.$newId.' has been inserted');
+    }
+
+
+
+
+    public function productEdit($productID){
+        $product = ProductRepos::getProductById($productID);
+        $size = ProductRepos::getAllSize();
+        $color = ProductRepos::getAllColor();
+        $style = ProductRepos::getAllStyle();
+        return view('product.edit',[
+                'product'=> $product[0],
+                'size'=> $size,
+                'color' => $color,
+                'style' => $style
+        ]);
+    }
+
+    public function productUpdate(Request $request, $productID){
+        if($productID !== $request->input('productID')){
+            redirect()->action('adminController@productIndex');
+        }
+        $this->validate($request,
+            [
+                'product_name' => 'required',
+                'image' => 'image',
+                'product_status' => 'required',
+                'price' => 'required',
+                'launch_date' => 'required',
+                'brand' => 'required',
+                'material' => 'required',
+                'size' => 'gt:0',
+                'color' => 'gt:0',
+                'style' => 'gt:0',
+            ],
+            [
+                'product_name.required' => 'Name not be empty',
+                'image.image' => 'The file under validation must be an image (jpg, jpeg, png, bmp, gif, svg, or webp).',
+                'product_status.required' => 'Status not be empty (stock-in, stock-out)',
+                'price.required' => 'Price not be empty',
+                'launch_date.required' => 'Launch date not be empty',
+                'brand.required' => 'Brand not be empty',
+                'material.required' => 'Material not be empty',
+                'size.gt' => 'Please select a Size!',
+                'color.gt' => 'Please select a Color!',
+                'style.gt' => 'Please select a Style!',
+            ]
+        );
+        if($request->has('image')){
+            $file = $request->image;
+            $file_name = $file->getClientoriginalName();
+            $file->move(public_path('images/product'), $file_name);
+            $request->merge(['image' => $file_name]);
+        }
+
+        $product = (object)[
+            'productID' => $request->input('productID'),
+            'product_name' => $request->input('name'),
+            'image' => $request->input('image'),
+            'product_status' => $request->input('product_status'),
+            'price' => $request->input('price'),
+            'launch_date' => $request->input('launch_date'),
+            'brand' => $request->input('brand'),
+            'material' => $request->input('material'),
+            'sizeID' => $request->input('size'),
+            'ColorID' => $request->input('color'),
+            'SID' => $request->input('style'),
+        ];
+        if($product->image === null){
+            ProductRepos::updateWithoutImage($product);
+        }else{
+            ProductRepos::updateWithImage($product);
+        }
+
+        return redirect()->action('adminController@productIndex')
+            ->with('msg', 'Update Successfully');
+    }
+
+    public function productConfirm($productID){
+
+        $product = ProductRepos::getProductById($productID);
+        $color = ProductRepos::getColorByProductId($productID);
+        $size = ProductRepos::getSizeByProductId($productID);
+
+        return view('product.confirm',
+            [
+                'product' => $product[0],
+                'color' => $color[0],
+                'size' => $size[0]
+            ]
+        );
+    }
+
+    public function productDestroy(Request $request, $productID){
+        if($productID != $request->input('productID')){
+            return redirect()->action('productController@productIndex');
+        }
+
+
+        ProductRepos::delete($productID);
+
+
+        return redirect()
+            ->action('adminController@productIndex')
+            ->with('msg', 'Delete successfully');
     }
 
     private function formValidate(Request $request)
@@ -346,40 +479,4 @@ class adminController extends Controller
             ]
         );
     }
-
-
-    public function edit(){
-
-        return view('product.edit');
-    }
-
-    public function confirm_product($productID)
-    {
-        $product = ProductRepos::getProductById($productID);
-        $color = ProductRepos::getColorByProductId($productID);
-        $size = ProductRepos::getSizeByProductId($productID);
-
-        return view('product.confirm',
-            [
-                'product' => $product[0],
-                'color' => $color[0],
-                'size' => $size[0]
-            ]
-        );
-    }
-
-    public function destroy_product(Request $request, $productID){
-        if($productID != $request->input('productID')){
-            return redirect()->action('productController@index');
-        }
-
-
-        ProductRepos::delete($productID);
-
-
-        return redirect()
-            ->action('adminController@index')
-            ->with('msg', 'Delete successfully');
-    }
-
 }

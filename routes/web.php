@@ -50,35 +50,41 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
             'as' => 'product.index'
         ]);
         Route::get('show/{productID}',[
-            'uses' => 'adminController@show',
+            'uses' => 'adminController@productShow',
             'as' => 'product.show'
         ]);
 
 
         Route::get('create',[
-            'uses' =>'adminController@create',
+            'uses' =>'adminController@productCreate',
             'as' => 'product.create'
         ]);
 
         Route::post('create', [
-            'uses' => 'adminController@store',
+            'uses' => 'adminController@productStore',
             'as' => 'product.store'
         ]);
 
 
-        Route::get('update',[
-            'uses'=> 'adminController@edit',
+        Route::get('update/{productID}',[
+            'uses'=> 'adminController@productEdit',
             'as'=> 'product.edit'
         ]);
 
+        Route::post('update/{productID}',[
+            'uses'=> 'adminController@productUpdate',
+            'as'=> 'product.update'
+        ]);
+
+
         Route::get('delete/{productID}', [
-            'uses' => 'adminController@confirm',
-            'as' => 'product.confirm_product'
+            'uses' => 'adminController@productConfirm',
+            'as' => 'product.confirm'
         ]);
 
         Route::post('delete/{productID}', [
-            'uses' => 'adminController@destroy',
-            'as' => 'product.destroy_product'
+            'uses' => 'adminController@productDestroy',
+            'as' => 'product.destroy'
         ]);
     });
 //

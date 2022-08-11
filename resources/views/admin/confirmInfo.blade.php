@@ -50,7 +50,7 @@
                 <a type="button" href="{{route('admin.adminChangePassword', ['username' => $user->username])}}"
                    class="btn btn-info">
                     Change Password
-                    <i class="bi bi-box-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </form>
         </div>

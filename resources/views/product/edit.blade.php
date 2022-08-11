@@ -3,13 +3,16 @@
 @section('main')
     <div class="container">
         <h2 class="text-center">Please Enter New Information Of Your Product</h2>
-        @include('partials.errors')
 
-        <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('product.update',['productID'=>$product->productID])}}" method="post" enctype="multipart/form-data">
             @csrf
             @include('product.productFields')
-
-            <button type="submit" class="btn btn-dark">Submit</button>
+            <a type="button" href="{{route('product.index')}}" class="btn btn-info">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <button type="submit" class="btn btn-dark">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </button>
         </form>
     </div>
 @endsection

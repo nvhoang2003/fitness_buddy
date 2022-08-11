@@ -150,5 +150,34 @@ body {
     pointer-events: auto;
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0deg);
-    transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0deg)
+    transform: translate3d(0, 0, 0) rotate3d(0, 0, 0, 0deg);
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    padding: 5px 10px;
+    margin: 10px 10px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 10px;
+    color: #545454;
+    background-color: #87c0e3;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: rgba(51, 150, 255, 0.93);
+}
+
+.bi-cloud-arrow-up{
+    margin-bottom: 2px;
 }
