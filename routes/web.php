@@ -46,7 +46,7 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
     });
     Route::group(['prefix'=>'product'], function (){
         Route::get('',[
-            'uses' => 'adminController@productIndex',
+            'uses' => 'adminController@productindex',
             'as' => 'product.index'
         ]);
         Route::get('show/{productID}',[
@@ -89,6 +89,46 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
         ]);
     });
 
+    Route::group(['prefix' => 'style'], function (){
+        Route::get('', [
+            'uses' => 'adminController@styleindex',
+            'as' => 'style.index'
+        ]);
+        Route::get('show/{styleID}',[
+            'uses'=>'adminController@styleshow',
+            'as' => 'style.shows'
+        ]);
+
+        Route::get('create',[
+            'uses' => 'adminController@stylecreate',
+            'as' => 'style.create'
+        ]);
+
+        Route::post('create',[
+            'uses' => 'adminController@stylestore',
+            'as' => 'style.store'
+        ]);
+
+        Route::get('update/{styleID}',[
+            'uses' => 'adminController@styleEdit',
+            'as' => 'style.edit'
+        ]);
+        Route::post('update/{styleID}',[
+            'uses' => 'adminController@styleUpdate',
+            'as' => 'style.update'
+        ]);
+
+
+        Route::get('delete/{styleID}', [
+            'uses' => 'adminController@styleConfirm',
+            'as' => 'style.confirm'
+        ]);
+
+        Route::post('delete/{styleID}', [
+            'uses' => 'adminController@styleDestroy',
+            'as' => 'style.destroy'
+        ]);
+    });
 });
 
 Route::group(['prefix' => 'auth'], function(){
@@ -157,30 +197,15 @@ Route::group(['prefix' => 'style/index'], function (){
         'uses' => 'adminController@destroy',
         'as' => 'style.destroy'
     ]);
-
-
 });
-
-Route::get('homepage', [
-    'uses' => 'clientControllerWithRepos@homepage',
-    'as' => 'client.homepage',
-]);
 
 Route::get('shop',[
     'uses' =>'clientControllerWithRepos@shop',
     'as' => 'client.shop'
 ]);
-Route::get('detail',[
+Route::get('details',[
     'uses' =>'clientControllerWithRepos@detail',
     'as' => 'client.details'
-]);
-Route::get('cart', [
-    'uses' => 'clientControllerWithRepos@cart',
-    'as' => 'client.cart'
-]);
-Route::get('login', [
-    'uses' => 'clientControllerWithRepos@login',
-    'as' => 'client.login'
 ]);
 
 Route::group(['prefix' => 'viewC1'], function (){

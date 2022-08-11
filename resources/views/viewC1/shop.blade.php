@@ -1,4 +1,4 @@
-@extends('masters.viewC1master')
+@extends('Master.viewc1master')
 @section('main')
     @include('partials.modal')
     <div class="container">
@@ -100,6 +100,8 @@
     </section>
     </div>
 @endsection
+
+
 @section('script')
     <script>
         $('#sosanh').modal()

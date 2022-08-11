@@ -4,8 +4,8 @@
     <div class="container">
         <h1 class="display-4 text-center">All Product</h1>
         <div class="mr-5">
-            <table class="table table-success table-hover">
-                <thead >
+            <table class="table table-hover">
+                <thead style="background-color: #acb2c7">
                 <tr>
                     <th scope="col">Product Name </th>
                     <th scope="col">Status</th>
