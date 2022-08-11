@@ -3,7 +3,7 @@
 @section('main')
     <div class="container">
         <h2 id="icons" class="display-4 mb-0 col-md-8">Customer Index</h2>
-        @include('Furniture_shop.partials.sessionmessage')
+        @include('partials.sessionmessage')
         <table class="table table-hover">
             <thead class="thead" style="background-color: #acb2c7">
             <tr>
@@ -12,8 +12,6 @@
                 <th scope="col">Gender</th>
                 <th scope="col">Phone Number</th>
                 <th scope="col">Email</th>
-                <th scope="col">&nbsp;</th>
-                <th scope="col">&nbsp;</th>
             </tr>
             </thead>
             <tbody>
@@ -22,7 +20,7 @@
                     <td>{{$c->username}}</td>
                     <td>{{$c->fullname}}</td>
                     <td>{{$c->gender}}</td>
-                    <td>{{$c->phone_number}}</td>
+                    <td>{{$c->phonenumber}}</td>
                     <td>{{$c->email}}</td>
                 </tr>
             @endforeach

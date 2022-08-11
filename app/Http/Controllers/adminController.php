@@ -130,7 +130,9 @@ class adminController extends Controller
     protected function customerIndex(){
         $customers = CustomerClass::getAllCustomer();
 
-        return view('customer.index');
+        return view('customer.index',[
+            'customers' => $customers
+        ]);
     }
 
     // index of style - Bui Anh Tuan
