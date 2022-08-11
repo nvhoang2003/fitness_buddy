@@ -17,8 +17,42 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'auth'], function(){
+Route::group(['prefix' => 'ThriftFashion'], function() {
+    Route::group(['prefix' => 'admin'], function() {
+        Route::get('',[
+            'uses' => 'adminController@index',
+            'as' => 'admin.index'
+        ]);
 
+//        Route::get('show/{user_name}', [
+//            'uses' => 'adminControllerWithRepos@show',
+//            'as' => 'admin.show'
+//        ]);
+//
+//        Route::get('update/{user_name}',[
+//            'uses' => 'adminControllerWithRepos@edit',
+//            'as' => 'admin.edit'
+//        ]);
+//
+//        Route::post('update/{user_name}', [
+//            'uses' => 'adminControllerWithRepos@update',
+//            'as' => 'admin.update'
+//        ]);
+    });
+    Route::group(['prefix'=>'product'], function (){
+
+
+
+        Route::get('update',[
+            'uses'=> 'adminController@edit',
+            'as'=> 'product.edit'
+        ]);
+    });
+//
+
+});
+
+Route::group(['prefix' => 'auth'], function(){
     Route::get('login',[
         'uses' => 'manualController@ask',
         'as' => 'auth.ask'
@@ -34,4 +68,54 @@ Route::group(['prefix' => 'auth'], function(){
         'as' => 'auth.signout'
     ]);
 
+    Route::get('delete/{style_id}', [
+        'uses' => 'adminController@confirm',
+        'as' => 'style.confirm'
+    ]);
+
+    Route::post('delete/{style_id}', [
+        'uses' => 'adminController@destroy',
+        'as' => 'style.destroy'
+    ]);
 });
+
+
+    Route::get('showstyle/{id}',[
+        'uses'=>'adminController@styleshow',
+        'as' => 'style.shows'
+    ]);
+
+    Route::get('createstyle',[
+        'uses' => 'adminController@stylecreate',
+        'as' => 'style.create'
+    ]);
+
+    Route::post('createstyle',[
+        'uses' => 'adminController@stylestore',
+        'as' => 'admin.storestylist'
+    ]);
+
+    Route::get('updatestyle/{id}',[
+        'uses' => 'adminController@edit',
+        'as' => 'admin.editstyle'
+    ]);
+
+    Route::post('updatesyle/{id}',[
+        'uses' => 'adminController@update',
+        'as' => 'admin.updatestyle'
+    ]);
+
+
+    Route::get('delete/{style_id}', [
+        'uses' => 'adminController@confirm',
+        'as' => 'style.confirm'
+    ]);
+
+    Route::post('delete/{style_id}', [
+        'uses' => 'adminController@destroy',
+        'as' => 'style.destroy'
+    ]);
+
+
+
+
