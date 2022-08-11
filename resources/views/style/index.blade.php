@@ -27,12 +27,12 @@
                     <td>{{$s->name}}</td>
                     <td><a type="button" class="btn btn-success btn-sm"
                            href="
-                           {{route('style.edit', ['styleID' => $s->styleID])}}
+                           {{route('category.edit', ['style_id' => $s->style_id])}}
                            "
                         >Edit</a>
                     </td>
                                         <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
-                                            @include('style.modal')
+                                            @include('categories.modal')
                                         </td>
                     <td><a type="button" class="btn btn-danger btn-sm"
                            href="
