@@ -19,36 +19,75 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'ThriftFashion'], function() {
     Route::group(['prefix' => 'admin'], function() {
-        Route::get('',[
-            'uses' => 'adminController@index',
-            'as' => 'admin.index'
+        Route::get('/{username}',[
+            'uses' => 'adminController@adminIndex',
+            'as' => 'admin.adminIndex'
         ]);
 
-//        Route::get('show/{user_name}', [
-//            'uses' => 'adminControllerWithRepos@show',
-//            'as' => 'admin.show'
-//        ]);
-//
-//        Route::get('update/{user_name}',[
-//            'uses' => 'adminControllerWithRepos@edit',
-//            'as' => 'admin.edit'
-//        ]);
-//
-//        Route::post('update/{user_name}', [
-//            'uses' => 'adminControllerWithRepos@update',
-//            'as' => 'admin.update'
-//        ]);
+        Route::get('updateInfo/{username}', [
+            'uses' => 'adminController@adminConfirmUpdateInfo',
+            'as' => 'admin.confirmUpdateInfo'
+        ]);
+
+        Route::get('updatePassword/{username}', [
+            'uses' => 'adminController@adminConfirmChangePassword',
+            'as' => 'admin.confirmChangePassword'
+        ]);
+
+        Route::post('updateInfo/{username}', [
+            'uses' => 'adminController@adminUpdateInfo',
+            'as' => 'admin.adminUpdateInfo'
+        ]);
+
+        Route::post('updatePassword/{username}', [
+            'uses' => 'adminController@adminChangePassword',
+            'as' => 'admin.adminChangePassword'
+        ]);
     });
     Route::group(['prefix'=>'product'], function (){
+        Route::get('',[
+            'uses' => 'adminController@productindex',
+            'as' => 'product.index'
+        ]);
+        Route::get('show/{productID}',[
+            'uses' => 'adminController@show',
+            'as' => 'product.show'
+        ]);
 
+
+        Route::get('create',[
+            'uses' =>'adminController@create',
+            'as' => 'product.create'
+        ]);
+
+        Route::post('create', [
+            'uses' => 'adminController@store',
+            'as' => 'product.store'
+        ]);
 
 
         Route::get('update',[
             'uses'=> 'adminController@edit',
             'as'=> 'product.edit'
         ]);
+
+        Route::get('delete/{productID}', [
+            'uses' => 'adminController@confirm',
+            'as' => 'product.confirm_product'
+        ]);
+
+        Route::post('delete/{productID}', [
+            'uses' => 'adminCOntroller@destroy',
+            'as' => 'product.destroy_product'
+        ]);
     });
 //
+    Route::group(['prefix' => 'customer'], function (){
+        Route::get('',[
+            'uses' => 'adminController@customerIndex',
+            'as' => 'customer.index'
+        ]);
+    });
 
 });
 
@@ -68,6 +107,22 @@ Route::group(['prefix' => 'auth'], function(){
         'as' => 'auth.signout'
     ]);
 
+    Route::get('delete/{style_id}', [
+        'uses' => 'adminController@confirm',
+        'as' => 'style.confirm'
+    ]);
+
+    Route::post('delete/{style_id}', [
+        'uses' => 'adminController@destroy',
+        'as' => 'style.destroy'
+    ]);
+});
+
+Route::group(['prefix' => 'style/index'], function (){
+    Route::get('', [
+        'uses' => 'adminController@styleindex',
+        'as' => 'style.index'
+    ]);
     Route::get('showstyle/{id}',[
         'uses'=>'adminController@styleshow',
         'as' => 'style.shows'
@@ -87,11 +142,11 @@ Route::group(['prefix' => 'auth'], function(){
         'uses' => 'adminController@edit',
         'as' => 'admin.editstyle'
     ]);
-
     Route::post('updatesyle/{id}',[
         'uses' => 'adminController@update',
         'as' => 'admin.updatestyle'
     ]);
+
 
     Route::get('delete/{style_id}', [
         'uses' => 'adminController@confirm',
@@ -189,10 +244,3 @@ Route::group(['prefix' => 'viewC1'], function (){
         'as' => 'viewC1.download'
     ]);
 });
-
-
-
-
-
-
-

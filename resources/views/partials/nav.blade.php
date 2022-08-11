@@ -60,14 +60,14 @@
         @endphp
         <ul class="navbar-nav">
             <li class="nav-item mr-3">
-                <a class="nav-link" href="{{route('admin.adminIndex', ['username' => $userSession])}}">
+                <a class="nav-link" href="{{route('admin.confirmUpdateInfo', ['username' => $userSession])}}">
                     <i class="bi bi-person-fill"></i>
                     {{$userSession}}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="{{route("auth.signout")}}">
-                    <i class="bi bi-arrow-left"></i>
+                    <i class="bi bi-box-arrow-left"></i>
                     Logout
                 </a>
             </li>

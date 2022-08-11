@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Repository\AdminRepos;
+use App\Repository\CustomerClass;
 use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class adminController extends Controller
 {
-    // admin's index - Pham Quang Hung
-    public function adminIndex($username)
+    // admin's info - Pham Quang Hung
+    public function adminConfirmUpdateInfo($username)
     {
         // get data from table "admin" in database and return index admin
         $user = AdminRepos::getAdminById($username);
 
-        return view('admin.index', [
+        return view('admin.confirmInfo', [
             'user' => $user[0],
         ]);
     }
@@ -25,7 +26,7 @@ class adminController extends Controller
     {
         // check username's url same as username's database
         if ($username != $request->input('username')) {
-            return redirect()->action('adminController@adminIndex');
+            return redirect()->action('adminController@productIndex');
         }
         // check username, contact, email not emty, email correct validate and confirm password for accept
         $this->validate($request,
@@ -58,7 +59,20 @@ class adminController extends Controller
         ];
         // update from admin with data "$user"
         AdminRepos::adminUpdateInfo($user);
-        return redirect()->action('adminController@adminIndex');
+        return redirect()
+            ->action('adminController@adminConfirmUpdateInfo')
+            ->with('msg', 'Update Successfully');
+    }
+
+    // amdin's password
+    public function adminConfirmChangePassword($username)
+    {
+        // get data from table "admin" in database and return index admin
+        $user = AdminRepos::getAdminById($username);
+
+        return view('admin.confirmChangePassword', [
+            'user' => $user[0],
+        ]);
     }
 
     // change admin's password anyway - Pham Quang Hung
@@ -66,7 +80,7 @@ class adminController extends Controller
     {
         // check username's url same as username's database
         if ($username != $request->input('username')) {
-            return redirect()->action('adminController@adminIndex');
+            return redirect()->action('adminController@productIndex');
         }
         // Check old_password's input equal password from database
         $this->validate($request,
@@ -85,7 +99,7 @@ class adminController extends Controller
                 ],
                 'new_password' => ['required'],
                 'retire_password' => ['required',
-                    function($attribute, $fails, $value){
+                    function($attribute, $value, $fails){
                         global $request;
                         if($value !== $request->input('new_password')){
                             $fails('Retire Password must same New Password');
@@ -100,14 +114,24 @@ class adminController extends Controller
             ]
         );
         // create user with type varaiable is object
+        $passwordHash = sha1($request->input('new_password'));
         $user = (object)[
             'username' => $request->input('username'),
-            'password' => $request->input('new_password'),
+            'password' => $passwordHash
         ];
         // change password's datatbase with varaiable is new password
         AdminRepos::adminChangePassword($user);
 
-        return redirect()->action('adminController@adminIndex');
+        return redirect()
+            ->action('adminController@adminConfirmUpdateInfo')
+            ->with('msg', 'Change Password Successfully');
+    }
+
+    // index of customer - Pham Quang Hung
+    protected function customerIndex(){
+        $customers = CustomerClass::getAllCustomer();
+
+        return view('customer.index');
     }
 
     // index of style - Bui Anh Tuan
@@ -232,7 +256,16 @@ class adminController extends Controller
         return redirect()->action('adminController@styleindex');
     }
 
-    //product
+    //product index by hoang
+    public function productindex()
+    {
+        $product = ProductRepos::getAllProduct();
+        return view('product.index',
+            [
+                'product'=>$product
+            ]);
+    }
+
     public function productIndex(){
         return view('product.index');
     }
