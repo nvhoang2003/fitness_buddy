@@ -11,7 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-          crossorigin="anonymous"> <!-- Font Awesome -->>
+          crossorigin="anonymous">
+    <!-- Font Awesome -->>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- gLightbox gallery-->
@@ -23,7 +24,7 @@
           href={{asset("vendor/choices.js/public/assets/styles/choices.min.css")}}>
     <!-- Swiper slider-->
     <link rel="stylesheet"
-          href={{asset("vendor/swiper/swiper-bundle.min.css"}}>
+          href={{asset("vendor/swiper/swiper-bundle.min.css")}}>
     <!-- Google fonts-->
     <link rel="stylesheet"
           href={{asset("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap")}}>
@@ -39,6 +40,7 @@
     <link rel="shortcut icon" href={{asset("img/favicon.png")}}>
 </head>
 <body>
+
 @include('partials.navClient')
 @yield('main')
 @include('partials.client_footer')

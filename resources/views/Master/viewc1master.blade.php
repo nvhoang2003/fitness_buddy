@@ -22,8 +22,7 @@
     <link rel="stylesheet"
           href={{asset("vendor/choices.js/public/assets/styles/choices.min.css")}}>
     <!-- Swiper slider-->
-    <link rel="stylesheet"
-          href={{asset("vendor/swiper/swiper-bundle.min.css"}}>
+    <link rel="stylesheet" href={{asset("vendor/swiper/swiper-bundle.min.css)"}}>
     <!-- Google fonts-->
     <link rel="stylesheet"
           href={{asset("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap")}}>

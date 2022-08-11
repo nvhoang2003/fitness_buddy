@@ -1,3 +1,4 @@
+<!-- Client Navbar -->
 <div class="page-holder">
     <header class="header bg-white">
         <div class="container px-lg-3">

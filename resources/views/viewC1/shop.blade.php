@@ -1,4 +1,4 @@
-@extends('masters.viewc1master')
+@extends('Master.viewc1master')
 @section('main')
     @include('partials.modal')
     <div class="container">
