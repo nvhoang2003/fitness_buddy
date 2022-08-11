@@ -225,49 +225,6 @@ class adminController extends Controller
         );
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function edit(){
 
         return view('product.edit');
