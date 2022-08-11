@@ -175,7 +175,7 @@ class adminController extends Controller
 
         }
 
-        AdminRepos::updatestylist($stylist);
+        AdminRepos::updatestyle($style);
 
         return redirect()->action('adminController@stylistindex')
             ->with('msg', 'Update Successfully');
