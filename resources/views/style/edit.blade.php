@@ -9,10 +9,12 @@
             @csrf
             @include('style.styleFields')
 
-            <button type="submit" class="btn btn-dark">Submit</button>
             <a type="button" class="btn btn-info" href="{{route('style.index')}}">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
+            <button type="submit" class="btn btn-dark">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </button>
         </form>
     </div>
 @endsection
