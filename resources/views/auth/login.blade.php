@@ -39,7 +39,7 @@
 					</span>
 
                 <span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						Admin login
 					</span>
                 @include('auth.sessionMessage')
 
