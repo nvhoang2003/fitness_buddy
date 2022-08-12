@@ -46,7 +46,7 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
     });
     Route::group(['prefix'=>'product'], function (){
         Route::get('',[
-            'uses' => 'adminController@productindex',
+            'uses' => 'adminController@productIndex',
             'as' => 'product.index'
         ]);
         Route::get('show/{productID}',[
@@ -155,15 +155,15 @@ Route::group(['prefix' => 'auth'], function(){
         'as' => 'auth.signout'
     ]);
 
-    Route::get('delete/{style_id}', [
-        'uses' => 'adminController@confirm',
-        'as' => 'style.confirm'
-    ]);
-
-    Route::post('delete/{style_id}', [
-        'uses' => 'adminController@destroy',
-        'as' => 'style.destroy'
-    ]);
+//    Route::get('delete/{style_id}', [
+//        'uses' => 'adminController@confirm',
+//        'as' => 'style.confirm'
+//    ]);
+//
+//    Route::post('delete/{style_id}', [
+//        'uses' => 'adminController@destroy',
+//        'as' => 'style.destroy'
+//    ]);
 });
 
 
