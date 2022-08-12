@@ -93,7 +93,7 @@ class AdminRepos
     public static function getProductByStyleId($styleID){
         $sql = 'select s.*, s.styleID ';
         $sql .= 'from style as s ';
-        $sql .= 'join product as p on s.styleID = p.styleID ';
+        $sql .= 'join product as p on s.styleID = p.SID ';
         $sql .= 'where s.styleID = ? ';
 
         return DB::select($sql, [$styleID]);
@@ -129,7 +129,7 @@ class AdminRepos
         $sql .= 'set style_name = ?, image = ?, description = ? ';
         $sql .= 'where styleID = ? ';
 
-        DB::update($sql, [$style->name, $style->dob, $style->contact, $style->styleID]);
+        DB::update($sql, [$style->style_name, $style->image, $style->description, $style->styleID]);
     }
 
     public static function getProductById($productID){
@@ -141,6 +141,7 @@ class AdminRepos
 
         return DB::select($sql, [$productID]);
     }
+
 }
 
 

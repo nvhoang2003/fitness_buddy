@@ -154,9 +154,9 @@ class adminController extends Controller
     }
 
     //show style - Do Khac Duong
-    public  function showstyle($id){
+    public  function styleshow($style){
 
-        $style = AdminRepos::getstylebyid($id);
+        $style = AdminRepos::getstylebyid($style);
         return view('style.show',[
             'style' => $style[0]
         ]);
@@ -201,6 +201,19 @@ class adminController extends Controller
             ->with('msg', 'New Style with id: '.$newstyle.' has been inserted');
     }
 
+    //edit style - Do Khac Duong
+    public function styleEdit($styleID)
+    {
+        $style = AdminRepos::getstyleById($styleID);
+
+        return view(
+            'style.edit',
+            [
+                "style" => $style[0],
+
+            ]);
+    }
+
     //update style - Do Khac Duong
     public function styleUpdate(Request $request, $style)
     {
@@ -209,6 +222,12 @@ class adminController extends Controller
         }
 
         $this->formValidate($request)->validate();
+        if($request->has('image')){
+            $file = $request-> image;
+            $file_name = $file->getClientoriginalName();
+            $file->move(public_path('images/style'), $file_name);
+            $request->merge(['image' => $file_name]);
+        }
 
         $style = (object)[
             'styleID' => $request->input('styleID'),
@@ -216,12 +235,7 @@ class adminController extends Controller
             'image' => $request->input('image'),
             'description' => $request->input('description'),
         ];
-        if($request->hasFile('image')){
-            $image = $request->file('image');
-            $style->urlimg = $image->getClientOriginalName();
-            $image->move('images/style', $image->getClientOriginalName());
 
-        }
 
         AdminRepos::updatestyle($style);
 
@@ -254,6 +268,23 @@ class adminController extends Controller
         AdminRepos::delete($styleID);
 
         return redirect()->action('adminController@styleindex');
+    }
+
+    private function formValidate(Request $request)
+    {
+        return Validator::make(
+            $request->all(),
+            [
+                'style_name' => ['required'],
+                'image' => ['required'],
+                'description' => ['required'],
+            ],
+            [
+                'style_name.required' => 'Style name can not be empty',
+                'image.required' => 'image can not be empty',
+                'description.required' => 'description can not be empty',
+            ]
+        );
     }
 
     //product index by hoang
@@ -462,20 +493,5 @@ class adminController extends Controller
             ->with('msg', 'Delete successfully');
     }
 
-    private function formValidate(Request $request)
-    {
-        return Validator::make(
-            $request->all(),
-            [
-                'style_name' => ['required'],
-                'image' => ['required'],
-                'description' => ['required'],
-            ],
-            [
-                'style_name.required' => 'Stylist name can not be empty',
-                'image.required' => 'DOB can not be empty',
-                'description.required' => 'Contact can not be empty',
-            ]
-        );
-    }
+
 }

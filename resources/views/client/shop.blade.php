@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Boutique | Ecommerce bootstrap template</title>
+    <title>Thrift Fashion</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -30,7 +30,7 @@
     <!-- navbar-->
     <header class="header bg-white">
         <div class="container px-lg-3">
-            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><span class="fw-bold text-uppercase text-dark">Boutique</span></a>
+            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="index.html"><span class="fw-bold text-uppercase text-dark">Thrift Fashion</span></a>
                 <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
@@ -227,7 +227,7 @@
 
                                         </div>
                                             <a class="d-block" href="{{route('client.details',['productID' => $p->productID])}}">
-                                                <img class="img-fluid w-100" src="{{asset('/images/product/'.$p->image)}}" alt="...">
+                                                <img  src="{{asset('/images/product/'.$p->image)}}" width="200px"  height="250px" alt="...">
                                             </a>
                                         <div class="product-overlay">
                                             <ul class="mb-0 list-inline">

@@ -11,7 +11,7 @@
 
             <button type="submit" class="btn btn-dark">Submit</button>
             <a type="button" class="btn btn-info" href="{{route('style.index')}}">
-                <i class="bi bi-backspace"> Back to Index</i>
+                <i class="fa-solid fa-arrow-left"></i>
             </a>
         </form>
     </div>
