@@ -28,12 +28,13 @@ class clientControllerWithRepos extends Controller
 
     }
 
-    public function detail($productID)
+    public function details($productID)
     {
         $product = AdminRepos::getProductById($productID);
+//        dd($product);
 //        $style = AdminRepos::getStlyeById($id);
 //        $size = AdminRepos::getstylistbyProductid($id);
-        return view('client.details', [
+        return view('client/details', [
             'product' => $product[0],
 //            'style' => $style[0],
 //            'size' => $size[0],
