@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Login</div>
+                    <div class="card-header text-center">Login</div>
                     <div class="card-body">
                         @include('partials.errors')
                         @include('auth.sessionMessage')
@@ -36,17 +36,18 @@
                                 </div>
                             </div>
 
-                <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
-                        Login
-                    </button>
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Sign In
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-
-            </form>
+            </div>
         </div>
     </div>
-</div>
+    </div>
 
-
-<div id="dropDownSelect1"></div>
+@endsection
 

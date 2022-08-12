@@ -2,7 +2,7 @@
 
 @section('main')
     <div class="container">
-        <h2 id="icons" class="display-4 mb-0 col-md-8">Category Index</h2>
+        <h2 id="icons" class="display-4 mb-0 col-md-8">Style Index</h2>
         <form class="d-flex col-md-4" role="search" action="#">
             <i class="bi bi-search icon search"></i>
             <input class="form-control me-2 search" type="search" name="search" id="search" placeholder="Search" aria-label="Search Name">
