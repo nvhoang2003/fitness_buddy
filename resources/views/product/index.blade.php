@@ -8,11 +8,8 @@
                 <thead style="background-color: #acb2c7">
                 <tr>
                     <th scope="col">Product Name </th>
-                    <th scope="col">Status</th>
                     <th scope="col">Price</th>
                     <th scope="col">Launch Date</th>
-                    <th scope="col">Size</th>
-                    <th scope="col">Style</th>
                     <th> </th>
                     <th> </th>
                     <th> </th>
@@ -37,12 +34,9 @@
                                 </span>
                             </span>
                             </td>
-                            <td>{{$p->product_status}}</td>
                             <td>{{$p->price}}</td>
                             <td>{{$date}}</td>
-                            <td>{{$p->size}}</td>
-                            <td>{{$p->style}}</td>
-                            <td><a type="button" class="btn btn-dark btn-sm"
+                            <td><a type="button" class="btn btn-primary btn-sm"
                                    href="{{route('product.show',['productID'=>$p->productID])}}"
                                 ><i class="fa-solid fa-eye"></i></a></td>
                             <td><a type="button" class="btn btn-success btn-sm"

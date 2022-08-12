@@ -13,6 +13,12 @@
 
 </div>
 
+@if($style->image)
+    <div>
+        <img src="/images/style/{{old('image') ?? $style->image}}" width="50%" height="50%">
+    </div>
+@endif
+
 <div class="form-group">
     <label for="description" class="font-weight-bold">Description</label>
     <input type="text" class="form-control" id="description" name="description" value="{{old('description') ?? $style->description}}">
