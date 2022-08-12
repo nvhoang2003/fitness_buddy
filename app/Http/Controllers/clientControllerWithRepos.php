@@ -41,7 +41,8 @@ class clientControllerWithRepos extends Controller
     }
 
     public function style($styleID){
-        $product = ProductRepos::getAllStyle();
+        $product = ProductRepos::getProductByStyleID($styleID);
+        $color = ProductRepos::getAllColor();
 
         return view('client.shop', [
             'product' => $product,

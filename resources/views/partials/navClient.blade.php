@@ -27,17 +27,16 @@
                             <a class="nav-link"
                                            href={{route("client.shop")}}>Shop</a>
                         </li>
-
+{{--                        get style's data from database--}}
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
                                                          id="pagesDropdown" href="#" data-bs-toggle="dropdown"
                                                          aria-haspopup="true" aria-expanded="false">Style</a>
+{{--                            get style's dropdown--}}
                             <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
-{{--                                @foreach($style as $s)--}}
-                                <a class="dropdown-item border-0 transition-link"
-                                   href={{route("client.homepage")}}>Homepage</a>
-                                <a class="dropdown-item border-0 transition-link"
-                                   href={{route("client.shop")}}>Category</a>
-{{--                                @endforeach--}}
+                                @foreach($style as $s)
+                                    <a class="dropdown-item border-0 transition-link text-uppercase"
+                                       href={{route("client.style",['styleID' => $s->styleID])}}>{{$s->style_name}}</a>
+                                @endforeach
                             </div>
                         </li>
                     </ul>
