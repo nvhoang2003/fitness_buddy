@@ -21,4 +21,5 @@ class CustomerClass
 
         return DB::select($sql,[$customerID]);
     }
+
 }

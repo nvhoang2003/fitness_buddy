@@ -31,9 +31,12 @@
                                 <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Price</strong></th>
                                 <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Quantity</strong></th>
                                 <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Total</strong></th>
-                                <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase"></strong></th>
+                                <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </strong></th>
                             </tr>
                             </thead>
+
                             <tbody class="border-0">
                             <tr>
                                 <th class="ps-0 py-3 border-light" scope="row">

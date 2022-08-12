@@ -22,8 +22,11 @@ class clientControllerWithRepos extends Controller
     public function shop()
     {
         $product = ProductRepos::getAllProduct();
+        $color = ProductRepos::getAllColor();
+
         return view('client.shop', [
             'product' => $product,
+            'color' => $color
         ]);
 
     }

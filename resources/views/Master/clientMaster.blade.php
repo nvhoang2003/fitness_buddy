@@ -13,7 +13,7 @@
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
-    <!-- Font Awesome -->>
+    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- gLightbox gallery-->
@@ -45,6 +45,9 @@
 
 @include('partials.navClient')
 @yield('main')
+
+@yield('script')
+<hr md="5">
 @include('partials.client_footer')
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

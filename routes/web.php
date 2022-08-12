@@ -104,7 +104,7 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
         ]);
         Route::get('show/{styleID}',[
             'uses'=>'adminController@styleshow',
-            'as' => 'style.shows'
+            'as' => 'style.show'
         ]);
 
         Route::get('create',[

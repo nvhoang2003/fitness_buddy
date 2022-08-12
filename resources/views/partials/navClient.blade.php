@@ -31,20 +31,16 @@
 
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
                                                          id="pagesDropdown" href="#" data-bs-toggle="dropdown"
-                                                         aria-haspopup="true" aria-expanded="false">Pages</a>
+                                                         aria-haspopup="true" aria-expanded="false">Style</a>
                             <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
+{{--                                @foreach($style as $s)--}}
                                 <a class="dropdown-item border-0 transition-link"
                                    href={{route("client.homepage")}}>Homepage</a>
                                 <a class="dropdown-item border-0 transition-link"
                                    href={{route("client.shop")}}>Category</a>
-{{--                                <a class="dropdown-item border-0 transition-link"--}}
-{{--                                   href={{route("client.details")}}>Product detail</a>--}}
-{{--                                <a class="dropdown-item border-0 transition-link"--}}
-{{--                                   href={{route("client.cart")}}>Shopping cart</a>--}}
-{{--                            </div>--}}
-{{--                                <a class="dropdown-item border-0 transition-link"--}}
-{{--                                   href={{route("client.details/{productID}")}}>Checkout</a><--}}
-                                </div> </li>
+{{--                                @endforeach--}}
+                            </div>
+                        </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href={{route("client.cart")}}>
