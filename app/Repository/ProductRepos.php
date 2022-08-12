@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\DB;
 class ProductRepos
 {
     public static function getAllProduct(){
-        $sql = 'select p.* ';
+        $sql = 'select p.*, s.size_name as size, style.style_name as style ';
         $sql .= 'from product as p ';
-        $sql .= 'order by p.pro';
+        $sql.='join size as s on p.sizeID = s.sizeID ';
+        $sql.='join style on p.styleID = style.styleID ';
+        $sql .= 'order by p.productID';
 
         return DB::select($sql);
     }

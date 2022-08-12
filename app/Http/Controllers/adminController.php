@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Repository\AdminRepos;
+use App\Repository\CustomerClass;
 use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class adminController extends Controller
 {
-    // admin's index - Pham Quang Hung
-    public function adminIndex($username)
+    // admin's info - Pham Quang Hung
+    public function adminConfirmUpdateInfo($username)
     {
         // get data from table "admin" in database and return index admin
         $user = AdminRepos::getAdminById($username);
 
-        return view('admin.index', [
+        return view('admin.confirmInfo', [
             'user' => $user[0],
         ]);
     }
@@ -25,7 +26,7 @@ class adminController extends Controller
     {
         // check username's url same as username's database
         if ($username != $request->input('username')) {
-            return redirect()->action('adminController@adminIndex');
+            return redirect()->action('adminController@productIndex');
         }
         // check username, contact, email not emty, email correct validate and confirm password for accept
         $this->validate($request,
@@ -58,15 +59,27 @@ class adminController extends Controller
         ];
         // update from admin with data "$user"
         AdminRepos::adminUpdateInfo($user);
-        return redirect()->action('adminController@adminIndex');
+        return redirect()
+            ->action('adminController@adminConfirmUpdateInfo',['username' => $user->username])
+            ->with('msg', 'Update Successfully');
+    }
+
+    // amdin's password
+    public function adminConfirmChangePassword($username)
+    {
+        // get data from table "admin" in database and return index admin
+        $user = AdminRepos::getAdminById($username);
+
+        return view('admin.confirmChangePassword', [
+            'user' => $user[0],
+        ]);
     }
 
     // change admin's password anyway - Pham Quang Hung
-    public function adminChangePassword(Request $request, $username)
-    {
+    public function adminChangePassword(Request $request, $username){
         // check username's url same as username's database
         if ($username != $request->input('username')) {
-            return redirect()->action('adminController@adminIndex');
+            return redirect()->action('adminController@productIndex');
         }
         // Check old_password's input equal password from database
         $this->validate($request,
@@ -85,7 +98,7 @@ class adminController extends Controller
                 ],
                 'new_password' => ['required'],
                 'retire_password' => ['required',
-                    function($attribute, $fails, $value){
+                    function($attribute, $value, $fails){
                         global $request;
                         if($value !== $request->input('new_password')){
                             $fails('Retire Password must same New Password');
@@ -100,18 +113,30 @@ class adminController extends Controller
             ]
         );
         // create user with type varaiable is object
+        $passwordHash = sha1($request->input('new_password'));
         $user = (object)[
             'username' => $request->input('username'),
-            'password' => $request->input('new_password'),
+            'password' => $passwordHash
         ];
         // change password's datatbase with varaiable is new password
         AdminRepos::adminChangePassword($user);
 
-        return redirect()->action('adminController@adminIndex');
+        return redirect()
+            ->action('adminController@adminConfirmUpdateInfo', ['username' => $user->username])
+            ->with('msg', 'Change Password Successfully');
+    }
+
+    // index of customer - Pham Quang Hung
+    protected function customerIndex(){
+        $customers = CustomerClass::getAllCustomer();
+
+        return view('customer.index',[
+            'customers' => $customers
+        ]);
     }
 
     // index of style - Bui Anh Tuan
-    public function styleIndex(){
+    public function styleindex(){
         $style = AdminRepos::getAllStyle();
         return view('style.index',[
             'style' => $style
@@ -130,9 +155,9 @@ class adminController extends Controller
     }
 
     //show style - Do Khac Duong
-    public  function showstyle($id){
+    public  function styleshow($styleID){
 
-        $style = AdminRepos::getstylebyid($id);
+        $style = AdminRepos::getstylebyid($styleID);
         return view('style.show',[
             'style' => $style[0]
         ]);
@@ -154,7 +179,7 @@ class adminController extends Controller
 
     }
 
-    public function storestyle(Request $request)
+    public function stylestore(Request $request)
     {
         $this->formValidate($request)->validate();
 
@@ -177,11 +202,24 @@ class adminController extends Controller
             ->with('msg', 'New Style with id: '.$newstyle.' has been inserted');
     }
 
+    //edit style - Do Khac Duong
+    public function styleEdit($styleID)
+    {
+        $style = AdminRepos::getstyleById($styleID);
+
+        return view(
+            'style.edit',
+            [
+                "style" => $style[0],
+
+            ]);
+    }
+
     //update style - Do Khac Duong
-    public function updatestyle(Request $request, $style)
+    public function styleUpdate(Request $request, $style)
     {
         if ($style != $request->input('styleID')) {
-            return redirect()->action('adminController@stylistindex');
+            return redirect()->action('adminController@styleindex');
         }
 
         $this->formValidate($request)->validate();
@@ -206,9 +244,9 @@ class adminController extends Controller
     }
 
     // delete style - Bui Anh Tuan
-    public function confirm($style_id){
-        $style = AdminRepos::getStyleById($style_id);
-        $styleHaveProduct = AdminRepos::getProductByStyleId($style_id);
+    public function styleConfirm($styleID){
+        $style = AdminRepos::getStyleById($styleID);
+        $styleHaveProduct = AdminRepos::getProductByStyleId($styleID);
 
         if ($style === []){
             return view('notFound');
@@ -222,7 +260,7 @@ class adminController extends Controller
         );
     }
 
-    public function destroy(Request $request, $style_id){
+    public function styleDestroy(Request $request, $style_id){
         if($style_id != $request->input('style_id')){
             return redirect()->action('adminController@styleindex');
         }
@@ -232,10 +270,33 @@ class adminController extends Controller
         return redirect()->action('adminController@styleindex');
     }
 
-    //product
-    public function productIndex(){
-        return view('product.index');
+    private function formValidate(Request $request)
+    {
+        return Validator::make(
+            $request->all(),
+            [
+                'style_name' => ['required'],
+                'image' => ['required'],
+                'description' => ['required'],
+            ],
+            [
+                'style_name.required' => 'Style name can not be empty',
+                'image.required' => 'image can not be empty',
+                'description.required' => 'description can not be empty',
+            ]
+        );
     }
+
+    //product index by hoang
+    public function productIndex()
+    {
+        $product = ProductRepos::getAllProduct();
+        return view('product.index',
+            [
+                'product'=>$product
+            ]);
+    }
+
     public function show($productID)
     {
         $product = ProductRepos::getProductById($productID);
@@ -297,23 +358,6 @@ class adminController extends Controller
         return redirect()
             ->action('adminController@index')
             ->with('msg', 'New Product with id: '.$newId.' has been inserted');
-    }
-
-    private function formValidate(Request $request)
-    {
-        return Validator::make(
-            $request->all(),
-            [
-                'style_name' => ['required'],
-                'image' => ['required'],
-                'description' => ['required'],
-            ],
-            [
-                'style_name.required' => 'Stylist name can not be empty',
-                'image.required' => 'DOB can not be empty',
-                'description.required' => 'Contact can not be empty',
-            ]
-        );
     }
 
 

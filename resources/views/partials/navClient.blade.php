@@ -1,68 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Boutique | Ecommerce bootstrap template</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <!-- gLightbox gallery-->
-    <link rel="stylesheet" href={{asset("vendor/glightbox/css/glightbox.min.css")}}>
-    <!-- Range slider-->
-    <link rel="stylesheet" href={{asset("vendor/nouislider/nouislider.min.css")}}>
-    <!-- Choices CSS-->
-    <link rel="stylesheet" href={{asset("vendor/choices.js/public/assets/styles/choices.min.css")}}>
-    <!-- Swiper slider-->
-    <link rel="stylesheet" href={{asset("vendor/swiper/swiper-bundle.min.css"}}>
-    <!-- Google fonts-->
-    <link rel="stylesheet" href={{asset("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap")}}>
-    <link rel="stylesheet" href={{asset("https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap")}}>
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href={{asset("public/css/style.default.css")}} id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href={{asset("css/custom.css")}}>
-    <!-- Favicon-->
-    <link rel="shortcut icon" href={{asset("img/favicon.png")}}>
-</head>
-<body>
+<!-- Client Navbar -->
 <div class="page-holder">
-    <!-- navbar-->
     <header class="header bg-white">
         <div class="container px-lg-3">
-            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="{{asset("client/homepage.blade.php")}}"><span class="fw-bold text-uppercase text-dark">Boutique</span></a>
-                <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
+                <a class="navbar-brand" href={{route("client.shop")}}>
+                    <span class="fw-bold text-uppercase text-dark">Boutique</span>
+                </a>
+                <button class="navbar-toggler navbar-toggler-end"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link active"
-                                           href={{asset("client\homepage.blade.php")}}>Home</a>
+                            <!-- Link-->
+                            <a  class="nav-link active"
+                                href={{route("client.shop")}}>Home</a>
                         </li>
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link"
-                                           href={{asset("client\shop.blade.php")}}>Shop</a>
+                            <!-- Link-->
+                            <a class="nav-link"
+                               href={{route("client.shop")}}>Shop</a>
                         </li>
                         <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href={{asset("client\details.blade.php")}}>Product detail</a>
+                            <!-- Link-->
+                            <a class="nav-link"
+                               href={{route("client.shop")}}>Product detail</a>
                         </li>
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-                                                         id="pagesDropdown" href="#" data-bs-toggle="dropdown"
-                                                         aria-haspopup="true" aria-expanded="false">Pages</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                                id="pagesDropdown" href="#" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Pages</a>
                             <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
-                                <a class="dropdown-item border-0 transition-link" href={{route("client.homepage")}}>Homepage</a>
-                                <a class="dropdown-item border-0 transition-link" href={{route("client.shop")}}}>Category</a>
-                                <a class="dropdown-item border-0 transition-link" href={{route("client.details")}}>Product detail</a>
-                                <a class="dropdown-item border-0 transition-link" href={{route("client.cart")}}>Shopping cart</a>
-                                <a class="dropdown-item border-0 transition-link" href={{route("client.details")}}>Checkout</a></div>
+                                <a class="dropdown-item border-0 transition-link"
+                                   href={{route("client.shop")}}>Homepage</a>
+                                <a class="dropdown-item border-0 transition-link"
+                                   href={{route("client.shop")}}>Category</a>
+                                <a class="dropdown-item border-0 transition-link"
+                                   href={{route("client.shop")}}>Product detail</a>
+                                <a class="dropdown-item border-0 transition-link"
+                                   href={{route("client.shop")}}>Shopping cart</a>
+                                <a class="dropdown-item border-0 transition-link"
+                                   href={{route("client.shop")}}>Checkout</a></div>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href={{route("client.cart")}}>
-                                <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small class="text-gray fw-normal">(2)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart me-1"></i><small class="text-gray fw-normal"> (0)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{route("client.login")}}"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href={{route("client.shop")}}>
+                                <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart
+                                <small class="text-gray fw-normal">(2)</small></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart me-1"></i>
+                                <small class="text-gray fw-normal"> (0)</small></a></li>
+                        <li class="nav-item"><a class="nav-link" href={{route("client.shop")}}>
+                                <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
                     </ul>
                 </div>
             </nav>

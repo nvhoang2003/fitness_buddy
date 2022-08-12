@@ -7,24 +7,19 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item active">
-                <a class="nav-link" href="#">Admin
-                    <span class="sr-only">(current)</span></a>
-            </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Customer
+                <a class="nav-link" href="{{route('customer.index')}}">Customer
                     <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Category
+                    Style
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">View all</a>
-                    <a class="dropdown-item" href="#">New Category</a>
+                    <a class="dropdown-item" href="{{route('style.index')}}">View all</a>
+                    <a class="dropdown-item" href="{{route('style.create')}}">New Category</a>
                 </div>
             </li>
 
@@ -35,22 +30,10 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">View all</a>
-                    <a class="dropdown-item" href="#">New Product</a>
+                    <a class="dropdown-item" href="{{route('product.index')}}">View all</a>
+                    <a class="dropdown-item" href="{{route('product.create')}}">New Product</a>
                 </div>
 
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Brand
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">View all Brand</a>
-                    <a class="dropdown-item" href="#">New Brand</a>
-                </div>
             </li>
 
         </ul>
@@ -60,14 +43,14 @@
         @endphp
         <ul class="navbar-nav">
             <li class="nav-item mr-3">
-                <a class="nav-link" href="{{route('admin.adminIndex', ['username' => $userSession])}}">
+                <a class="nav-link" href="{{route('admin.confirmUpdateInfo', ['username' => $userSession])}}">
                     <i class="bi bi-person-fill"></i>
                     {{$userSession}}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="{{route("auth.signout")}}">
-                    <i class="bi bi-arrow-left"></i>
+                    <i class="bi bi-box-arrow-left"></i>
                     Logout
                 </a>
             </li>
