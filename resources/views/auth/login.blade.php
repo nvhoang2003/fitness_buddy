@@ -58,7 +58,7 @@
                 @endif
 
                 <div class="wrap-input100">
-                    <input class="input100" type="password" name="pass" placeholder="Password">
+                    <input class="input100" type="password" name="password" placeholder="Password">
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
 
