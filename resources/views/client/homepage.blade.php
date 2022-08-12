@@ -84,9 +84,7 @@
                     <div class="col-md-2 container">
                         <a  class="category-item" href={{route("client.style",['styleID' => $st->styleID])}}>
                             <img src={{asset("images/style/".$st->image)}} width="200px" height="250px"  alt="">
-                            <strong class="category-item-title">
-                                {{$st->style_name}}
-                            </strong>
+
                         </a>
                     </div>
                 @endforeach
