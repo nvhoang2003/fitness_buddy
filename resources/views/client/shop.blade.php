@@ -88,7 +88,7 @@
                             <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
                                 @foreach($color as $c)
                                     <div class="form-check mb-1 col">
-                                        <input class="form-check-input" type="radio" id="{{$c->colorID}}" name="color">
+                                        <input class="form-check-input" type="checkbox" id="{{$c->colorID}}" name="color{{$c->colorID}}" value="{{ $c->colorID }}">
                                         <label class="form-check-label" for="checkbox_2">{{ $c->color_name }}</label>
                                     </div>
                                 @endforeach
