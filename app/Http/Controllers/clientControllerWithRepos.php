@@ -42,4 +42,5 @@ class clientControllerWithRepos extends Controller
 //            'size' => DB::table('size')->get()
         ]);
     }
+
 }

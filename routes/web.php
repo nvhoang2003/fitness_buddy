@@ -46,7 +46,7 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
     });
     Route::group(['prefix'=>'product'], function (){
         Route::get('',[
-            'uses' => 'adminController@productIndex',
+            'uses' => 'adminController@productindex',
             'as' => 'product.index'
         ]);
         Route::get('show/{productID}',[
@@ -83,11 +83,13 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
         ]);
 
         Route::post('delete/{productID}', [
+
             'uses' => 'adminController@productDestroy',
             'as' => 'product.destroy'
+
         ]);
     });
-//
+
     Route::group(['prefix' => 'customer'], function (){
         Route::get('',[
             'uses' => 'adminController@customerIndex',
@@ -172,6 +174,11 @@ Route::group(['prefix' => 'auth'], function(){
 
 
 Route::group(['prefix' => 'client'], function (){
+    Route::get('homepage', [
+        'uses' => 'clientControllerWithRepos@homepage',
+        'as' => 'client.homepage'
+    ]);
+
     Route::get('shop',[
         'uses' =>'clientControllerWithRepos@shop',
         'as' => 'client.shop'
@@ -179,6 +186,16 @@ Route::group(['prefix' => 'client'], function (){
     Route::get('details/{productID}',[
         'uses' =>'clientControllerWithRepos@details',
         'as' => 'client.details'
+    ]);
+
+    Route::get('cart', [
+        'uses' => 'clientControllerWithRepos@cart',
+        'as' => 'client.cart'
+    ]);
+
+    Route::get('login', [
+        'uses' => 'clientControllerWithRepos@login',
+        'as' => 'client.login'
     ]);
 
 });
