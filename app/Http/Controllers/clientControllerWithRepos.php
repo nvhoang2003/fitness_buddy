@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\DB;
 
 class clientControllerWithRepos extends Controller
 {
+    public function homepage()
+    {
+        $product = ProductRepos::getAllProduct();
+        return view('client.homepage', [
+            'product' => $product,
+        ]);
+
+    }
+
+
     public function shop()
     {
         $product = ProductRepos::getAllProduct();

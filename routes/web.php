@@ -200,88 +200,88 @@ Route::group(['prefix' => 'style/index'], function (){
 });
 
 Route::get('shop',[
-    'uses' =>'clientControllerWithRepos@shop',
+    'uses' =>'clientControllerWithReposWithRepos@shop',
     'as' => 'client.shop'
 ]);
 Route::get('details/{productID}',[
-    'uses' =>'clientControllerWithRepos@detail',
+    'uses' =>'clientControllerWithReposWithRepos@detail',
     'as' => 'client.details'
 ]);
 
 
-Route::group(['prefix' => 'viewC1'], function (){
+Route::group(['prefix' => 'client'], function (){
     Route::get('', [
-        'uses' => 'ViewC1Controller@index',
-        'as' => 'viewC1.index'
+        'uses' => 'clientControllerWithRepos@homepage',
+        'as' => 'client.homepage'
     ]);
 //    /{offset}
     Route::get('shop', [
-        'uses' => 'ViewC1Controller@shop',
-        'as' => 'viewC1.shop'
+        'uses' => 'clientControllerWithRepos@shop',
+        'as' => 'client.shop'
     ]);
 
-    Route::get('details/{id}', [
-        'uses' => 'ViewC1Controller@detail',
-        'as' => 'viewC1.details'
+    Route::get('details/{productID}',[
+        'uses' =>'clientControllerWithReposWithRepos@detail',
+        'as' => 'client.details'
     ]);
 
     Route::get('cart', [
-        'uses' => 'ViewC1Controller@cart',
-        'as' => 'viewC1.cart'
+        'uses' => 'clientControllerWithRepos@cart',
+        'as' => 'client.cart'
     ]);
 
     Route::get('checkout', [
-        'uses' => 'ViewC1Controllers@checkout',
-        'as' => 'viewC1.checkout'
+        'uses' => 'clientControllerWithReposs@checkout',
+        'as' => 'client.checkout'
     ]);
     Route::post('search',[
-        'uses' => 'ViewC1Controller@search',
-        'as'  => 'viewC1.search'
+        'uses' => 'clientControllerWithRepos@search',
+        'as'  => 'client.search'
     ]);
 
     Route::get('viewproduct/{id}/{offset}',[
-        'uses' => 'ViewC1Controller@viewproduct',
-        'as' => 'viewC1.viewproduct'
+        'uses' => 'clientControllerWithRepos@viewproduct',
+        'as' => 'client.viewproduct'
     ]);
     Route::get('style/{id}',[
-        'uses' => 'ViewC1Controller@style',
-        'as' => 'viewC1.style'
+        'uses' => 'clientControllerWithRepos@style',
+        'as' => 'client.style'
     ]);
     Route::get('viewstyle/{id}/{offset}',[
-        'uses' => 'ViewC1Controller@viewstyle',
-        'as' => 'viewC1.viewstyle'
+        'uses' => 'clientControllerWithRepos@viewstyle',
+        'as' => 'client.viewstyle'
     ]);
 
     Route::get('detail/{id}',[
-        'uses' => 'ViewC1Controller@detail',
-        'as' => 'viewC1.detail'
+        'uses' => 'clientControllerWithRepos@detail',
+        'as' => 'client.detail'
     ]);
     Route::get('search',[
-        'uses' => 'ViewC1Controller@search',
-        'as' => 'viewC1.search'
+        'uses' => 'clientControllerWithRepos@search',
+        'as' => 'client.search'
     ]);
     Route::get('login', [
-        'uses' => 'ViewC1ControllerWithRepos@ask',
-        'as' => 'viewC1.ask'
+        'uses' => 'clientControllerWithReposWithRepos@ask',
+        'as' => 'client.ask'
     ]);
     Route::post('login', [
-        'uses' => 'ViewC1ControllerWithRepos@login',
-        'as' => 'viewC1.login'
+        'uses' => 'clientControllerWithReposWithRepos@login',
+        'as' => 'client.login'
     ]);
     Route::get('signup',[
-        'uses' => 'ViewC1ControllerWithRepos@signupcus',
-        'as' => 'viewC1.signupcus'
+        'uses' => 'clientControllerWithReposWithRepos@signupcus',
+        'as' => 'client.signupcus'
     ]);
     Route::post('signup',[
-        'uses' => 'ViewC1ControllerWithRepos@storecus',
-        'as' => 'viewC1.storecus'
+        'uses' => 'clientControllerWithReposWithRepos@storecus',
+        'as' => 'client.storecus'
     ]);
     Route::get('signout', [
-        'uses' => 'ViewC1ControllerWithRepos@signout',
-        'as' => 'viewC1.signout'
+        'uses' => 'clientControllerWithReposWithRepos@signout',
+        'as' => 'client.signout'
     ]);
     Route::post('download',[
-        'uses' => 'ViewC1ControllerWithRepos@download',
-        'as' => 'viewC1.download'
+        'uses' => 'clientControllerWithReposWithRepos@download',
+        'as' => 'client.download'
     ]);
 });

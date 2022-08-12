@@ -8,16 +8,50 @@
                     <div class="row m-sm-0">
                         <div class="col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2">
                             <div class="swiper product-slider-thumbs">
+                                <div class="swiper-slide h-auto swiper-thumb-item mb-3">
+                                    <a href="{{asset("images/product/".$product->image)}}">
+                                        <img class="img-fluid" src="{{asset("images/product/".$product->image)}}" alt="...">
+                                    </a>
+                                </div>
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide h-auto swiper-thumb-item mb-3"><a href="{{asset("images/product/".str_replace('1.jpg','2.jpg', $product->image))}}"><img class="img-fluid" src="{{asset("images/product/".str_replace('1.jpg','2.jpg', $product->image))}}" alt="..."></a></div>
-                                    <div class="swiper-slide h-auto swiper-thumb-item mb-3"><a href="{{asset("images/product/".str_replace('1.jpg','3.jpg', $product->image))}}"><img class="img-fluid" src="{{asset("images/product/".str_replace('1.jpg','3.jpg', $product->image))}}" alt="..."></a></div>
+                                    <div class="swiper-slide h-auto swiper-thumb-item mb-3">
+                                        <a href="{{asset("images/product/".str_replace('1.jpg','2.jpg', $product->image))}}">
+                                                <img class="img-fluid" src="{{asset("images/product/".str_replace('1.jpg','2.jpg', $product->image))}}" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide h-auto swiper-thumb-item mb-3">
+                                        <a href="{{asset("images/product/".str_replace('1.jpg','3.jpg', $product->image))}}">
+                                            <img class="img-fluid" src="{{asset("images/product/".str_replace('1.jpg','3.jpg', $product->image))}}" alt="...">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+{{--                        Carousel Bootstrap--}}
                         <div class="col-sm-10 order-1 order-sm-2">
                             <div class="swiper product-slider">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide h-auto"><a class="lightbox product-view" href="{{asset("images/product/".$product->image)}}" data-gallery="gallery2" data-glightbox="Product item 1"><img width="430px" height="500px" src="{{asset("images/product/".$product->image)}}" alt="..."></a></div>
+                                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="{{asset("images/product/".$product->image)}}" class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="{{asset("images/product/".str_replace('1.jpg','2.jpg', $product->image))}}" class="d-block w-100" alt="...">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="{{asset("images/product/".str_replace('1.jpg','3.jpg', $product->image))}}" class="d-block w-100" alt="...">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -25,13 +59,7 @@
                 </div>
                 <!-- PRODUCT DETAILS-->
                 <div class="col-lg-6">
-                    <ul class="list-inline mb-2 text-sm">
-                        <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
-                        <li class="list-inline-item m-0 1"><i class="fas fa-star small text-warning"></i></li>
-                        <li class="list-inline-item m-0 2"><i class="fas fa-star small text-warning"></i></li>
-                        <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
-                        <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
-                    </ul>
+
                     @php
                         $price = number_format($product->price);
                         $size = explode('-',$product->size);
@@ -78,7 +106,7 @@
                 <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                     <div class="p-4 p-lg-5 bg-white">
                         <h6 class="text-uppercase">Product description </h6>
-                        <p class="text-muted text-sm mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="text-muted text-sm mb-0">We only sell this one product. Please buy if you like it!.</p>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
@@ -103,8 +131,8 @@
                                 <div class="d-flex">
                                     <div class="flex-shrink-0"><img class="rounded-circle" src="img/customer-2.png" alt="" width="50"/></div>
                                     <div class="ms-3 flex-shrink-1">
-                                        <h6 class="mb-0 text-uppercase">Jane Doe</h6>
-                                        <p class="small text-muted mb-0 text-uppercase">20 May 2020</p>
+                                        <h6 class="mb-0 text-uppercase">Khas Banhr</h6>
+                                        <p class="small text-muted mb-0 text-uppercase">20 May 2019</p>
                                         <ul class="list-inline mb-1 text-xs">
                                             <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
                                             <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
@@ -112,7 +140,7 @@
                                             <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
                                             <li class="list-inline-item m-0"><i class="fas fa-star-half-alt text-warning"></i></li>
                                         </ul>
-                                        <p class="text-sm mb-0 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        <p class="text-sm mb-0 text-muted">Good good good.</p>
                                     </div>
                                 </div>
                             </div>
