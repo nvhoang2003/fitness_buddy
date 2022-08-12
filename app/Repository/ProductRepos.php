@@ -7,16 +7,26 @@ use Illuminate\Support\Facades\DB;
 class ProductRepos
 {
     public static function getAllProduct(){
-        $sql = 'select p.*, s.size_name as size, style.style_name as style ';
+        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
         $sql .= 'from product as p ';
         $sql.='join size as s on p.sizeID = s.sizeID ';
         $sql.='join style on p.SID = style.styleID ';
+        $sql.='join color on p.ColorID = color.colorID ';
         $sql .= 'order by p.productID';
 
         return DB::select($sql);
     }
 
-    public static function getProductById($id){
+    public static function getProductByStyle($productID){
+        $sql = 'select p.*, s.style_name as style ';
+        $sql .= 'from product as p ';
+        $sql .='join style as s on p.SID = s.styleID ';
+        $sql .= 'where p.productID = ?';
+
+        return DB::select($sql, [$productID]);
+    }
+
+    public static function getProductById($productID){
         $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
         $sql .= 'from product as p ';
         $sql.='join size as s on p.sizeID = s.sizeID ';
@@ -24,8 +34,21 @@ class ProductRepos
         $sql.='join color on p.ColorID = color.colorID ';
         $sql .= 'where p.productID = ?';
 
-        return DB::select($sql, [$id]);
+        return DB::select($sql, [$productID]);
     }
+
+
+    public static function getTopTrendingProduct(){
+        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
+        $sql .= 'from product as p ';
+        $sql.='join size as s on p.sizeID = s.sizeID ';
+        $sql.='join style on p.SID = style.styleID ';
+        $sql.='join color on p.ColorID = color.colorID ';
+        $sql .= 'where p.price >= 50 ';
+
+        return DB::select($sql);
+    }
+
     public static function getAllSize(){
         $sql = 'select s.* ';
         $sql .= 'from size as s ';

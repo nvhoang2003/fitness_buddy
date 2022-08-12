@@ -183,6 +183,12 @@ Route::group(['prefix' => 'client'], function (){
         'uses' =>'clientControllerWithRepos@shop',
         'as' => 'client.shop'
     ]);
+
+    ROute::get('style/{styleID}', [
+        'uses' => 'clientControllerWithRepos@style',
+        'as' => 'client.style'
+    ]);
+
     Route::get('details/{productID}',[
         'uses' =>'clientControllerWithRepos@details',
         'as' => 'client.details'
