@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Repository\AdminRepos;
-use App\Repository\CustomerClass;
 use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -155,9 +154,9 @@ class adminController extends Controller
     }
 
     //show style - Do Khac Duong
-    public  function styleshow($styleID){
+    public  function showstyle($id){
 
-        $style = AdminRepos::getstylebyid($styleID);
+        $style = AdminRepos::getstylebyid($id);
         return view('style.show',[
             'style' => $style[0]
         ]);
@@ -200,19 +199,6 @@ class adminController extends Controller
         return redirect()
             ->action('adminController@styleindex')
             ->with('msg', 'New Style with id: '.$newstyle.' has been inserted');
-    }
-
-    //edit style - Do Khac Duong
-    public function styleEdit($styleID)
-    {
-        $style = AdminRepos::getstyleById($styleID);
-
-        return view(
-            'style.edit',
-            [
-                "style" => $style[0],
-
-            ]);
     }
 
     //update style - Do Khac Duong
@@ -268,23 +254,6 @@ class adminController extends Controller
         AdminRepos::delete($style_id);
 
         return redirect()->action('adminController@styleindex');
-    }
-
-    private function formValidate(Request $request)
-    {
-        return Validator::make(
-            $request->all(),
-            [
-                'style_name' => ['required'],
-                'image' => ['required'],
-                'description' => ['required'],
-            ],
-            [
-                'style_name.required' => 'Style name can not be empty',
-                'image.required' => 'image can not be empty',
-                'description.required' => 'description can not be empty',
-            ]
-        );
     }
 
     //product index by hoang
@@ -358,6 +327,23 @@ class adminController extends Controller
         return redirect()
             ->action('adminController@index')
             ->with('msg', 'New Product with id: '.$newId.' has been inserted');
+    }
+
+    private function formValidate(Request $request)
+    {
+        return Validator::make(
+            $request->all(),
+            [
+                'style_name' => ['required'],
+                'image' => ['required'],
+                'description' => ['required'],
+            ],
+            [
+                'style_name.required' => 'Stylist name can not be empty',
+                'image.required' => 'DOB can not be empty',
+                'description.required' => 'Contact can not be empty',
+            ]
+        );
     }
 
 

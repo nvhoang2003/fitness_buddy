@@ -36,21 +36,15 @@
                             <td>{{$p->launch_date}}</td>
                             <td>{{$p->size}}</td>
                             <td>{{$p->style}}</td>
-                            <td><a type="button" class="btn btn-primary btn-sm"
-                                   href="{{route('product.show',['productID'=>$p->productID])}}"
-                                ><i class="fa-solid fa-eye"></i>
-                                </a>
-                            </td>
+                            <td><a type="button" class="btn btn-dark btn-sm"
+{{--                                   href="{{route('Event.confirm',['eventid'=>$e->eventid])}}"--}}
+                                ><i class="fa-solid fa-eye"></i></a></td>
                             <td><a type="button" class="btn btn-success btn-sm"
-                                   href="{{route('product.create',['productID'=>$p->productID])}}"
-                                ><i class="fa-solid fa-pen-to-square"></i>
-                                </a>
-                            </td>
+{{--                                   href="{{route('Event.edit',['eventid'=>$e->eventid])}}"--}}
+                                ><i class="fa-solid fa-pen-to-square"></i></a> </td>
                             <td><a type="button" class="btn btn-danger btn-sm"
-{{--                                   href="{{route('product.confirm',['eventid'=>$e->eventid])}}"--}}
-                                ><i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </td>
+{{--                                   href="{{route('Event.confirm',['eventid'=>$e->eventid])}}"--}}
+                                ><i class="fa-solid fa-trash-can"></i></a></td>
                         </tr>
                     @endforeach
                 </tbody>

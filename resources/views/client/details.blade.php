@@ -1,203 +1,133 @@
-@include('Master.clientMaster')
-
+@extends('Master.clientMaster')
 @section('main')
-    <!--  Modal -->
-    <div class="modal fade" id="productView" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content overflow-hidden border-0">
-                <button class="btn-close p-4 position-absolute top-0 end-0 z-index-20 shadow-0" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body p-0">
-                    <div class="row align-items-stretch">
-                        <div class="col-lg-6 p-lg-0"><a class="glightbox product-view d-block h-100 bg-cover bg-center" style="background: url(img/product-5.jpg)" href="img/product-5.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-1.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a><a class="glightbox d-none" href="img/product-5-alt-2.jpg" data-gallery="gallery1" data-glightbox="Red digital smartwatch"></a></div>
-                        <div class="col-lg-6">
-                            <div class="p-4 my-md-4">
-                                <ul class="list-inline mb-2">
-                                    <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
-                                    <li class="list-inline-item m-0 1"><i class="fas fa-star small text-warning"></i></li>
-                                    <li class="list-inline-item m-0 2"><i class="fas fa-star small text-warning"></i></li>
-                                    <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
-                                    <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
-                                </ul>
-                                <h2 class="h4">Red digital smartwatch</h2>
-                                <p class="text-muted">$250</p>
-                                <p class="text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Vestibulum ultricies aliquam convallis.</p>
-                                <div class="row align-items-stretch mb-4 gx-0">
-                                    <div class="col-sm-7">
-                                        <div class="border d-flex align-items-center justify-content-between py-1 px-3"><span class="small text-uppercase text-gray mr-4 no-select">Quantity</span>
-                                            <div class="quantity">
-                                                <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                                                <input class="form-control border-0 shadow-0 p-0" type="text" value="1">
-                                                <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
-                                            </div>
-                                        </div>
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <!-- PRODUCT SLIDER-->
+                    <div class="row m-sm-0">
+                        <div class="col-sm-2 p-sm-0 order-2 order-sm-1 mt-2 mt-sm-0 px-xl-2">
+                            <div class="swiper product-slider-thumbs">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto swiper-thumb-item mb-3"><a href="{{asset("images/product/".str_replace('1.jpg','2.jpg', $product->image))}}"><img class="img-fluid" src="{{asset("images/product/".str_replace('1.jpg','2.jpg', $product->image))}}" alt="..."></a></div>
+                                    <div class="swiper-slide h-auto swiper-thumb-item mb-3"><a href="{{asset("images/product/".str_replace('1.jpg','3.jpg', $product->image))}}"><img class="img-fluid" src="{{asset("images/product/".str_replace('1.jpg','3.jpg', $product->image))}}" alt="..."></a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-10 order-1 order-sm-2">
+                            <div class="swiper product-slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto"><a class="lightbox product-view" href="{{asset("images/product/".$product->image)}}" data-gallery="gallery2" data-glightbox="Product item 1"><img width="430px" height="500px" src="{{asset("images/product/".$product->image)}}" alt="..."></a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PRODUCT DETAILS-->
+                <div class="col-lg-6">
+                    <ul class="list-inline mb-2 text-sm">
+                        <li class="list-inline-item m-0"><i class="fas fa-star small text-warning"></i></li>
+                        <li class="list-inline-item m-0 1"><i class="fas fa-star small text-warning"></i></li>
+                        <li class="list-inline-item m-0 2"><i class="fas fa-star small text-warning"></i></li>
+                        <li class="list-inline-item m-0 3"><i class="fas fa-star small text-warning"></i></li>
+                        <li class="list-inline-item m-0 4"><i class="fas fa-star small text-warning"></i></li>
+                    </ul>
+                    @php
+                        $price = number_format($product->price);
+                        $size = explode('-',$product->size);
+                    @endphp
+                    <h1>{{$product->product_name}}</h1>
+                    <p class="text-muted lead">{{$price}}$</p>
+{{--                    <p class="text-sm mb-4">Size:<a class="btn-outline-warning btn-sm mx-1">{{$product[0]->size}}</a><a class="btn-outline-warning btn-sm mx-1">{{$size[1]}}</a><a class="btn-outline-warning btn-sm mx-1">{{$size[2]}}</a> </p>--}}
+{{--                    <p class="text-sm mb-4">Collection: <a href="{{route('viewC1.viewcollection', ['id' => $collection1->CollectionID, 'offset' =>0])}}">{{$collection1->name}}</a></p>--}}
+{{--                    <p class="text-sm mb-4">Stylist: <a href="{{route('viewC1.stylist', ['id' => $stylist1->SID])}}">{{$stylist1->name}}</a></p>--}}
+{{--                    <div class="row align-items-stretch mb-4">--}}
+{{--                        <div class="col-sm-5 pr-sm-0">--}}
+{{--                            <div class="border d-flex align-items-center justify-content-between py-1 px-3 bg-white border-white"><span class="small text-uppercase text-gray mr-4 no-select">Quantity</span>--}}
+{{--                                <div class="quantity">--}}
+{{--                                    <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>--}}
+{{--                                    <input class="form-control border-0 shadow-0 p-0" type="text" value="1">--}}
+{{--                                    <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-sm-3 pl-sm-0"><a class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center px-0" href="cart.html">Add to cart</a></div>--}}
+{{--                    </div><a class="text-dark p-0 mb-4 d-inline-block" href="#!"><i class="far fa-heart me-2"></i>Add to wish list</a><br>--}}
+{{--                    <form method="post" action="{{route('viewC1.download')}}" >--}}
+{{--                        @csrf--}}
+{{--                        <input type="hidden"  name="product_code" value="{{$product->product_code}}">--}}
+{{--                        <input type="hidden"  name="fabric" value="{{$product->fabric}}">--}}
+{{--                        <input type="hidden"  name="price" value="{{$price}}">--}}
+{{--                        <input type="hidden"  name="size" value="{{$product->size}}">--}}
+{{--                        <input type="hidden"  name="collection" value="{{$collection1->name}}">--}}
+{{--                        <input type="hidden"  name="stylist" value="{{$stylist1->name}}">--}}
+{{--                        <input type="hidden" name="img" value="{{asset('images/product/".$product->urlimg')}}">--}}
+{{--                        <div >--}}
+{{--                            <button type="submit"  class="btn btn-dark btn-sm btn-block h-100 d-flex align-items-center justify-content-center col-4 px-0">Download file word</button>--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
+                </div>
+            </div>
+
+            <!-- DETAILS TABS-->
+            <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+                <li class="nav-item"><a class="nav-link text-uppercase active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a></li>
+                <li class="nav-item"><a class="nav-link text-uppercase" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a></li>
+            </ul>
+            <div class="tab-content mb-5" id="myTabContent">
+                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                    <div class="p-4 p-lg-5 bg-white">
+                        <h6 class="text-uppercase">Product description </h6>
+                        <p class="text-muted text-sm mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                    <div class="p-4 p-lg-5 bg-white">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="d-flex mb-3">
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="img/customer-1.png" alt="" width="50"/></div>
+                                    <div class="ms-3 flex-shrink-1">
+                                        <h6 class="mb-0 text-uppercase">Jason Doe</h6>
+                                        <p class="small text-muted mb-0 text-uppercase">20 May 2020</p>
+                                        <ul class="list-inline mb-1 text-xs">
+                                            <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
+                                            <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
+                                            <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
+                                            <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
+                                            <li class="list-inline-item m-0"><i class="fas fa-star-half-alt text-warning"></i></li>
+                                        </ul>
+                                        <p class="text-sm mb-0 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     </div>
-                                    <div class="col-sm-5"><a class="btn btn-dark btn-sm w-100 h-100 d-flex align-items-center justify-content-center px-0" href="cart.html">Add to cart</a></div>
-                                </div><a class="btn btn-link text-dark text-decoration-none p-0" href="#!"><i class="far fa-heart me-2"></i>Add to wish list</a>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="img/customer-2.png" alt="" width="50"/></div>
+                                    <div class="ms-3 flex-shrink-1">
+                                        <h6 class="mb-0 text-uppercase">Jane Doe</h6>
+                                        <p class="small text-muted mb-0 text-uppercase">20 May 2020</p>
+                                        <ul class="list-inline mb-1 text-xs">
+                                            <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
+                                            <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
+                                            <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
+                                            <li class="list-inline-item m-0"><i class="fas fa-star text-warning"></i></li>
+                                            <li class="list-inline-item m-0"><i class="fas fa-star-half-alt text-warning"></i></li>
+                                        </ul>
+                                        <p class="text-sm mb-0 text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+    </section>
+    </thead>
+    </table>
     </div>
-    <div class="container">
-        <!-- HERO SECTION-->
-        <section class="py-5 bg-light">
-            <div class="container">
-                <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
-                    <div class="col-lg-6">
-                        <h1 class="h2 text-uppercase mb-0">Cart</h1>
-                    </div>
-                    <div class="col-lg-6 text-lg-end">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
-                                <li class="breadcrumb-item"><a class="text-dark" href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Cart</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="py-5">
-            <h2 class="h5 text-uppercase mb-4">Shopping cart</h2>
-            <div class="row">
-                <div class="col-lg-8 mb-4 mb-lg-0">
-                    <!-- CART TABLE-->
-                    <div class="table-responsive mb-4">
-                        <table class="table text-nowrap">
-                            <thead class="bg-light">
-                            <tr>
-                                <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Product</strong></th>
-                                <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Price</strong></th>
-                                <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Quantity</strong></th>
-                                <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Total</strong></th>
-                                <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase"></strong></th>
-                            </tr>
-                            </thead>
-                            <tbody class="border-0">
-                            <tr>
-                                <th class="ps-0 py-3 border-light" scope="row">
-                                    <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link" href="detail.html"><img src="img/product-detail-3.jpg" alt="..." width="70"/></a>
-                                        <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link" href="detail.html">Red digital smartwatch</a></strong></div>
-                                    </div>
-                                </th>
-                                <td class="p-3 align-middle border-light">
-                                    <p class="mb-0 small">$250</p>
-                                </td>
-                                <td class="p-3 align-middle border-light">
-                                    <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantity</span>
-                                        <div class="quantity">
-                                            <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                                            <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="1"/>
-                                            <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="p-3 align-middle border-light">
-                                    <p class="mb-0 small">$250</p>
-                                </td>
-                                <td class="p-3 align-middle border-light"><a class="reset-anchor" href="#!"><i class="fas fa-trash-alt small text-muted"></i></a></td>
-                            </tr>
-                            <tr>
-                                <th class="ps-0 py-3 border-0" scope="row">
-                                    <div class="d-flex align-items-center"><a class="reset-anchor d-block animsition-link" href="detail.html"><img src="img/product-detail-2.jpg" alt="..." width="70"/></a>
-                                        <div class="ms-3"><strong class="h6"><a class="reset-anchor animsition-link" href="detail.html">Apple watch</a></strong></div>
-                                    </div>
-                                </th>
-                                <td class="p-3 align-middle border-0">
-                                    <p class="mb-0 small">$250</p>
-                                </td>
-                                <td class="p-3 align-middle border-0">
-                                    <div class="border d-flex align-items-center justify-content-between px-3"><span class="small text-uppercase text-gray headings-font-family">Quantity</span>
-                                        <div class="quantity">
-                                            <button class="dec-btn p-0"><i class="fas fa-caret-left"></i></button>
-                                            <input class="form-control form-control-sm border-0 shadow-0 p-0" type="text" value="1"/>
-                                            <button class="inc-btn p-0"><i class="fas fa-caret-right"></i></button>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="p-3 align-middle border-0">
-                                    <p class="mb-0 small">$250</p>
-                                </td>
-                                <td class="p-3 align-middle border-0"><a class="reset-anchor" href="#!"><i class="fas fa-trash-alt small text-muted"></i></a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- CART NAV-->
-                    <div class="bg-light px-4 py-3">
-                        <div class="row align-items-center text-center">
-                            <div class="col-md-6 mb-3 mb-md-0 text-md-start"><a class="btn btn-link p-0 text-dark btn-sm" href="shop.html"><i class="fas fa-long-arrow-alt-left me-2"> </i>Continue shopping</a></div>
-                            <div class="col-md-6 text-md-end"><a class="btn btn-outline-dark btn-sm" href="checkout.html">Procceed to checkout<i class="fas fa-long-arrow-alt-right ms-2"></i></a></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- ORDER TOTAL-->
-                <div class="col-lg-4">
-                    <div class="card border-0 rounded-0 p-lg-4 bg-light">
-                        <div class="card-body">
-                            <h5 class="text-uppercase mb-4">Cart total</h5>
-                            <ul class="list-unstyled mb-0">
-                                <li class="d-flex align-items-center justify-content-between"><strong class="text-uppercase small font-weight-bold">Subtotal</strong><span class="text-muted small">$250</span></li>
-                                <li class="border-bottom my-2"></li>
-                                <li class="d-flex align-items-center justify-content-between mb-4"><strong class="text-uppercase small font-weight-bold">Total</strong><span>$250</span></li>
-                                <li>
-                                    <form action="#">
-                                        <div class="input-group mb-0">
-                                            <input class="form-control" type="text" placeholder="Enter your coupon">
-                                            <button class="btn btn-dark btn-sm w-100" type="submit"> <i class="fas fa-gift me-2"></i>Apply coupon</button>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
-    <footer class="bg-dark text-white">
-        <div class="container py-4">
-            <div class="row py-5">
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <h6 class="text-uppercase mb-3">Customer services</h6>
-                    <ul class="list-unstyled mb-0">
-                        <li><a class="footer-link" href="#!">Help &amp; Contact Us</a></li>
-                        <li><a class="footer-link" href="#!">Returns &amp; Refunds</a></li>
-                        <li><a class="footer-link" href="#!">Online Stores</a></li>
-                        <li><a class="footer-link" href="#!">Terms &amp; Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <h6 class="text-uppercase mb-3">Company</h6>
-                    <ul class="list-unstyled mb-0">
-                        <li><a class="footer-link" href="#!">What We Do</a></li>
-                        <li><a class="footer-link" href="#!">Available Services</a></li>
-                        <li><a class="footer-link" href="#!">Latest Posts</a></li>
-                        <li><a class="footer-link" href="#!">FAQs</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h6 class="text-uppercase mb-3">Social media</h6>
-                    <ul class="list-unstyled mb-0">
-                        <li><a class="footer-link" href="#!">Twitter</a></li>
-                        <li><a class="footer-link" href="#!">Instagram</a></li>
-                        <li><a class="footer-link" href="#!">Tumblr</a></li>
-                        <li><a class="footer-link" href="#!">Pinterest</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-top pt-4" style="border-color: #1d1d1d !important">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="small text-muted mb-0">&copy; 2021 All rights reserved.</p>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://bootstrapious.com/p/boutique-bootstrap-e-commerce-template">Bootstrapious</a></p>
-                        <!-- If you want to remove the backlink, please purchase the Attribution-Free License. See details in readme.txt or license.txt. Thanks!-->
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+    </div>
+
 @endsection
