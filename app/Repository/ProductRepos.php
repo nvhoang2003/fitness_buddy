@@ -26,6 +26,18 @@ class ProductRepos
 
         return DB::select($sql, [$id]);
     }
+
+    public static function getTopTrendingProduct(){
+        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
+        $sql .= 'from product as p ';
+        $sql.='join size as s on p.sizeID = s.sizeID ';
+        $sql.='join style on p.SID = style.styleID ';
+        $sql.='join color on p.ColorID = color.colorID ';
+        $sql .= 'where p.price >= 50 ';
+
+        return DB::select($sql);
+    }
+
     public static function getAllSize(){
         $sql = 'select s.* ';
         $sql .= 'from size as s ';
