@@ -133,7 +133,7 @@
                                 {{$ttp->product_name}}
                             </a>
                         </h6>
-                        <p class="small text-muted">{{$ttp->price}}</p>
+                        <p class="small text-muted">$ {{$ttp->price}}</p>
                     </div>
                 @endforeach
             </div>
