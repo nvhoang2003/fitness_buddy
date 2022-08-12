@@ -11,9 +11,7 @@
                 <p>Please delete all the product in Category before your delete one </p>
             </div>
             <div class="modal-footer">
-
-                {{--                <button type="button" class="btn btn-primary" >Delete</button>--}}
-
+                <button type="button" class="btn btn-danger" >Delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             </div>
         </div>

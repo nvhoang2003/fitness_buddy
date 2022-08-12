@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Repository\AdminRepos;
-use App\Repository\CustomerClass;
 use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -155,7 +154,7 @@ class adminController extends Controller
     }
 
     //show style - Do Khac Duong
-    public  function styleshow($id){
+    public  function showstyle($id){
 
         $style = AdminRepos::getstylebyid($id);
         return view('style.show',[
