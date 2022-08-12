@@ -203,10 +203,11 @@ Route::get('shop',[
     'uses' =>'clientControllerWithRepos@shop',
     'as' => 'client.shop'
 ]);
-Route::get('details',[
+Route::get('details/{productID}',[
     'uses' =>'clientControllerWithRepos@detail',
     'as' => 'client.details'
 ]);
+
 
 Route::group(['prefix' => 'viewC1'], function (){
     Route::get('', [

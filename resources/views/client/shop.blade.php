@@ -40,9 +40,6 @@
                         <li class="nav-item">
                             <!-- Link--><a class="nav-link active" href="shop.html">Shop</a>
                         </li>
-                        <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href="{{route('client.details')}}">Product detail</a>
-                        </li>
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                             <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
                         </li>
@@ -230,7 +227,7 @@
 
                                         </div>
                                             <a class="d-block" href="{{route('client.details',['productID' => $p->productID])}}">
-                                                <img class="img-fluid w-100" src="images/product/{{ $p->image }}" alt="...">
+                                                <img class="img-fluid w-100" src="{{asset('/images/product/'.$p->image)}}" alt="...">
                                             </a>
                                         <div class="product-overlay">
                                             <ul class="mb-0 list-inline">
