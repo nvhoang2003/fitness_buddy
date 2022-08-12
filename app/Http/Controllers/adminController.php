@@ -245,9 +245,6 @@ class adminController extends Controller
             ->with('msg', 'Update Successfully');
     }
 
-
-
-
     // delete style - Bui Anh Tuan
     public function styleConfirm($styleID){
         $style = AdminRepos::getStyleById($styleID);

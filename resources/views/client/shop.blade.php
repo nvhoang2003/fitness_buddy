@@ -131,7 +131,7 @@
 
                                         </div>
                                             <a class="d-block" href="{{route('client.details',['productID' => $p->productID])}}">
-                                                <img class="img-fluid w-100" src="{{asset('/images/product/'.$p->image)}}" alt="...">
+                                                <img  src="{{asset('/images/product/'.$p->image)}}" width="200px" height="250px"  alt="...">
                                             </a>
                                         <div class="product-overlay">
                                             <ul class="mb-0 list-inline">
