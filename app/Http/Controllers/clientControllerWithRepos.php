@@ -30,7 +30,7 @@ class clientControllerWithRepos extends Controller
 
     public function details($productID)
     {
-        $product = AdminRepos::getProductById($productID);
+        $product = ProductRepos::getProductById($productID);
 //        dd($product);
 //        $style = AdminRepos::getStlyeById($id);
 //        $size = AdminRepos::getstylistbyProductid($id);
@@ -42,5 +42,6 @@ class clientControllerWithRepos extends Controller
 //            'size' => DB::table('size')->get()
         ]);
     }
+
 
 }
