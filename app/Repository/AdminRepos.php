@@ -38,13 +38,13 @@ class AdminRepos
         return DB::update($sql, [$user->password, $user->username]);
     }
 
-    public static function getProductById($productID){
-        $sql = 'select p.* ';
-        $sql .= 'from product as p ';
-        $sql .= 'where p.productID =? ';
-
-        return DB::select($sql, [$productID]);
-    }
+//    public static function getProductById($productID){
+//        $sql = 'select p.* ';
+//        $sql .= 'from product as p ';
+//        $sql .= 'where p.productID =? ';
+//
+//        return DB::select($sql, [$productID]);
+//    }
 
     //get all style from DB - Bui Anh Tuan
     public static function getAllStyle(){
@@ -71,6 +71,23 @@ class AdminRepos
         $sql .= 'where s.styleID = ? ';
 
         return DB::select($sql, [$styleID]);
+    }
+
+    public static function  getSizeById($sizeID){
+        $sql = 'select s.* ';
+        $sql .= 'from size as s ';
+        $sql .= 'where s.sizeID = ? ';
+
+        return DB::select($sql, [$sizeID]);
+    }
+
+    public static function getSizeByProductID($sizeID){
+        $sql = 'select s.*, s.sizeID ';
+        $sql .= 'from size as s ';
+        $sql .= 'join product as s on s.sizeID = p.sizeID ';
+        $sql .= 'where s.sizeID = ? ';
+
+        return DB::select($sql, [$sizeID]);
     }
 
     public static function getProductByStyleId($styleID){
@@ -115,6 +132,15 @@ class AdminRepos
         DB::update($sql, [$style->name, $style->dob, $style->contact, $style->styleID]);
     }
 
+    public static function getProductById($productID){
+        $sql = 'select p.*, s.size_name as size, style.style_name as style  ';
+        $sql .= 'from product as p ';
+        $sql.='join size as s on p.sizeID = s.sizeID ';
+        $sql.='join style on p.SID = style.styleID ';
+        $sql .= 'where p.productID = ?';
+
+        return DB::select($sql, [$productID]);
+    }
 }
 
 

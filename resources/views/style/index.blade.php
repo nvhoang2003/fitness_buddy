@@ -33,7 +33,7 @@
                     </td>
 
                     <td>
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Delete</button>
                         @include('style.modal')
                     </td>
                 </tr>
