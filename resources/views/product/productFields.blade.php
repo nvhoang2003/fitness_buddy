@@ -35,7 +35,7 @@
 
 @if($product->image)
     <div>
-        <img src="/image/{{old('image') ?? $product->image}}" width="50%" height="50%">
+        <img src="/images/product/{{old('image') ?? $product->image}}" width="50%" height="50%">
     </div>
 @endif
 

@@ -412,7 +412,7 @@ class adminController extends Controller
 
         $product = (object)[
             'productID' => $request->input('productID'),
-            'product_name' => $request->input('name'),
+            'product_name' => $request->input('product_name'),
             'image' => $request->input('image'),
             'product_status' => $request->input('product_status'),
             'price' => $request->input('price'),
