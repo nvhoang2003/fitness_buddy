@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repository\AdminRepos;
+use App\Repository\CustomerClass;
 use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -170,6 +171,7 @@ class adminController extends Controller
             'style.create',
             [
                 "style" => (object)[
+                    'styleID'=>'',
                     'style_name' => '',
                     'image' => '',
                     'description' => ''
@@ -242,6 +244,9 @@ class adminController extends Controller
         return redirect()->action('adminController@styleindex')
             ->with('msg', 'Update Successfully');
     }
+
+
+
 
     // delete style - Bui Anh Tuan
     public function styleConfirm($styleID){

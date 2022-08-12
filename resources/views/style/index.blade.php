@@ -31,11 +31,9 @@
                     </td>
 
                     <td>
-                        <a type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+                        <a type="button" class="btn btn-danger btn-sm" href="{{route('style.confirm',['styleID'=> $s->styleID])}}">
                             <i class="fa-solid fa-trash-can"></i>
                         </a>
-                    </td>
-                        @include('style.modal')
                     </td>
                 </tr>
             @endforeach

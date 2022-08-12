@@ -4,7 +4,6 @@
             <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
                 <a class="navbar-brand" href={{route("client.homepage")}}>
                     <span class="fw-bold text-uppercase text-dark">Thrift Fashion</span>
-
                 </a>
                 <button class="navbar-toggler navbar-toggler-end"
                         type="button"

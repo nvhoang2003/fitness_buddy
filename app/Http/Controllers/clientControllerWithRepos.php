@@ -12,10 +12,19 @@ class clientControllerWithRepos extends Controller
     public function homepage()
     {
         $product = ProductRepos::getAllProduct();
+        $topTrendingProduct = ProductRepos::getTopTrendingProduct();
+        $style = ProductRepos::getAllStyle();
         return view('client.homepage', [
             'product' => $product,
+            'topTrendingProduct' => $topTrendingProduct,
+            'style' => $style,
+
         ]);
 
+    }
+
+    public function cart(){
+        return view('client.cart');
     }
 
 
@@ -31,9 +40,17 @@ class clientControllerWithRepos extends Controller
 
     }
 
+    public function style($styleID){
+        $product = ProductRepos::getAllStyle();
+
+        return view('client.shop', [
+            'product' => $product,
+        ]);
+    }
+
     public function details($productID)
     {
-        $product = AdminRepos::getProductById($productID);
+        $product = ProductRepos::getProductById($productID);
 //        dd($product);
 //        $style = AdminRepos::getStlyeById($id);
 //        $size = AdminRepos::getstylistbyProductid($id);
@@ -45,5 +62,6 @@ class clientControllerWithRepos extends Controller
 //            'size' => DB::table('size')->get()
         ]);
     }
+
 
 }
