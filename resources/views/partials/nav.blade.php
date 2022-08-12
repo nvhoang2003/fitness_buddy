@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand mb-0 h1" href="#">Thrift Fashion</a>
+    <a class="navbar-brand mb-0 h1" href="{{route('product.index')}}">Thrift Fashion</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -30,8 +30,8 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">View all</a>
-                    <a class="dropdown-item" href="#">New Product</a>
+                    <a class="dropdown-item" href="{{route('product.index')}}">View all</a>
+                    <a class="dropdown-item" href="{{route('product.create')}}">New Product</a>
                 </div>
 
             </li>

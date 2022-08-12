@@ -8,11 +8,8 @@
                 <thead style="background-color: #acb2c7">
                 <tr>
                     <th scope="col">Product Name </th>
-                    <th scope="col">Status</th>
                     <th scope="col">Price</th>
                     <th scope="col">Launch Date</th>
-                    <th scope="col">Size</th>
-                    <th scope="col">Style</th>
                     <th> </th>
                     <th> </th>
                     <th> </th>
@@ -21,6 +18,12 @@
                 <tbody>
                     @foreach($product as $p)
                         <tr>
+                            @php
+                                $p->price = number_format($p->price, 0, ',', '.');
+                                $p->price .= ' USD';
+                                $date = explode('-',$p->launch_date);
+                                $date = $date[2].'/'.$date[1].'/'.$date[0];
+                            @endphp
                             <td>
                             <span class="mytooltip tooltip-effect-1" >
                                 {{$p->product_name}}
@@ -31,19 +34,16 @@
                                 </span>
                             </span>
                             </td>
-                            <td>{{$p->product_status}}</td>
                             <td>{{$p->price}}</td>
-                            <td>{{$p->launch_date}}</td>
-                            <td>{{$p->size}}</td>
-                            <td>{{$p->style}}</td>
-                            <td><a type="button" class="btn btn-dark btn-sm"
-{{--                                   href="{{route('Event.confirm',['eventid'=>$e->eventid])}}"--}}
+                            <td>{{$date}}</td>
+                            <td><a type="button" class="btn btn-primary btn-sm"
+                                   href="{{route('product.show',['productID'=>$p->productID])}}"
                                 ><i class="fa-solid fa-eye"></i></a></td>
                             <td><a type="button" class="btn btn-success btn-sm"
-{{--                                   href="{{route('Event.edit',['eventid'=>$e->eventid])}}"--}}
+                                   href="{{route('product.edit',['productID'=>$p->productID])}}"
                                 ><i class="fa-solid fa-pen-to-square"></i></a> </td>
                             <td><a type="button" class="btn btn-danger btn-sm"
-{{--                                   href="{{route('Event.confirm',['eventid'=>$e->eventid])}}"--}}
+                                   href="{{route('product.confirm',['productID'=>$p->productID])}}"
                                 ><i class="fa-solid fa-trash-can"></i></a></td>
                         </tr>
                     @endforeach

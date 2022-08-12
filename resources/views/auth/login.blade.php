@@ -1,53 +1,105 @@
-@extends('Master.authMaster')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login in</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{asset('images/icons/favicon.ico')}}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/iconic/css/material-design-iconic-font.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    <!--===============================================================================================-->
+</head>
+<body>
 
-@section('main')
+<div class="limiter">
+    <div class="container-login100" style="background-image: url({{asset('images/bg-01.jpg')}});">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" action="{{route('auth.signin')}}" method="post">
+					<span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Login</div>
-                    <div class="card-body">
-                        @include('partials.errors')
-                        @include('auth.sessionMessage')
-                        <form action="{{route('auth.signin')}}" method="post">
-                            @csrf
-                            <div class="form-group row">
-                                <label for="username" class="col-md-4 col-form-label text-md-right">User Name</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="username" class="form-control" name="username" value="{{old('username')}}" >
-                                </div>
-                            </div>
+                <span class="login100-form-title p-b-34 p-t-27">
+						Log in
+					</span>
+                @include('auth.sessionMessage')
 
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="password" >
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Sign In
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                @csrf
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" name="username" placeholder="Username" value="{{old('username')}}">
+                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
                 </div>
-            </div>
+                @if($errors->has('username'))
+                    @foreach($errors->get('username') as $e)
+                        <span class="danger help-box" style="color: #6EDCD9;">
+                            <i class="bi bi-x"></i>
+                            {{$e}}
+                        </span>
+                    @endforeach
+                @endif
+
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="password" name="pass" placeholder="Password">
+                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                </div>
+
+                @if($errors->has('password'))
+                    @foreach($errors->get('password') as $e)
+                        <span class="help-box" style="color: #6EDCD9;">
+                            <i class="bi bi-x"></i>
+                            {{$e}}
+                        </span>
+                    @endforeach
+                @endif
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Login
+                    </button>
+                </div>
+
+            </form>
         </div>
     </div>
-    </div>
+</div>
 
-@endsection
 
+<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
+<script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
+<!--===============================================================================================-->
+<script src="{{asset('js/main.js')}}"></script>
+
+</body>
+</html>
