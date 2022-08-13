@@ -97,10 +97,11 @@ class adminController extends Controller
                     },
                 ],
                 'new_password' => ['required'],
-                'retire_password' => ['required',
+                're_password' => ['required',
                     function($attribute, $value, $fails){
                         global $request;
-                        if($value !== $request->input('new_password')){
+                        $new_password =  $request->input('new_password') ?? null;
+                        if($value !== $new_password && $new_password !== null ){
                             $fails('Retire Password must same New Password');
                         }
                     }
@@ -109,7 +110,7 @@ class adminController extends Controller
             [
                 'password.required' => 'password not be empty',
                 'new_password.required' => 'New Password not be empty',
-                'retire_password.required' => 'Retire Password not be empty',
+                're_password.required' => 'Retire Password not be empty',
             ]
         );
         // create user with type varaiable is object

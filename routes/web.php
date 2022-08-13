@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//admin route
 Route::group(['prefix' => 'ThriftFashion'], function() {
     Route::group(['prefix' => 'admin'], function() {
         Route::get('/{username}',[
@@ -138,7 +138,7 @@ Route::group(['prefix' => 'ThriftFashion'], function() {
         ]);
     });
 });
-
+//signin, signup, signout route
 Route::group(['prefix' => 'auth'], function(){
     Route::get('login',[
         'uses' => 'manualController@ask',
@@ -155,24 +155,33 @@ Route::group(['prefix' => 'auth'], function(){
         'as' => 'auth.signout'
     ]);
 
-//    Route::get('delete/{style_id}', [
-//        'uses' => 'adminController@confirm',
-//        'as' => 'style.confirm'
-//    ]);
-//
-//    Route::post('delete/{style_id}', [
-//        'uses' => 'adminController@destroy',
-//        'as' => 'style.destroy'
-//    ]);
+    Route::get('signin', [
+        'uses' => 'manualController@customerAsk',
+        'as' => 'auth.customerAsk'
+    ]);
+
+    Route::post('signin', [
+        'uses' => 'manualController@customerSignin',
+        'as' => 'auth.customerSignin'
+    ]);
+
+    Route::get('signup',[
+        'uses' => 'manualController@customerFormSignup',
+        'as' => 'auth.customerFormSignup',
+    ]);
+
+    Route::post('signup',[
+        'uses' => 'manualController@customerSignup',
+        'as' => 'auth.customerSignup',
+    ]);
+
+    Route::get('signout',[
+        'uses' => 'manualController@customerSignout',
+        'as' => 'auth.customerSignout',
+    ]);
+
 });
-
-
-
 //client routes
-
-
-
-
 Route::group(['prefix' => 'client'], function (){
     Route::get('homepage', [
         'uses' => 'clientControllerWithRepos@homepage',
@@ -213,11 +222,4 @@ Route::group(['prefix' => 'client'], function (){
         'uses' => 'clientControllerWithRepos@cart',
         'as' => 'client.cart'
     ]);
-
-    Route::get('login', [
-        'uses' => 'clientControllerWithRepos@login',
-        'as' => 'client.login'
-    ]);
-
-
 });
