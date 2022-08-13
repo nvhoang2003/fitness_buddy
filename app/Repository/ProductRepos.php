@@ -12,7 +12,11 @@ class ProductRepos
         $sql.='join style on p.styleID = style.styleID ';
         $sql .= 'order by p.productID';
 
-        return DB::select($sql);
+//        return DB::select($sql);
+        return DB::table('product')
+            ->select('product.*')
+            ->join('style', 'style.styleID', '=', 'product.styleID')
+            ->paginate(12);
     }
 
     public static function getProductByStyle($productID){
@@ -47,7 +51,12 @@ class ProductRepos
         $sql.='join style on p.styleID = style.styleID ';
         $sql .= 'where p.styleID = ?';
 
-        return DB::select($sql, [$styleID]);
+//        return DB::select($sql, [$styleID]);
+        return DB::table('product')
+            ->select('product.*')
+            ->join('style', 'style.styleID', '=', 'product.styleID')
+            ->where('product.styleID', '=', $styleID)
+            ->paginate(12);
     }
 
     public static function getTopTrendingProduct(){
@@ -143,4 +152,14 @@ class ProductRepos
         return DB::delete($sql, [$id]);
     }
 
+    public static function getAllProductByStyleId($styleID)
+    {
+        $sql= 'select p.*, s.style_name as style ';
+        $sql .= 'from product as p ';
+        $sql .= 'join style as s on p.styleID= s.styleID ';
+        $sql .= 'where s.styleID = ? ';
+        $sql.='limit 4';
+
+        return DB::select($sql, [$styleID]);
+    }
 }

@@ -82,7 +82,7 @@
                         </div><a class="text-dark p-0 mb-4 d-inline-block" href="#!"><i class="far fa-heart me-2"></i>Add to wish list</a><br>
                         <ul class="list-unstyled small d-inline-block">
                             <li class="px-3 py-2 mb-1 bg-white"><strong class="text-uppercase">SIZE:</strong><span class="ms-2 text-muted">{{$product->size}}</span></li>
-                            <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Style:</strong><a class="reset-anchor ms-2" href="#!" style="text-transform: uppercase; text-decoration: none">{{$product->style}}</a></li>
+{{--                            <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Style:</strong><a class="reset-anchor ms-2" href="#!" style="text-transform: uppercase; text-decoration: none">{{$product->style}}</a></li>--}}
                             <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Color:</strong><a class="reset-anchor ms-2" href="#!" style="text-transform: uppercase; text-decoration: none">{{$product->color}}</a></li>
                             <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Status:</strong><a class="reset-anchor ms-2" href="#!" style="text-transform: uppercase; text-decoration: none">{{$product->product_status}}</a></li>
                             <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Date added:</strong><a class="reset-anchor ms-2" style="text-transform: uppercase; text-decoration: none">{{$product->launch_date}}</a></li>
@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 <!-- DETAILS TABS-->
-                <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+                <ul class="nav nav-tabs border-0 " id="myTab" role="tablist">
                     <li class="nav-item"><a class="nav-link text-uppercase active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a></li>
                     <li class="nav-item"><a class="nav-link text-uppercase" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a></li>
                 </ul>
@@ -162,8 +162,42 @@
                               </a>
                           @endforeach
                       </div>
-                      <button class="btn btn-primary leftLst"><</button>
-                      <button class="btn btn-primary rightLst">></button>
+{{--                      <button class="btn btn-primary leftLst"><</button>--}}
+                      <div class="row">
+                          @foreach($product1 as $p1)
+                              <div class="col-3">
+                                  <div class="product text-center">
+                                      <div class="mb-3 position-relative">
+                                          <div class="badge text-white bg-">
+                                          </div>
+                                          <a class="" href="{{route('client.details',['productID' => $p1->productID])}}">
+                                              <img  src="{{asset('images/product/'.$p1->image)}}" width="200px" height="250px"  alt="...">
+                                          </a>
+                                          <div class="product-overlay">
+                                              <ul class="mb-0 list-inline">
+                                                  <li class="list-inline-item m-0 p-0">
+                                                      <a class="btn btn-sm btn-outline-dark" href="#!">
+                                                          <i class="far fa-heart"></i></a>
+                                                  </li>
+                                                  <li class="list-inline-item m-0 p-0">
+                                                      <a class="btn btn-sm btn-dark" href="">Add to cart</a>
+                                                  </li>
+                                                  <li class="list-inline-item mr-0">
+                                                      <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
+                                                          <i class="fas fa-expand"></i>
+                                                      </a>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </div>
+                                      <h6> <a class="reset-anchor" href="{{route('client.details',['productID' => $p1->productID])}}">{{$p1->product_name}}</a></h6>
+                                      <p class="small text-muted">${{$p1->price}}</p>
+                                  </div>
+                              </div>
+                          @endforeach
+                      </div>
+
+{{--                      <button class="btn btn-primary rightLst">></button>--}}
                   </div>
               </div>
           </div>

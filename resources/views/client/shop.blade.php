@@ -43,7 +43,7 @@
                             @foreach($style as $s)
                             <li class="mb-2">
                                 <a style="text-decoration: none" class="reset-anchor"
-                                href={{request()->fullUrlWithQuery(['styleID' => $s->styleID]) }}>
+                                href={{route('client.style',['styleID' => $s->styleID])}}>
                                 <p
                                     class="{{$s->styleID == $ID ?'text-warning' : ''}} text-uppercase"
                                 >{{$s->style_name}}</p>                                </a>
@@ -51,9 +51,9 @@
 
                             @endforeach
                         </ul>
-                        <div class="py-2 px-4 bg-dark text-white mb-3">
-                            <strong class="small text-uppercase fw-bold">Size</strong>
-                        </div>
+{{--                        <div class="py-2 px-4 bg-dark text-white mb-3">--}}
+{{--                            <strong class="small text-uppercase fw-bold">Size</strong>--}}
+{{--                        </div>--}}
                         <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
 
 
@@ -96,20 +96,20 @@
                     <!-- SHOP LISTING-->
                     <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                         <div class="row mb-3 align-items-center">
-{{--                            <div class="col-lg-6 mb-2 mb-lg-0">--}}
-{{--                                <p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>--}}
-{{--                            </div>--}}
+                            <div class="col-lg-6 mb-2 mb-lg-0">
+                                <p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>
+                            </div>
                             <div class="offset-6 col-lg-6">
                                 <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
-                                    <p class="list-inline-item">
-                                        <p data-customclass="form-control form-control-sm">
-{{--                                            <option value>Welcome</option>--}}
-{{--                                            <option value="default">Default sorting </option>--}}
-{{--                                            <option value="popularity">Popularity </option>--}}
-{{--                                            <option value="low-high">Price: Low to High </option>--}}
-{{--                                            <option value="high-low">Price: High to Low </option>--}}
-                                        </p>
-                                    </p>
+                                    <li class="list-inline-item">
+                                        <select data-customclass="form-control form-control-sm">
+                                            <option value>Sort By </option>
+                                            <option value="default"> Default sorting </option>
+                                            <option value="popularity">Popularity </option>
+                                            <option value="low-high">Price: Low to High </option>
+                                            <option value="high-low">Price: High to Low </option>
+                                        </select>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -159,7 +159,7 @@
 {{--                            </ul>--}}
 {{--                        </nav>--}}
                         <div class="center">
-{{--                            {{$product->links()}}--}}
+                            {{$product->links()}}
                         </div>
                     </div>
                 </div>
