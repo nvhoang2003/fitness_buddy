@@ -69,7 +69,7 @@ class ProductRepos
 
     public static function insert($product){
         $sql = 'insert into product ';
-        $sql .= '(product_name, product_status, price, launch_date, image, brand, material, styleID, size, color) ';
+        $sql .= '(product_name, product_status, price, launch_date, image, material, styleID, size, color) ';
         $sql .= 'values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ';
 
         $result = DB::insert($sql,
@@ -79,7 +79,6 @@ class ProductRepos
                 $product->price,
                 $product->launch_date,
                 $product->image,
-                $product->brand,
                 $product->material,
                 $product->styleID,
                 $product->size,
@@ -99,7 +98,7 @@ class ProductRepos
     public static function updateWithImage($product)
     {
         $sql = 'update product ';
-        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, image = ?, brand = ?, material = ?, styleID= ?, size= ?, color = ? ';
+        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, image = ?, material = ?, styleID= ?, size= ?, color = ? ';
         $sql .= 'where productID = ? ';
 
         DB::update($sql, [
@@ -108,7 +107,6 @@ class ProductRepos
             $product->price,
             $product->launch_date,
             $product->image,
-            $product->brand,
             $product->material,
             $product->styleID,
             $product->size,
@@ -120,7 +118,7 @@ class ProductRepos
     public static function updateWithoutImage($product)
     {
         $sql = 'update product ';
-        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, brand = ?, material = ?, styleID= ?, size= ?, color = ? ';
+        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, material = ?, styleID= ?, size= ?, color = ? ';
         $sql .= 'where productID = ? ';
 
         DB::update($sql, [
@@ -128,7 +126,6 @@ class ProductRepos
             $product->product_status,
             $product->price,
             $product->launch_date,
-            $product->brand,
             $product->material,
             $product->styleID,
             $product->size,

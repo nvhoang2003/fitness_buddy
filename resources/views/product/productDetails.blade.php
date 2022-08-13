@@ -34,9 +34,6 @@
             <dt class="col-sm-5">Material</dt>
             <dd class="col-sm-7 text-uppercase">{{ $product->material }}</dd>
 
-            <dt class="col-sm-5">Brand</dt>
-            <dd class="col-sm-7 text-uppercase">{{ $product->brand }}</dd>
-
             <dt class="col-sm-5">Style</dt>
             <dd class="col-sm-7 text-uppercase">{{ $product->style }}</dd>
         </div>
