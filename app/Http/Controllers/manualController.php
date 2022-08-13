@@ -143,12 +143,13 @@ class manualController extends Controller
                 're_password.required' => 'Re_password can not be empty',
             ]
         );
+        $passwordHash = sha1($request->input('password'));
 //
         $user = (object)[
             'username' => $request->input('username'),
             'phonenumber' => $request->input('phonenumber'),
             'gender' => $request->input('gender'),
-            'password' => $request->input('password'),
+            'password' => $passwordHash,
             'email' => $request->input('email'),
         ];
         // update from customer table with data is "$user"
