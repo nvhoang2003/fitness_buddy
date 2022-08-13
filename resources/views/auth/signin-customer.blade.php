@@ -16,7 +16,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="username" id="usernaem" placeholder="Your Name"/>
+                        <input type="text" name="username" id="username" placeholder="Your Name" value="{{old('username')}}"/>
                         @if($errors->has('username'))
                             @foreach($errors->get('username') as $e)
                                 <span class="danger help-box">

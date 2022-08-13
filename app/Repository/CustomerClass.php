@@ -33,4 +33,14 @@ class CustomerClass
         );
     }
 
+    public static function update($user){
+        $sql = 'update from customer ';
+        $sql .= '(username, password, fullname, email, phonenumber, gender) ';
+        $sql .= 'values (?, ?, ?, ?, ?, ?)';
+
+        return DB::select($sql,[$user->username, $user->password, $user->fullname,
+                $user->email, $user->phonenumber, $user->gender]
+        );
+    }
+
 }

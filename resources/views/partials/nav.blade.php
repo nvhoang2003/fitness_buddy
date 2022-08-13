@@ -19,7 +19,7 @@
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{route('style.index')}}">View all</a>
-                    <a class="dropdown-item" href="{{route('style.create')}}">New Category</a>
+                    <a class="dropdown-item" href="{{route('style.create')}}">New Style</a>
                 </div>
             </li>
 
