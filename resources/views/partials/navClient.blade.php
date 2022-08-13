@@ -46,7 +46,7 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart me-1"></i>
                                 <small class="text-gray fw-normal"> (0)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href={{route("client.login")}}>
+                        <li class="nav-item"><a class="nav-link" href={{route("auth.customerAsk")}}>
                                 <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
                     </ul>
                 </div>
