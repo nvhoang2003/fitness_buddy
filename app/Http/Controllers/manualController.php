@@ -119,7 +119,13 @@ class manualController extends Controller
                 'username' => ['required'],
                 'password' => ['required'],
                 're_password' => ['required',
-
+                    function($attribute, $value, $fails){
+                        global $request;
+                        $new_password =  $request->input('new_password') ?? null;
+                        if($value !== $new_password && $new_password !== null ){
+                            $fails('Re_Password must same New Password');
+                        }
+                    }
                 ]
             ],
             [
