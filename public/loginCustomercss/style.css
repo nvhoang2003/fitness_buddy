@@ -589,4 +589,11 @@ label.valid {
     margin-right: 0px;
     margin-bottom: 10px; } }
 
+.danger{
+    color:orangered;
+    size: 20px;
+    transition-property: color;
+    transition-duration: 1s;
+    transition-delay: 0.5s;
+}
 /*# sourceMappingURL=style.css.map */

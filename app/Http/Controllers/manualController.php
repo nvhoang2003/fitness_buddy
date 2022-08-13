@@ -117,6 +117,7 @@ class manualController extends Controller
         $this->validate($request,
             [
                 'username' => ['required'],
+                'email' => ['required', 'email:rfc,dns'],
                 'password' => ['required'],
                 're_password' => ['required',
                     function($attribute, $value, $fails){
@@ -130,26 +131,25 @@ class manualController extends Controller
             ],
             [
                 'username.required' => 'Name can not be empty.',
+                'email.required' => 'Email can not be empty.',
+                'email.email' => 'Email must correct valid email.',
                 'password.required' => 'Password can not be empty.',
                 're_password.required' => 'Re_password can not be empty',
             ]
         );
-//  put variable userName and password equal request input
-        $userName = $request->input('username');
-        $passwordHash = sha1($request->input('password'));
+//
+        $user = (object)[
+            'username' => $request->input('username'),
+            'contact' => $request->input('contact'),
+            'email' => $request->input('email'),
+        ];
+        // update from admin with data "$user"
+        AdminRepos::adminUpdateInfo($user);
+        return redirect()
+            ->action('adminController@adminConfirmUpdateInfo',['username' => $user->username])
+            ->with('msg', 'Update Successfully');
 
-//  get data of admin from database
-        $user = CustomerClass::getAllCustomer();
-//  check request input, if true return index of product's page, if false return login's page
-        foreach ($user as $u){
-            if ($u->username === $userName&&
-                $u->password ===  $passwordHash){
-                Session::put('customer_name', $request->input('username'));
-                return redirect()->route('client.homepage');
-            }
-        }
 
-        return redirect()->action('manualController@customerAsk');
     }
 
 //logout of customer's account
