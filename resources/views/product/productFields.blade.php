@@ -146,3 +146,8 @@
     @endif
 </div>
 
+<div class="form-group">
+    <label for="description" class="font-weight-bold">Description</label>
+    <input type="text" class="form-control" id="description" name="description" value="{{old('description') ?? $product->description}}">
+</div>
+

@@ -36,6 +36,10 @@
 
             <dt class="col-sm-5">Style</dt>
             <dd class="col-sm-7 text-uppercase">{{ $product->style }}</dd>
+
+            <dt class="col-sm-5">Description</dt>
+            <dd class="col-sm-7 text-uppercase">{{ $product->description }}</dd>
+
         </div>
     </dl>
 </div>

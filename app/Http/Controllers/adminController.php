@@ -324,6 +324,7 @@ class adminController extends Controller
                 'material' => '',
                 'size' => '',
                 'color' => '',
+                'description' => '',
             ],
 
             'style' => $style
@@ -344,6 +345,7 @@ class adminController extends Controller
                 'size' => 'required',
                 'color' => 'required',
                 'style' => 'gt:0',
+                'description' => 'required'
             ],
             [
                 'product_name.required' => 'Name can not be empty',
@@ -353,9 +355,10 @@ class adminController extends Controller
                 'price.required' => 'Price can not be empty',
                 'launch_date.required' => 'Launch date can not be empty',
                 'material.required' => 'Material can not be empty',
-                'size.gt' => 'Size can not be empty',
-                'color.gt' => 'Color can not be empty',
+                'size.required' => 'Size can not be empty',
+                'color.required' => 'Color can not be empty',
                 'style.gt' => 'Please select a Style!',
+                'description.required' => 'Description can not be empty '
             ]
         );
 
@@ -377,6 +380,7 @@ class adminController extends Controller
             'size' => $request->input('size'),
             'color' => $request->input('color'),
             'styleID' => $request->input('style'),
+            'description' => $request->input('description')
         ];
 
         $newId = ProductRepos::insert($product);
@@ -414,15 +418,19 @@ class adminController extends Controller
                 'size' => 'required',
                 'color' => 'required',
                 'style' => 'gt:0',
+                'description' => 'required'
             ],
             [
-                'product_name.required' => 'Name not be empty',
+                'product_name.required' => 'Name can not be empty',
                 'image.image' => 'The file under validation must be an image (jpg, jpeg, png, bmp, gif, svg, or webp).',
                 'product_status.required' => 'Status not be empty (stock-in, stock-out)',
-                'price.required' => 'Price not be empty',
-                'launch_date.required' => 'Launch date not be empty',
-                'material.required' => 'Material not be empty',
+                'price.required' => 'Price can not be empty',
+                'launch_date.required' => 'Launch date can not be empty',
+                'material.required' => 'Material can not be empty',
+                'size.required' => 'Size can not be empty',
+                'color.required' => 'Color can not be empty',
                 'style.gt' => 'Please select a Style!',
+                'description.required' => 'Description can not be empty '
             ]
         );
         if($request->has('image')){
@@ -443,6 +451,7 @@ class adminController extends Controller
             'size' => $request->input('size'),
             'color' => $request->input('color'),
             'styleID' => $request->input('style'),
+            'description' => $request->input('description')
         ];
         if($product->image === null){
             ProductRepos::updateWithoutImage($product);

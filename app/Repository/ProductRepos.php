@@ -69,8 +69,8 @@ class ProductRepos
 
     public static function insert($product){
         $sql = 'insert into product ';
-        $sql .= '(product_name, product_status, price, launch_date, image, material, styleID, size, color) ';
-        $sql .= 'values (?, ?, ?, ?, ?, ?, ?, ?, ?) ';
+        $sql .= '(product_name, product_status, price, launch_date, image, material, styleID, size, color, description) ';
+        $sql .= 'values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ';
 
         $result = DB::insert($sql,
             [
@@ -82,8 +82,8 @@ class ProductRepos
                 $product->material,
                 $product->styleID,
                 $product->size,
-                $product->color
-
+                $product->color,
+                $product->description
             ]
         );
 
@@ -98,7 +98,7 @@ class ProductRepos
     public static function updateWithImage($product)
     {
         $sql = 'update product ';
-        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, image = ?, material = ?, styleID= ?, size= ?, color = ? ';
+        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, image = ?, material = ?, styleID= ?, size= ?, color = ?, description = ? ';
         $sql .= 'where productID = ? ';
 
         DB::update($sql, [
@@ -111,6 +111,7 @@ class ProductRepos
             $product->styleID,
             $product->size,
             $product->color,
+            $product->description,
             $product->productID
         ]);
     }
@@ -118,7 +119,7 @@ class ProductRepos
     public static function updateWithoutImage($product)
     {
         $sql = 'update product ';
-        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, material = ?, styleID= ?, size= ?, color = ? ';
+        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, material = ?, styleID= ?, size= ?, color = ?,descripion = ? ';
         $sql .= 'where productID = ? ';
 
         DB::update($sql, [
@@ -130,6 +131,7 @@ class ProductRepos
             $product->styleID,
             $product->size,
             $product->color,
+            $product->descripion,
             $product->productID
         ]);
     }
