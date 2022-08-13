@@ -60,7 +60,7 @@
                         </li>
                         @if($userSession !== null)
                             <li class="nav-item">
-                                <a class="nav-link " href="{{route("auth.signout")}}">
+                                <a class="nav-link " href="{{route("auth.customerAsk")}}">
                                     <i class="bi bi-box-arrow-left"></i>
                                     Logout
                                 </a>
