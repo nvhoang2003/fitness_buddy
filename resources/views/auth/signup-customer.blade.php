@@ -58,9 +58,9 @@
                         @if($errors->has('gender'))
                             @foreach($errors->get('gender') as $e)
                                 <span class="danger help-box">
-                            <i class="bi bi-x"></i>
-                            {{$e}}
-                        </span>
+                                    <i class="bi bi-x"></i>
+                                    {{$e}}
+                                </span>
                             @endforeach
                         @endif
                     </div>
