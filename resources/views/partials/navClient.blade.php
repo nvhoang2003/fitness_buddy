@@ -18,7 +18,7 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
                             <!-- Link-->
-                            <a class="nav-link active"
+                            <a class="nav-link"
                                            href={{route("client.homepage")}}
                             >Home</a>
                         </li>
@@ -28,16 +28,15 @@
                                            href={{route("client.shop")}}>Shop</a>
                         </li>
 {{--                        get style's data from database--}}
-                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-                                                         id="pagesDropdown" href="#" data-bs-toggle="dropdown"
-                                                         aria-haspopup="true" aria-expanded="false">Style</a>
+{{--                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"--}}
+{{--                                                         id="pagesDropdown" href="#" data-bs-toggle="dropdown"--}}
+{{--                                                         aria-haspopup="true" aria-expanded="false">Style</a>--}}
 {{--                            get style's dropdown--}}
-                            <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">
-                                @foreach($style as $s)
-                                    <a class="dropdown-item border-0 transition-link text-uppercase"
-                                       href={{route("client.style",['styleID' => $s->styleID])}}>{{$s->style_name}}</a>
-                                @endforeach
-                            </div>
+{{--                            <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">--}}
+{{--                                @foreach($style as $s)--}}
+
+{{--                                @endforeach--}}
+{{--                            </div>--}}
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">

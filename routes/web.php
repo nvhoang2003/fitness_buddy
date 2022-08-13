@@ -184,14 +184,29 @@ Route::group(['prefix' => 'client'], function (){
         'as' => 'client.shop'
     ]);
 
-    ROute::get('style/{styleID}', [
+    Route::get('style/{styleID}', [
         'uses' => 'clientControllerWithRepos@style',
         'as' => 'client.style'
+    ]);
+
+    Route::get('size/{sizeID}',[
+       'uses' =>'clientControllerWithRepos@size',
+       'as' => 'client.size'
+    ]);
+
+    Route::get('price/{price}', [
+        'uses' => 'clientControllerWithRepos@price',
+        'as' => 'client.price'
     ]);
 
     Route::get('details/{productID}',[
         'uses' =>'clientControllerWithRepos@details',
         'as' => 'client.details'
+    ]);
+
+    Route::get('/{productID}',[
+        'uses' =>'clientControllerWithRepos@details',
+        'as' => 'client.search'
     ]);
 
     Route::get('cart', [
@@ -203,5 +218,6 @@ Route::group(['prefix' => 'client'], function (){
         'uses' => 'clientControllerWithRepos@login',
         'as' => 'client.login'
     ]);
+
 
 });

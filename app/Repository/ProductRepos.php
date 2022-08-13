@@ -12,11 +12,27 @@ class ProductRepos
         $sql.='join size as s on p.sizeID = s.sizeID ';
         $sql.='join style on p.SID = style.styleID ';
         $sql.='join color on p.ColorID = color.colorID ';
-        $sql .= 'order by p.productID';
+//        $sql .= 'order by p.productID';
 
-        return DB::select($sql);
+//        return DB::select($sql);
+        return DB::table('product')
+            ->leftJoin('size', 'size.sizeID', '=', 'product.sizeID')
+            ->leftJoin('style', 'style.styleID', '=', 'product.SID')
+            ->leftJoin('color', 'color.colorID', '=', 'product.ColorID')
+            ->paginate(12);
     }
 
+//    public static function getallproductwithpagiation($offset){
+//        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
+//        $sql .= 'from product as p ';
+//        $sql.='join size as s on p.sizeID = s.sizeID ';
+//        $sql.='join style on p.SID = style.styleID ';
+//        $sql.='join color on p.ColorID = color.colorID ';
+//        $sql .= 'order by p.productID ';
+//        $sql .= 'limit 12 offset= ?';
+//
+//        return DB::select($sql, [$offset]);
+//    }
     public static function getProductByStyle($productID){
         $sql = 'select p.*, s.style_name as style ';
         $sql .= 'from product as p ';
@@ -46,6 +62,17 @@ class ProductRepos
         $sql .= 'where p.SID = ?';
 
         return DB::select($sql, [$styleID]);
+    }
+
+    public static function getProductBySizeID($sizeID){
+        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
+        $sql .= 'from product as p ';
+        $sql.='join size as s on p.sizeID = s.sizeID ';
+        $sql.='join style on p.SID = style.styleID ';
+        $sql.='join color on p.ColorID = color.colorID ';
+        $sql .= 'where p.sizeID = ?';
+
+        return DB::select($sql, [$sizeID]);
     }
 
     public static function getTopTrendingProduct(){

@@ -34,10 +34,21 @@
                         ?>
                         <div class="py-2 px-4 bg-dark text-white mb-3"><strong class="small text-uppercase fw-bold">Style</strong></div>
                         <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                            @foreach($style as $s)
+                            @php
+                                if (isset($styleID)){
+                                    $ID = $styleID;
+                                } else{
+                                    $ID = 0;
+                                }
+                            @endphp
 
+                            @foreach($style as $s)
                             <li class="mb-2">
-                                <a style="text-decoration: none #010309" class="reset-anchor" href="#">{{ $s->style_name }}</a>
+                                <a style="text-decoration: none" class="reset-anchor"
+                                href={{request()->fullUrlWithQuery(['styleID' => $s->styleID]) }}>
+                                <p
+                                    class="{{$s->styleID == $ID ?'text-warning' : ''}} text-uppercase"
+                                >{{$s->style_name}}</p>                                </a>
                             </li>
 
                             @endforeach
@@ -46,10 +57,19 @@
                             <strong class="small text-uppercase fw-bold">Size</strong>
                         </div>
                         <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
+                            @php
+                                if (isset($sizeID)){
+                                    $sizeid = $sizeID;
+                                } else{
+                                    $sizeid = 0;
+                                }
+                            @endphp
+
                             @foreach($size as $size)
                             <div class="form-check mb-1">
-                                <input class="form-check-input" type="radio" id="{{$size->sizeID}}" name="size">
-                                <label class="form-check-label" for="checkbox_2">{{ $size->size_name }}</label>
+                                <a style="text-decoration: none" class="reset-anchor"
+                                href={{request()->fullUrlWithQuery(['sizeID' => $size->sizeID])}}>
+                                <p class="{{$size->sizeID == $sizeid ?'text-warning' : ''}}">{{$size->size_name}}</p>
                             </div>
                             @endforeach
 
@@ -80,36 +100,17 @@
                                 <label class="form-check-label" for="checkbox_2"> > 80$</label>
                             </div>
                         </ul>
-
-                        <div class="py-2 px-4 bg-dark text-white mb-3">
-                            <strong class="small text-uppercase fw-bold">Color</strong>
-                        </div>
-                        <div class="row">
-                            <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                                @foreach($color as $c)
-                                    <div class="form-check mb-1 col">
-                                        <input class="form-check-input" type="checkbox" id="{{$c->colorID}}" name="color{{$c->colorID}}" value="{{ $c->colorID }}">
-                                        <label class="form-check-label" for="checkbox_2">{{ $c->color_name }}</label>
-                                    </div>
-                                @endforeach
-
-                            </ul>
-
-                        </div>
-
                     </div>
                     <!-- SHOP LISTING-->
                     <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                         <div class="row mb-3 align-items-center">
-                            <div class="col-lg-6 mb-2 mb-lg-0">
-                                <p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>
-                            </div>
-                            <div class="col-lg-6">
+{{--                            <div class="col-lg-6 mb-2 mb-lg-0">--}}
+{{--                                <p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>--}}
+{{--                            </div>--}}
+                            <div class="offset-6 col-lg-6">
                                 <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
-                                    <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" href="#!"><i class="fas fa-th-large"></i></a></li>
-                                    <li class="list-inline-item text-muted me-3"><a class="reset-anchor p-0" href="#!"><i class="fas fa-th"></i></a></li>
                                     <li class="list-inline-item">
-                                        <select class="selectpicker" data-customclass="form-control form-control-sm">
+                                        <select data-customclass="form-control form-control-sm">
                                             <option value>Sort By </option>
                                             <option value="default">Default sorting </option>
                                             <option value="popularity">Popularity </option>
@@ -131,7 +132,7 @@
 
                                         </div>
                                             <a class="d-block" href="{{route('client.details',['productID' => $p->productID])}}">
-                                                <img  src="{{asset('/images/product/'.$p->image)}}" width="200px" height="250px"  alt="...">
+                                                <img  src="{{asset('images/product/'.$p->image)}}" width="200px" height="250px"  alt="...">
                                             </a>
                                         <div class="product-overlay">
                                             <ul class="mb-0 list-inline">
@@ -150,22 +151,25 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <h6> <a class="reset-anchor" href="{{route('client.details',['productID' => $p->productID])}}">Kui Ye Chen’s AirPods</a></h6>
-                                    <p class="small text-muted">$250</p>
+                                    <h6> <a class="reset-anchor" href="{{route('client.details',['productID' => $p->productID])}}">{{$p->product_name}}</a></h6>
+                                    <p class="small text-muted">${{$p->price}}</p>
                                 </div>
                             </div>
                             @endforeach
                         </div>
                         <!-- PAGINATION-->
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center justify-content-lg-end">
-                                <li class="page-item mx-1"><a class="page-link" href="#!" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                <li class="page-item mx-1 active"><a class="page-link" href="#!">1</a></li>
-                                <li class="page-item mx-1"><a class="page-link" href="#!">2</a></li>
-                                <li class="page-item mx-1"><a class="page-link" href="#!">3</a></li>
-                                <li class="page-item ms-1"><a class="page-link" href="#!" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                            </ul>
-                        </nav>
+{{--                        <nav aria-label="Page navigation example">--}}
+{{--                            <ul class="pagination justify-content-center justify-content-lg-end">--}}
+{{--                                <li class="page-item mx-1"><a class="page-link" href="#!" aria-label="Previous"><span aria-hidden="true">«</span></a></li>--}}
+{{--                                <li class="page-item mx-1 active"><a class="page-link" href="#!">1</a></li>--}}
+{{--                                <li class="page-item mx-1"><a class="page-link" href="#!">2</a></li>--}}
+{{--                                <li class="page-item mx-1"><a class="page-link" href="#!">3</a></li>--}}
+{{--                                <li class="page-item ms-1"><a class="page-link" href="#!" aria-label="Next"><span aria-hidden="true">»</span></a></li>--}}
+{{--                            </ul>--}}
+{{--                        </nav>--}}
+                        <div class="center">
+                            {{$product->links()}}
+                        </div>
                     </div>
                 </div>
             </div>
