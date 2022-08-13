@@ -50,9 +50,10 @@ class manualController extends Controller
 
         return view('auth.signin-customer');
     }
-//  sign in of admin's login and set session for display
-    public function customerSignin(Request $request){
 
+//  sign in of admin's login and set session for display
+
+    public function customerSignin(Request $request){
 //  check input can't empty, correct user name and password
         $this->validate($request,
             [
@@ -60,7 +61,7 @@ class manualController extends Controller
 //                    check username's request input, if username's data from database empty return messeage, if not empty continue
                     function($attribute, $value, $fails){
                         global $request;
-                        $DBuser = CustomerClass::getCustomerById($value);
+                        $DBuser = CustomerClass::getAllCustomer();
 
                         if ($DBuser === []) {
                             $fails('Wrong user\'s name or password! Please try again');

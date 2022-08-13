@@ -193,6 +193,16 @@ Route::group(['prefix' => 'client'], function (){
         'as' => 'client.shop'
     ]);
 
+    Route::get('updateInfo/{username}', [
+        'uses' => 'clientControllerWithRepos@confirmUpdateInfo',
+        'as' => 'client.updateInfo'
+    ]);
+
+    Route::get('updatePassword/{username}', [
+        'uses' => 'clientControllerWithRepos@confirmChangePassword',
+        'as' => 'client.changePassword'
+    ]);
+
     Route::get('style/{styleID}', [
         'uses' => 'clientControllerWithRepos@style',
         'as' => 'client.style'

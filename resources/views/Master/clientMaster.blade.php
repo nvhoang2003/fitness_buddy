@@ -18,7 +18,7 @@
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- gLightbox gallery-->
-    <link rel="stylesheet" href={{asset("v/endor/glightbox/css/glightbox.min.css")}}>
+    <link rel="stylesheet" href={{asset("/vendor/glightbox/css/glightbox.min.css")}}>
     <!-- Range slider-->
     <link rel="stylesheet" href={{asset("/vendor/nouislider/nouislider.min.css")}}>
     <!-- Choices CSS-->
