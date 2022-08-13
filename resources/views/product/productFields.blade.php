@@ -84,19 +84,6 @@
 </div>
 
 <div class="form-group">
-    <label for="brand" class="font-weight-bold">Brand</label>
-    <input type="text" class="form-control" id="brand" name="brand" value="{{old('brand') ?? $product->brand}}">
-    @if($errors->has('brand'))
-        @foreach($errors->get('brand') as $e)
-            <span class="danger help-box">
-                <i class="bi bi-x"></i>
-                {{$e}}
-            </span>
-        @endforeach
-    @endif
-</div>
-
-<div class="form-group">
     <label for="material" class="font-weight-bold">Material</label>
     <input type="text" class="form-control" id="material" name="material" value="{{old('material') ?? $product->material}}">
     @if($errors->has('material'))

@@ -73,23 +73,6 @@ class AdminRepos
         return DB::select($sql, [$styleID]);
     }
 
-    public static function  getSizeById($sizeID){
-        $sql = 'select s.* ';
-        $sql .= 'from size as s ';
-        $sql .= 'where s.sizeID = ? ';
-
-        return DB::select($sql, [$sizeID]);
-    }
-
-    public static function getSizeByProductID($sizeID){
-        $sql = 'select s.*, s.sizeID ';
-        $sql .= 'from size as s ';
-        $sql .= 'join product as s on s.sizeID = p.sizeID ';
-        $sql .= 'where s.sizeID = ? ';
-
-        return DB::select($sql, [$sizeID]);
-    }
-
     public static function getProductByStyleId($styleID){
         $sql = 'select s.*, s.styleID ';
         $sql .= 'from style as s ';
@@ -133,10 +116,9 @@ class AdminRepos
     }
 
     public static function getProductById($productID){
-        $sql = 'select p.*, s.size_name as size, style.style_name as style  ';
+        $sql = 'select p.*, style.style_name as style  ';
         $sql .= 'from product as p ';
-        $sql.='join size as s on p.sizeID = s.sizeID ';
-        $sql.='join style on p.SID = style.styleID ';
+        $sql.='join style on p.styleID = style.styleID ';
         $sql .= 'where p.productID = ?';
 
         return DB::select($sql, [$productID]);
