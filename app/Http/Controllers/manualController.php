@@ -131,6 +131,7 @@ class manualController extends Controller
             [
                 'username.required' => 'Name can not be empty.',
                 'password.required' => 'Password can not be empty.',
+                're_password.required' => 'Re_password can not be empty',
             ]
         );
 //  put variable userName and password equal request input
