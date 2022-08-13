@@ -1,10 +1,13 @@
 <div class="page-holder">
     <header class="header bg-white">
         <div class="container px-lg-3">
+{{--            Navbar                                                                              --}}
             <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0">
+{{--                Logo                                                                            --}}
                 <a class="navbar-brand" href={{route("client.homepage")}}>
                     <span class="fw-bold text-uppercase text-dark">Thrift Fashion</span>
                 </a>
+{{--                nav item                                                                        --}}
                 <button class="navbar-toggler navbar-toggler-end"
                         type="button"
                         data-bs-toggle="collapse"
@@ -17,28 +20,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <!-- Link-->
+                            <!-- Hompage Link-->
                             <a class="nav-link"
                                            href={{route("client.homepage")}}
                             >Home</a>
                         </li>
                         <li class="nav-item">
-                            <!-- Link-->
+                            <!--Product Link-->
                             <a class="nav-link"
                                            href={{route("client.shop")}}>Shop</a>
                         </li>
-{{--                        get style's data from database--}}
-{{--                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle"--}}
-{{--                                                         id="pagesDropdown" href="#" data-bs-toggle="dropdown"--}}
-{{--                                                         aria-haspopup="true" aria-expanded="false">Style</a>--}}
-{{--                            get style's dropdown--}}
-{{--                            <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown">--}}
-{{--                                @foreach($style as $s)--}}
-
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-                        </li>
                     </ul>
+
+{{--                add to cart, fake like page and login--}}
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href={{route("client.cart")}}>
                                 <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart
@@ -46,8 +40,24 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart me-1"></i>
                                 <small class="text-gray fw-normal"> (0)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href={{route("auth.customerAsk")}}>
-                                <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
+                        @php
+                            $userSession=   Illuminate\Support\Facades\Session::has('customer_name') ?
+                            Illuminate\Support\Facades\Session::get('customer_name') : null;
+                        @endphp
+                        <li class="nav-item">
+                            @if($userSession === null)
+                                <a class="nav-link" href={{route("auth.customerAsk")}}>
+                                    <i class="fas fa-user me-1 text-gray fw-normal"></i>
+                                    Login
+                                </a>
+                            @else
+                                <a class="nav-link" href={{route("auth.customerAsk")}}>
+                                    <i class="fas fa-user me-1 text-gray fw-normal"></i>
+                                    {{$userSession}}
+                                </a>
+                            @endif
+                        </li>
+
                     </ul>
                 </div>
             </nav>
