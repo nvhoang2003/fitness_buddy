@@ -70,7 +70,7 @@ class ProductRepos
     public static function insert($product){
         $sql = 'insert into product ';
         $sql .= '(product_name, product_status, price, launch_date, image, material, styleID, size, color) ';
-        $sql .= 'values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ';
+        $sql .= 'values (?, ?, ?, ?, ?, ?, ?, ?, ?) ';
 
         $result = DB::insert($sql,
             [

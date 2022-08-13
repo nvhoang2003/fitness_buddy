@@ -332,6 +332,7 @@ class adminController extends Controller
 
     public function productStore(Request $request){
 
+
         $this->validate($request,
             [
                 'product_name' => 'required',
@@ -359,18 +360,19 @@ class adminController extends Controller
         );
 
         if($request->has('image')){
-            $file = $request-> image;
+            $file = $request->image;
             $file_name = $file->getClientoriginalName();
-            $file->move(public_path('product'), $file_name);
-            $request->merge(['product' => $file_name]);
+            $file->move(public_path('images/product'), $file_name);
+            $request->merge(['image' => $file_name]);
+//            $request->image = $file_name;
         }
+
         $product = (object)[
-            'product_name' => $request->input('name'),
+            'product_name' => $request->input('product_name'),
             'image' => $request->input('image'),
             'product_status' => $request->input('product_status'),
             'price' => $request->input('price'),
             'launch_date' => $request->input('launch_date'),
-            'brand' => $request->input('brand'),
             'material' => $request->input('material'),
             'size' => $request->input('size'),
             'color' => $request->input('color'),
@@ -409,8 +411,8 @@ class adminController extends Controller
                 'price' => 'required',
                 'launch_date' => 'required',
                 'material' => 'required',
-                'size' => 'gt:0',
-                'color' => 'gt:0',
+                'size' => 'required',
+                'color' => 'required',
                 'style' => 'gt:0',
             ],
             [
@@ -420,8 +422,6 @@ class adminController extends Controller
                 'price.required' => 'Price not be empty',
                 'launch_date.required' => 'Launch date not be empty',
                 'material.required' => 'Material not be empty',
-                'size.gt' => 'Please select a Size!',
-                'color.gt' => 'Please select a Color!',
                 'style.gt' => 'Please select a Style!',
             ]
         );
