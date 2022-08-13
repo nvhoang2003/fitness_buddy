@@ -387,7 +387,7 @@ class adminController extends Controller
 
 
         return redirect()
-            ->action('adminController@index')
+            ->action('adminController@productIndex')
             ->with('msg', 'New Product with id: '.$newId.' has been inserted');
     }
 
