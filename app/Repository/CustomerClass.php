@@ -33,6 +33,14 @@ class CustomerClass
         );
     }
 
+    public static function getCustomerByUsername($username){
+        $sql = 'select c.* ';
+        $sql .= 'from customer as c ';
+        $sql .= 'where c.username = ? ';
+
+        return DB::select($sql,[$username]);
+    }
+
     public static function update($user){
         $sql = 'update from customer ';
         $sql .= '(username, password, fullname, email, phonenumber, gender) ';

@@ -41,8 +41,8 @@
                         <label for="gender"><i class="bi bi-gender-ambiguous"></i></label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="gender" id="genderM" value="Male"
-                                {{ ($gender == 'Male') ? 'checked' : '' }}
-                            >
+                                {{ ($gender == 'Male') ? 'checked' : '' }}>
+
                             <label class="form-check-label" for="genderM">
                                 Male
                             </label>
@@ -58,9 +58,9 @@
                         @if($errors->has('gender'))
                             @foreach($errors->get('gender') as $e)
                                 <span class="danger help-box">
-                                    <i class="bi bi-x"></i>
-                                    {{$e}}
-                                </span>
+                            <i class="bi bi-x"></i>
+                            {{$e}}
+                        </span>
                             @endforeach
                         @endif
                     </div>

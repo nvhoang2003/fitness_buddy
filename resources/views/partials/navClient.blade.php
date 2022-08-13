@@ -51,7 +51,7 @@
                                     Login
                                 </a>
                             @else
-                                <a class="nav-link" href={{route("auth.customerAsk")}}>
+                                <a class="nav-link" href={{route("client.updateInfo",['username' => $userSession])}}>
                                     <i class="fas fa-user me-1 text-gray fw-normal"></i>
                                     {{$userSession}}
                                 </a>
