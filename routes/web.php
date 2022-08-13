@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 //admin route
-Route::group(['prefix' => 'ThriftFashion'], function() {
+Route::group(['prefix' => 'ThriftFashion', 'middleware' => 'auth.admin'], function() {
     Route::group(['prefix' => 'admin'], function() {
         Route::get('/{username}',[
             'uses' => 'adminController@adminIndex',
