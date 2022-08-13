@@ -8,6 +8,7 @@
             <div class="signup-form">
                 <h2 class="form-title">Sign up</h2>
                 <form action="{{route('auth.customerSignup')}}" method="POST" class="register-form" id="register-form">
+                    @csrf
                     <div class="form-group">
                         <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         <input type="text" name="username" id="username" placeholder="Your Name"/>
@@ -31,7 +32,7 @@
             </div>
             <div class="signup-image">
                 <figure><img src="{{asset('images/signup-customer-image.jpg') }}images/signup-customer-image.jpg" alt="sing up image"></figure>
-                <a href="{{route('auth.customerFormSignup')}}" class="signup-image-link">I am already member</a>
+                <a href="{{route('auth.customerAsk')}}" class="signup-image-link">I am already member</a>
             </div>
         </div>
     </div>
