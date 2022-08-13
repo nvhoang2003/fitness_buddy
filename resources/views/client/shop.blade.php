@@ -150,8 +150,8 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <h6> <a class="reset-anchor" href="{{route('client.details',['productID' => $p->productID])}}">Kui Ye Chen’s AirPods</a></h6>
-                                    <p class="small text-muted">$250</p>
+                                    <h6> <a class="reset-anchor" href="{{route('client.details',['productID' => $p->productID])}}">{{$p->product_name}}</a></h6>
+                                    <p class="small text-muted">${{$p->price}}</p>
                                 </div>
                             </div>
                             @endforeach
