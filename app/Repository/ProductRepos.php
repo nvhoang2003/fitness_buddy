@@ -33,11 +33,19 @@ class ProductRepos
         return DB::select($sql, [$productID]);
     }
 
+    public static function getSizeByProductID($productID){
+        $sql = 'select p.size ';
+        $sql .= 'from product as p ';
+        $sql .= 'order by p.size';
+
+        return DB::select($sql, [$productID]);
+    }
+
     public static function getProductByStyleID($styleID){
         $sql = 'select p.*, style.style_name as style ';
         $sql .= 'from product as p ';
         $sql.='join style on p.styleID = style.styleID ';
-        $sql .= 'where p.SID = ?';
+        $sql .= 'where p.styleID = ?';
 
         return DB::select($sql, [$styleID]);
     }

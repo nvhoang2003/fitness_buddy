@@ -109,22 +109,10 @@
     @endif
 </div>
 
-
-
-@php
-    $sId = old('size') ?? $product->sizeID ?? null;
-@endphp
-
 <div class="form-group">
     <label for="size" class="font-weight-bold">Size</label>
-    <select name="size" class="form-control" id="size" required>
-        <option value="0">Please select a size !</option>
-        @foreach($size as $s)
-            <option value="{{$s->sizeID}}"
-                {{($sId !== null && $s->sizeID == $sId) ? 'selected' : ''}}
-            >{{$s->size_name }}</option>
-        @endforeach
-    </select>
+    <input type="text" class="form-control" id="size" name="size" value="{{old('size') ?? $product->size}}">
+
     @if($errors->has('size'))
         @foreach($errors->get('size') as $e)
             <span class="danger help-box">
@@ -135,20 +123,9 @@
     @endif
 </div>
 
-@php
-    $cId = old('color') ?? $product->ColorID ?? null;
-@endphp
-
 <div class="form-group">
     <label for="color" class="font-weight-bold">Color</label>
-    <select name="color" class="form-control" id="color" required>
-        <option value="0">Please select a Color !</option>
-        @foreach($color as $c)
-            <option value="{{$c->colorID}}"
-                {{($cId !== null && $c->colorID == $cId) ? 'selected' : ''}}
-            >{{$c->color_name }}</option>
-        @endforeach
-    </select>
+    <input type="text" class="form-control" id="color" name="color" value="{{old('color') ?? $product->color}}">
     @if($errors->has('color'))
         @foreach($errors->get('color') as $e)
             <span class="danger help-box">
@@ -159,7 +136,7 @@
     @endif
 </div>
 @php
-    $styleId = old('style') ?? $product->SID ?? null;
+    $styleID = old('style') ?? $product->styleID ?? null;
 @endphp
 
 <div class="form-group">
@@ -168,7 +145,7 @@
         <option value="0">Please select a Style !</option>
         @foreach($style as $st)
             <option value="{{$st->styleID}}"
-                {{($styleId !== null && $st->styleID == $styleId) ? 'selected' : ''}}
+                {{($styleID !== null && $st->styleID == $styleID) ? 'selected' : ''}}
             >{{$st->style_name }}</option>
         @endforeach
     </select>
