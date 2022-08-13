@@ -7,92 +7,50 @@ use Illuminate\Support\Facades\DB;
 class ProductRepos
 {
     public static function getAllProduct(){
-        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
+        $sql = 'select p.*, style.style_name as style ';
         $sql .= 'from product as p ';
-        $sql.='join size as s on p.sizeID = s.sizeID ';
-        $sql.='join style on p.SID = style.styleID ';
-        $sql.='join color on p.ColorID = color.colorID ';
-//        $sql .= 'order by p.productID';
+        $sql.='join style on p.styleID = style.styleID ';
+        $sql .= 'order by p.productID';
 
-//        return DB::select($sql);
-        return DB::table('product')
-            ->leftJoin('size', 'size.sizeID', '=', 'product.sizeID')
-            ->leftJoin('style', 'style.styleID', '=', 'product.SID')
-            ->leftJoin('color', 'color.colorID', '=', 'product.ColorID')
-            ->paginate(12);
+        return DB::select($sql);
     }
 
-//    public static function getallproductwithpagiation($offset){
-//        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
-//        $sql .= 'from product as p ';
-//        $sql.='join size as s on p.sizeID = s.sizeID ';
-//        $sql.='join style on p.SID = style.styleID ';
-//        $sql.='join color on p.ColorID = color.colorID ';
-//        $sql .= 'order by p.productID ';
-//        $sql .= 'limit 12 offset= ?';
-//
-//        return DB::select($sql, [$offset]);
-//    }
     public static function getProductByStyle($productID){
         $sql = 'select p.*, s.style_name as style ';
         $sql .= 'from product as p ';
-        $sql .='join style as s on p.SID = s.styleID ';
+        $sql .='join style as s on p.styleID = s.styleID ';
         $sql .= 'where p.productID = ?';
 
         return DB::select($sql, [$productID]);
     }
 
     public static function getProductById($productID){
-        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
+        $sql = 'select p.*, style.style_name as style ';
         $sql .= 'from product as p ';
-        $sql.='join size as s on p.sizeID = s.sizeID ';
-        $sql.='join style on p.SID = style.styleID ';
-        $sql.='join color on p.ColorID = color.colorID ';
+        $sql .='join style on p.styleID = style.styleID ';
         $sql .= 'where p.productID = ?';
 
         return DB::select($sql, [$productID]);
     }
 
     public static function getProductByStyleID($styleID){
-        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
+        $sql = 'select p.*, style.style_name as style ';
         $sql .= 'from product as p ';
-        $sql.='join size as s on p.sizeID = s.sizeID ';
-        $sql.='join style on p.SID = style.styleID ';
-        $sql.='join color on p.ColorID = color.colorID ';
+        $sql.='join style on p.styleID = style.styleID ';
         $sql .= 'where p.SID = ?';
 
         return DB::select($sql, [$styleID]);
     }
 
-    public static function getProductBySizeID($sizeID){
-        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
-        $sql .= 'from product as p ';
-        $sql.='join size as s on p.sizeID = s.sizeID ';
-        $sql.='join style on p.SID = style.styleID ';
-        $sql.='join color on p.ColorID = color.colorID ';
-        $sql .= 'where p.sizeID = ?';
-
-        return DB::select($sql, [$sizeID]);
-    }
-
     public static function getTopTrendingProduct(){
-        $sql = 'select p.*, s.size_name as size, style.style_name as style, color.color_name as color ';
+        $sql = 'select p.*, style.style_name as style ';
         $sql .= 'from product as p ';
-        $sql.='join size as s on p.sizeID = s.sizeID ';
-        $sql.='join style on p.SID = style.styleID ';
-        $sql.='join color on p.ColorID = color.colorID ';
+        $sql .='join style on p.styleID = style.styleID ';
         $sql .= 'where p.price >= 50 ';
 
         return DB::select($sql);
     }
 
-    public static function getAllSize(){
-        $sql = 'select s.* ';
-        $sql .= 'from size as s ';
-        $sql .= 'order by s.size_name';
-
-        return DB::select($sql);
-    }
     public static function getAllStyle(){
         $sql = 'select * ';
         $sql .= 'from style ';
@@ -100,17 +58,10 @@ class ProductRepos
 
         return DB::select($sql);
     }
-    public static function getAllColor(){
-        $sql = 'select co.* ';
-        $sql .= 'from color as co ';
-        $sql .= 'order by co.color_name';
-
-        return DB::select($sql);
-    }
 
     public static function insert($product){
         $sql = 'insert into product ';
-        $sql .= '(product_name, product_status, price, launch_date, image, brand, material, SID, sizeID, ColorID) ';
+        $sql .= '(product_name, product_status, price, launch_date, image, brand, material, styleID, size, color) ';
         $sql .= 'values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ';
 
         $result = DB::insert($sql,
@@ -122,9 +73,9 @@ class ProductRepos
                 $product->image,
                 $product->brand,
                 $product->material,
-                $product->SID,
-                $product->sizeID,
-                $product->ColorID
+                $product->styleID,
+                $product->size,
+                $product->color
 
             ]
         );
@@ -137,27 +88,10 @@ class ProductRepos
 
     }
 
-    public static function getSizeByProductId($productID){
-        $sql = 'select s.*, p.productID ';
-        $sql .= 'from size as s ';
-        $sql .= 'join product as p on s.sizeID = p.sizeID ';
-        $sql .= 'where p.productID = ? ';
-
-        return DB::select($sql, [$productID]);
-    }
-
-    public static function getColorByProductId($id){
-        $sql = 'select c.*, p.productID ';
-        $sql .= 'from Color as c ';
-        $sql .= 'join product as p on c.colorID = p.colorID ';
-        $sql .= 'where p.productID = ?';
-
-        return DB::select($sql, [$id]);
-    }
     public static function updateWithImage($product)
     {
         $sql = 'update product ';
-        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, image = ?, brand = ?, material = ?, SID= ?, sizeID= ?, ColorID = ? ';
+        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, image = ?, brand = ?, material = ?, styleID= ?, size= ?, color = ? ';
         $sql .= 'where productID = ? ';
 
         DB::update($sql, [
@@ -168,9 +102,9 @@ class ProductRepos
             $product->image,
             $product->brand,
             $product->material,
-            $product->SID,
-            $product->sizeID,
-            $product->ColorID,
+            $product->styleID,
+            $product->size,
+            $product->color,
             $product->productID
         ]);
     }
@@ -178,7 +112,7 @@ class ProductRepos
     public static function updateWithoutImage($product)
     {
         $sql = 'update product ';
-        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, brand = ?, material = ?, SID= ?, sizeID= ?, ColorID = ? ';
+        $sql .= 'set product_name = ?, product_status = ?, price = ?, launch_date = ?, brand = ?, material = ?, styleID= ?, size= ?, color = ? ';
         $sql .= 'where productID = ? ';
 
         DB::update($sql, [
@@ -188,9 +122,9 @@ class ProductRepos
             $product->launch_date,
             $product->brand,
             $product->material,
-            $product->SID,
-            $product->sizeID,
-            $product->ColorID,
+            $product->styleID,
+            $product->size,
+            $product->color,
             $product->productID
         ]);
     }

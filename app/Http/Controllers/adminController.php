@@ -290,6 +290,7 @@ class adminController extends Controller
     }
 
     //product index by hoang
+
     public function productIndex()
     {
         $product = ProductRepos::getAllProduct();
@@ -298,12 +299,10 @@ class adminController extends Controller
                 'product'=>$product
             ]);
     }
-
+//    product show
     public function productShow($productID)
     {
         $product = ProductRepos::getProductById($productID);
-//        $brand = BrandRepos::getBrandByProductId($product_id);
-//        $category = CategoryRepos::getCategoryByProductId($product_id);
 
         return view('product.show',
             [
@@ -311,10 +310,8 @@ class adminController extends Controller
             ]
         );
     }
-
+//  product create
     public function productCreate(){
-        $size = ProductRepos::getAllSize();
-        $color = ProductRepos::getAllColor();
         $style = ProductRepos::getAllStyle();
         return view('product.create', [
             'product'=> (object)[
@@ -326,9 +323,10 @@ class adminController extends Controller
                 'image' => '',
                 'brand' => '',
                 'material' => '',
+                'size' => '',
+                'color' => '',
             ],
-            'size' => $size,
-            'color' => $color,
+
             'style' => $style
         ]);
     }
@@ -344,21 +342,21 @@ class adminController extends Controller
                 'launch_date' => 'required',
                 'brand' => 'required',
                 'material' => 'required',
-                'size' => 'gt:0',
-                'color' => 'gt:0',
+                'size' => 'required',
+                'color' => 'required',
                 'style' => 'gt:0',
             ],
             [
-                'product_name.required' => 'Name not be empty',
+                'product_name.required' => 'Name can not be empty',
                 'image.required' => 'Please choose your image !',
                 'image.image' => 'The file under validation must be an image (jpg, jpeg, png, bmp, gif, svg, or webp).',
                 'product_status.required' => 'Status not be empty (stock-in, stock-out)',
-                'price.required' => 'Price not be empty',
-                'launch_date.required' => 'Launch date not be empty',
-                'brand.required' => 'Brand not be empty',
-                'material.required' => 'Material not be empty',
-                'size.gt' => 'Please select a Size!',
-                'color.gt' => 'Please select a Color!',
+                'price.required' => 'Price can not be empty',
+                'launch_date.required' => 'Launch date can not be empty',
+                'brand.required' => 'Brand can not be empty',
+                'material.required' => 'Material can not be empty',
+                'size.gt' => 'Size can not be empty',
+                'color.gt' => 'Color can not be empty',
                 'style.gt' => 'Please select a Style!',
             ]
         );
@@ -377,9 +375,9 @@ class adminController extends Controller
             'launch_date' => $request->input('launch_date'),
             'brand' => $request->input('brand'),
             'material' => $request->input('material'),
-            'sizeID' => $request->input('size'),
-            'ColorID' => $request->input('color'),
-            'SID' => $request->input('style'),
+            'size' => $request->input('size'),
+            'color' => $request->input('color'),
+            'styleID' => $request->input('style'),
         ];
 
         $newId = ProductRepos::insert($product);
@@ -395,13 +393,9 @@ class adminController extends Controller
 
     public function productEdit($productID){
         $product = ProductRepos::getProductById($productID);
-        $size = ProductRepos::getAllSize();
-        $color = ProductRepos::getAllColor();
         $style = ProductRepos::getAllStyle();
         return view('product.edit',[
                 'product'=> $product[0],
-                'size'=> $size,
-                'color' => $color,
                 'style' => $style
         ]);
     }
@@ -452,9 +446,9 @@ class adminController extends Controller
             'launch_date' => $request->input('launch_date'),
             'brand' => $request->input('brand'),
             'material' => $request->input('material'),
-            'sizeID' => $request->input('size'),
-            'ColorID' => $request->input('color'),
-            'SID' => $request->input('style'),
+            'size' => $request->input('size'),
+            'color' => $request->input('color'),
+            'styleID' => $request->input('style'),
         ];
         if($product->image === null){
             ProductRepos::updateWithoutImage($product);
@@ -469,14 +463,10 @@ class adminController extends Controller
     public function productConfirm($productID){
 
         $product = ProductRepos::getProductById($productID);
-        $color = ProductRepos::getColorByProductId($productID);
-        $size = ProductRepos::getSizeByProductId($productID);
 
         return view('product.confirm',
             [
                 'product' => $product[0],
-                'color' => $color[0],
-                'size' => $size[0]
             ]
         );
     }
