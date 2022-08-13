@@ -40,7 +40,6 @@
     <link rel="stylesheet" href={{asset("/css/custom.css")}}>
     <!-- Favicon-->
     <link rel="shortcut icon" href={{asset("/img/favicon.png")}}>
-    <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
 </head>
 <body>
 
@@ -48,7 +47,7 @@
 @yield('main')
 
 @yield('script')
-<hr md="5">
+
 @include('partials.client_footer')
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

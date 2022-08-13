@@ -29,8 +29,6 @@
                         <h5 class="text-uppercase mb-4">Categories</h5>
                         <?php
                         $style = \App\Repository\ProductRepos::getAllStyle();
-                        $size = \App\Repository\ProductRepos::getAllSize();
-                        $color = \App\Repository\ProductRepos::getAllColor();
                         ?>
                         <div class="py-2 px-4 bg-dark text-white mb-3"><strong class="small text-uppercase fw-bold">Style</strong></div>
                         <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
@@ -45,7 +43,7 @@
                             @foreach($style as $s)
                             <li class="mb-2">
                                 <a style="text-decoration: none" class="reset-anchor"
-                                href={{request()->fullUrlWithQuery(['styleID' => $s->styleID]) }}>
+                                href={{route('client.style',['styleID' => $s->styleID])}}>
                                 <p
                                     class="{{$s->styleID == $ID ?'text-warning' : ''}} text-uppercase"
                                 >{{$s->style_name}}</p>                                </a>
@@ -53,25 +51,19 @@
 
                             @endforeach
                         </ul>
-                        <div class="py-2 px-4 bg-dark text-white mb-3">
-                            <strong class="small text-uppercase fw-bold">Size</strong>
-                        </div>
+{{--                        <div class="py-2 px-4 bg-dark text-white mb-3">--}}
+{{--                            <strong class="small text-uppercase fw-bold">Size</strong>--}}
+{{--                        </div>--}}
                         <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                            @php
-                                if (isset($sizeID)){
-                                    $sizeid = $sizeID;
-                                } else{
-                                    $sizeid = 0;
-                                }
-                            @endphp
 
-                            @foreach($size as $size)
-                            <div class="form-check mb-1">
-                                <a style="text-decoration: none" class="reset-anchor"
-                                href={{request()->fullUrlWithQuery(['sizeID' => $size->sizeID])}}>
-                                <p class="{{$size->sizeID == $sizeid ?'text-warning' : ''}}">{{$size->size_name}}</p>
-                            </div>
-                            @endforeach
+
+{{--                            @foreach($size as $size)--}}
+{{--                            <div class="form-check mb-1">--}}
+{{--                                <a style="text-decoration: none" class="reset-anchor"--}}
+{{--                                href={{request()->fullUrlWithQuery(['sizeID' => $size->sizeID])}}>--}}
+{{--                                <p class="{{$size->sizeID == $sizeid ?'text-warning' : ''}}">{{$size->size_name}}</p>--}}
+{{--                            </div>--}}
+{{--                            @endforeach--}}
 
                         </ul>
                         <div class="py-2 px-4 bg-dark text-white mb-3">
@@ -104,15 +96,15 @@
                     <!-- SHOP LISTING-->
                     <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                         <div class="row mb-3 align-items-center">
-{{--                            <div class="col-lg-6 mb-2 mb-lg-0">--}}
-{{--                                <p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>--}}
-{{--                            </div>--}}
+                            <div class="col-lg-6 mb-2 mb-lg-0">
+                                <p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>
+                            </div>
                             <div class="offset-6 col-lg-6">
                                 <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
                                     <li class="list-inline-item">
                                         <select data-customclass="form-control form-control-sm">
                                             <option value>Sort By </option>
-                                            <option value="default">Default sorting </option>
+                                            <option value="default"> Default sorting </option>
                                             <option value="popularity">Popularity </option>
                                             <option value="low-high">Price: Low to High </option>
                                             <option value="high-low">Price: High to Low </option>
@@ -129,10 +121,9 @@
                                 <div class="product text-center">
                                     <div class="mb-3 position-relative">
                                         <div class="badge text-white bg-">
-
                                         </div>
-                                            <a class="d-block" href="{{route('client.details',['productID' => $p->productID])}}">
-                                                <img  src="{{asset('images/product/'.$p->image)}}" width="200px" height="250px"  alt="...">
+                                            <a class="" href="{{route('client.details',['productID' => $p->productID])}}">
+                                                <img  src="{{asset('images/product/'.$p->image)}}" width="260px" height="300px"  alt="...">
                                             </a>
                                         <div class="product-overlay">
                                             <ul class="mb-0 list-inline">
