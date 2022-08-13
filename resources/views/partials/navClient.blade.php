@@ -55,8 +55,17 @@
                                     <i class="fas fa-user me-1 text-gray fw-normal"></i>
                                     {{$userSession}}
                                 </a>
+
                             @endif
                         </li>
+                        @if($userSession !== null)
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{route("auth.signout")}}">
+                                    <i class="bi bi-box-arrow-left"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        @endif
 
                     </ul>
                 </div>

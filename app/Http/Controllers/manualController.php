@@ -113,10 +113,20 @@ class manualController extends Controller
 //  sign in of admin's login and set session for display
     public function customerSignup(Request $request){
 
-//  check input can't empty, correct user name and password
+//  check input can't empty, username cannot duplicate
         $this->validate($request,
             [
-                'username' => ['required'],
+                'username' => ['required',
+                    function($attribute, $value, $fails){
+                        $users = CustomerClass::getAllCustomer();
+
+                        foreach($users as $u) {
+                            if($u->username == $value){
+                                $fails('This Username Already Exist.');
+                            }
+                        }
+                    }
+                ],
                 'email' => ['required', 'email:rfc,dns'],
                 'fullname' => ['required'],
                 'phonenumber' => ['required'],
