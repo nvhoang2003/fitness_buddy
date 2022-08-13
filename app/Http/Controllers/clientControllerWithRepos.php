@@ -23,11 +23,6 @@ class clientControllerWithRepos extends Controller
 
     }
 
-    public function cart(){
-        return view('client.cart');
-    }
-
-
     public function shop()
     {
 //        $product = ProductRepos::getallproductwithpagiation($offset);
@@ -39,6 +34,8 @@ class clientControllerWithRepos extends Controller
 //            'color' => $color
         ]);
     }
+
+
 
     public function style($styleID){
         $product = ProductRepos::getProductByStyleID($styleID);
@@ -80,5 +77,18 @@ class clientControllerWithRepos extends Controller
         ]);
     }
 
+    public function cart(){
+        return view('client.cart');
+    }
+
+    public function checkout(){
+        return view('client.checkout');
+    }
+    public function aboutUs(){
+        return view('client.aboutUS');
+    }
+    public function contactUs(){
+        return view('client.contactUs');
+    }
 
 }

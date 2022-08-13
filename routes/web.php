@@ -213,13 +213,25 @@ Route::group(['prefix' => 'client'], function (){
         'as' => 'client.details'
     ]);
 
-    Route::get('/{productID}',[
-        'uses' =>'clientControllerWithRepos@details',
-        'as' => 'client.search'
-    ]);
+
 
     Route::get('cart', [
         'uses' => 'clientControllerWithRepos@cart',
         'as' => 'client.cart'
+    ]);
+
+    Route::get('checkout',[
+        'uses' => 'clientControllerWithRepos@checkout',
+        'as' => 'client.checkout'
+    ]);
+
+    Route::get('aboutUs',[
+        'uses' => 'clientControllerWithRepos@aboutUs',
+        'as' => 'client.aboutUs'
+    ]);
+
+    Route::get('contactUs',[
+        'uses' => 'clientControllerWithRepos@contactUs',
+        'as' => 'client.contactUs'
     ]);
 });

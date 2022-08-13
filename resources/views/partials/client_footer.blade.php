@@ -4,8 +4,8 @@
             <div class="col-md-4 mb-3 mb-md-0">
                 <h6 class="text-uppercase mb-3">Customer services</h6>
                 <ul class="list-unstyled mb-0">
-                    <li><a class="footer-link" href="#!">Help &amp; Contact Us</a></li>
-                    <li><a class="footer-link" href="#!">Returns &amp; Refunds</a></li>
+                    <li><a class="footer-link" href="{{route("client.contactUs")}}">Help &amp; Contact Us</a></li>
+                    <li><a class="footer-link" href="3">About US</a></li>
                     <li><a class="footer-link" href="#!">Online Stores</a></li>
                     <li><a class="footer-link" href="#!">Terms &amp; Conditions</a></li>
                 </ul>
@@ -13,26 +13,26 @@
             <div class="col-md-4 mb-3 mb-md-0">
                 <h6 class="text-uppercase mb-3">Company</h6>
                 <ul class="list-unstyled mb-0">
-                    <li><a class="footer-link" href="#!">What We Do</a></li>
-                    <li><a class="footer-link" href="#!">Available Services</a></li>
-                    <li><a class="footer-link" href="#!">Latest Posts</a></li>
-                    <li><a class="footer-link" href="#!">FAQs</a></li>
+                    <li><a class="footer-link" href="{{route("client.aboutUs")}}">What We Do</a></li>
+                    <li><a class="footer-link" href="">Available Services</a></li>
+                    <li><a class="footer-link" href="">Latest Posts</a></li>
+                    <li><a class="footer-link" href="">FAQs</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <h6 class="text-uppercase mb-3">Social media</h6>
                 <ul class="list-unstyled mb-0">
-                    <li><a class="footer-link" href="#!">Twitter</a></li>
-                    <li><a class="footer-link" href="#!">Instagram</a></li>
-                    <li><a class="footer-link" href="#!">Tumblr</a></li>
-                    <li><a class="footer-link" href="#!">Pinterest</a></li>
+                    <li><i class="fa fa-twitter-square" aria-hidden="true"></i>&nbsp;<a class="footer-link" href="#!">Twitter</a></li>
+                    <li><i class="fa fa-instagram" aria-hidden="true"></i>&nbsp;<a class="footer-link" href="#!">Instagram</a></li>
+                    <li><i class="fa fa-tumblr-square" aria-hidden="true"></i>&nbsp;<a class="footer-link" href="#!">Tumblr</a></li>
+                    <li><i class="fa fa-pinterest-square" aria-hidden="true"></i>&nbsp;<a class="footer-link" href="#!">Pinterest</a></li>
                 </ul>
             </div>
         </div>
-        <div class="border-top pt-4" style="    border-color: #1d1d1d !important">
+        <div class="border-top pt-4" style="border-color: #1d1d1d !important">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="small text-muted mb-0">&copy; 2022 All rights reserved.</p>
+                    <p class="small text-muted mb-0 ">&copy; 2022 All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
 {{--                                            <p class="small text-muted mb-0">Template designed by <a class="text-white reset-anchor" href="https://bootstrapious.com/p/boutique-bootstrap-e-commerce-template">Bootstrapious</a></p>--}}
