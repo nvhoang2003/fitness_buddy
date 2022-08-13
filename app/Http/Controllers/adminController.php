@@ -337,7 +337,7 @@ class adminController extends Controller
         $this->validate($request,
             [
                 'product_name' => 'required',
-                'image' => 'required, image',
+                'image' => 'image',
                 'product_status' => 'required',
                 'price' => 'required',
                 'launch_date' => 'required',
@@ -349,7 +349,6 @@ class adminController extends Controller
             ],
             [
                 'product_name.required' => 'Name can not be empty',
-                'image.required' => 'Please choose your image !',
                 'image.image' => 'The file under validation must be an image (jpg, jpeg, png, bmp, gif, svg, or webp).',
                 'product_status.required' => 'Status not be empty (stock-in, stock-out)',
                 'price.required' => 'Price can not be empty',
@@ -367,7 +366,6 @@ class adminController extends Controller
             $file_name = $file->getClientoriginalName();
             $file->move(public_path('images/product'), $file_name);
             $request->merge(['image' => $file_name]);
-//            $request->image = $file_name;
         }
 
         $product = (object)[

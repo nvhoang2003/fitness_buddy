@@ -32,17 +32,17 @@ class clientControllerWithRepos extends Controller
     {
 //        $product = ProductRepos::getallproductwithpagiation($offset);
         $product = ProductRepos::getAllProduct();
-        $color = ProductRepos::getAllColor();
+//        $color = ProductRepos::getAllColor();
 
         return view('client.shop', [
             'product' => $product,
-            'color' => $color
+//            'color' => $color
         ]);
     }
 
     public function style($styleID){
         $product = ProductRepos::getProductByStyleID($styleID);
-        $color = ProductRepos::getAllColor();
+//        $color = ProductRepos::getAllColor();
 
 
         return view('client.shop', [
@@ -53,7 +53,7 @@ class clientControllerWithRepos extends Controller
 
     public function size($sizeID){
         $product = ProductRepos::getProductBySizeID($sizeID);
-        $color = ProductRepos::getAllColor();
+//        $color = ProductRepos::getAllColor();
 
 
         return view('client.shop', [
