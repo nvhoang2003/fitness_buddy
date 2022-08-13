@@ -118,6 +118,9 @@ class manualController extends Controller
             [
                 'username' => ['required'],
                 'email' => ['required', 'email:rfc,dns'],
+                'fullname' => ['required'],
+                'phonenumber' => ['required'],
+                'gender' => ['required'],
                 'password' => ['required'],
                 're_password' => ['required',
                     function($attribute, $value, $fails){
@@ -132,6 +135,9 @@ class manualController extends Controller
             [
                 'username.required' => 'Name can not be empty.',
                 'email.required' => 'Email can not be empty.',
+                'fullname.required' => 'Full Name can not be empty.',
+                'phonenumber.required' => 'Phonenumber can not be empty.',
+                'gender.required' => 'Gender can not be empty.',
                 'email.email' => 'Email must correct valid email.',
                 'password.required' => 'Password can not be empty.',
                 're_password.required' => 'Re_password can not be empty',
@@ -140,16 +146,17 @@ class manualController extends Controller
 //
         $user = (object)[
             'username' => $request->input('username'),
-            'contact' => $request->input('contact'),
+            'phonenumber' => $request->input('phonenumber'),
+            'gender' => $request->input('gender'),
+            'password' => $request->input('password'),
             'email' => $request->input('email'),
         ];
-        // update from admin with data "$user"
-        AdminRepos::adminUpdateInfo($user);
+        // update from customer table with data is "$user"
+
+        CustomerClass::insert($user);
+
         return redirect()
-            ->action('adminController@adminConfirmUpdateInfo',['username' => $user->username])
-            ->with('msg', 'Update Successfully');
-
-
+            ->action('manualController@customerAsk');
     }
 
 //logout of customer's account
