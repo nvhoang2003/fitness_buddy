@@ -142,25 +142,25 @@
               <hr class="md-8">
               <h2 class="h5 text-uppercase mb-4">Related products</h2>
 
-                  @php
-                      $productWithStyle = \App\Repository\ProductRepos::getProductByStyle($product->style);
-                  @endphp
+{{--                  @php--}}
+{{--                      $productWithStyle = \App\Repository\ProductRepos::getProductByStyle($product->style);--}}
+{{--                  @endphp--}}
               <div class="row">
                   <div class="MultiCarousel" data-items="1,2,3,3" data-slide="1" id="MultiCarousel"  data-interval="1000">
                       <div class="MultiCarousel-inner">
-                          @foreach($productWithStyle as $p)
-                              <a href="{{route('client.details',['productID' => $p->productID])}}">
-                                  <div class="item">
-                                      <div class="pad25">
-                                          <img class="card-img-top" src="/image/{{$p->image}}" alt="Card image cap">
-                                          <div class="card-body">
-                                              <h5 class="card-title">{{$p->product_name}}</h5>
-                                              <p class="card-text">$ {{$p->price}}</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </a>
-                          @endforeach
+{{--                          @foreach($productWithStyle as $p)--}}
+{{--                              <a href="{{route('client.details',['productID' => $p->productID])}}">--}}
+{{--                                  <div class="item">--}}
+{{--                                      <div class="pad25">--}}
+{{--                                          <img class="card-img-top" src="/image/{{$p->image}}" alt="Card image cap">--}}
+{{--                                          <div class="card-body">--}}
+{{--                                              <h5 class="card-title">{{$p->product_name}}</h5>--}}
+{{--                                              <p class="card-text">$ {{$p->price}}</p>--}}
+{{--                                          </div>--}}
+{{--                                      </div>--}}
+{{--                                  </div>--}}
+{{--                              </a>--}}
+{{--                          @endforeach--}}
                       </div>
 {{--                      <button class="btn btn-primary leftLst"><</button>--}}
                       <div class="row">
