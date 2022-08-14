@@ -162,4 +162,56 @@ class ProductRepos
 
         return DB::select($sql, [$styleID]);
     }
+
+    public static function insertFeedback($feedback){
+        $sql = 'insert into feed_back ';
+        $sql .= '(date_feedback, feedback) ';
+        $sql .= 'values(?,?)';
+
+        return DB::insert($sql, [$feedback->date, $feedback->feedback]);
+    }
+
+    public static function getProductByPrice1(){
+//        return DB::select($sql, [$styleID]);
+        return DB::table('product')
+            ->select('product.*')
+            ->where('product.price', '<', 20)
+            ->paginate(12);
+    }
+
+    public static function getProductByPrice2(){
+//        return DB::select($sql, [$styleID]);
+        return DB::table('product')
+            ->select('product.*')
+            ->where('product.price', '>=', 20)
+            ->where('product.price','<', '40')
+            ->paginate(12);
+    }
+
+    public static function getProductByPrice3(){
+//        return DB::select($sql, [$styleID]);
+        return DB::table('product')
+            ->select('product.*')
+            ->where('product.price', '>=', 40)
+            ->where('product.price','<', 60)
+            ->paginate(12);
+    }
+
+    public static function getProductByPrice4(){
+//        return DB::select($sql, [$styleID]);
+        return DB::table('product')
+            ->select('product.*')
+            ->where('product.price', '>=', 60)
+            ->where('product.price','<', 80)
+            ->paginate(12);
+    }
+
+    public static function getProductByPrice5(){
+//        return DB::select($sql, [$styleID]);
+        return DB::table('product')
+            ->select('product.*')
+            ->where('product.price', '>=', 80)
+
+            ->paginate(12);
+    }
 }

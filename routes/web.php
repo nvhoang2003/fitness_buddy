@@ -137,8 +137,13 @@ Route::group(['prefix' => 'ThriftFashion', 'middleware' => 'auth.admin'], functi
             'as' => 'style.destroy'
         ]);
     });
+
+    Route::get('feedback',[
+       'uses' =>'adminController@feedback',
+       'as' => 'feedback.index'
+    ]);
 });
-//signin, signup, signout route
+
 Route::group(['prefix' => 'auth'], function(){
     Route::get('login',[
         'uses' => 'manualController@ask',
@@ -208,9 +213,9 @@ Route::group(['prefix' => 'client'], function (){
         'as' => 'client.style'
     ]);
 
-    Route::get('size/{sizeID}',[
-       'uses' =>'clientControllerWithRepos@size',
-       'as' => 'client.size'
+    Route::get('price/{priceID}',[
+       'uses' =>'clientControllerWithRepos@price',
+       'as' => 'client.price'
     ]);
 
     Route::get('price/{price}', [
@@ -245,8 +250,19 @@ Route::group(['prefix' => 'client'], function (){
         'as' => 'client.contactUs'
     ]);
 
+
+    Route::get('login', [
+        'uses' => 'clientControllerWithRepos@login',
+        'as' => 'client.login'
+    ]);
+
     Route::get('feedback',[
         'uses' => 'clientControllerWithRepos@feedback',
-        'as' => 'client.feedback'
+        'as'=> 'client.feedback'
+    ]);
+
+    Route::post('feedback',[
+        'uses' => 'clientControllerWithRepos@storeFeedback',
+        'as'=> 'client.store'
     ]);
 });

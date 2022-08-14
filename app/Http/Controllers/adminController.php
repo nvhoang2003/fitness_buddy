@@ -381,7 +381,7 @@ class adminController extends Controller
             'styleID' => $request->input('style'),
             'description' => $request->input('description')
         ];
-
+//        dd($product);
         $newId = ProductRepos::insert($product);
 
 
@@ -485,6 +485,14 @@ class adminController extends Controller
         return redirect()
             ->action('adminController@productIndex')
             ->with('msg', 'Delete successfully');
+    }
+
+    public function feedback(){
+        $feedback = AdminRepos::getAllFeedback();
+
+        return view('admin.feedback',[
+            'feedback' => $feedback
+        ] );
     }
 
 

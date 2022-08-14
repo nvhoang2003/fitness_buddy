@@ -124,6 +124,12 @@ class AdminRepos
         return DB::select($sql, [$productID]);
     }
 
+    public static function getAllFeedback(){
+        $sql = 'select * ';
+        $sql .= 'from feed_back';
+
+        return DB::select($sql);
+    }
 }
 
 

@@ -36,6 +36,7 @@
     <link rel="stylesheet"
           href={{asset("/css/style.default.css")}}
           id="theme-stylesheet">
+    <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href={{asset("/css/custom.css")}}>
     <!-- Favicon-->
@@ -45,6 +46,7 @@
 <body>
 
 @include('partials.navClient')
+
 @yield('main')
 
 @yield('script')

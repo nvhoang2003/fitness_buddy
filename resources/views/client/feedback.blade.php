@@ -3,7 +3,7 @@
 @section('main')
 
     <div class="container">
-        <section class="py-5 " style="background-color: #8d909a">
+        <section class="py-5 bg-light">
             <div class="container">
                 <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
                     <div class="col-lg-6">
@@ -11,7 +11,7 @@
                     </div>
                     <div class="col-lg-6 text-lg-end">
                         <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-lg-end mb-0 px-0 " >
+                            <ol class="breadcrumb justify-content-lg-end mb-0 px-0 bg-light">
                                 <li class="breadcrumb-item"><a class="text-dark" href="{{route('client.homepage')}}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Feedback</li>
                             </ol>
@@ -21,19 +21,33 @@
             </div>
         </section>
         <section class="py-5">
-            <div class="row">
-                <div class="col">
-                    <img src="{{asset("icons/feedback.png")}}" class="d-block w-100" alt="...">
-                </div>
-                <div class="col">
-                    <h3>Customer name</h3>
-                    <div class="input-group">
+            <form action="{{route('client.store')}}" method="post">
+                @csrf
+                <div class="row">
+                    <div class="col">
+                        <img src="{{asset("icons/feedback.png")}}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="col">
+                        <h3>Please give me your feed back <i class="fa-solid fa-face-laugh"></i></h3>
+                        <div class="input-group">
+                            <input type="text" name="feedback" id="feedback" class="form-control" aria-label="With textarea" placeholder="Please Comment here ...."></input>
+                        </div>
+                        @if($errors->has('feedback'))
+                            @foreach($errors->get('feedback') as $e)
+                                <span class="danger help-box">
+                                    <i class="bi bi-x"></i>
+                                    {{$e}}
+                                </span>
+                            @endforeach
+                        @endif
+                        <div>
+                            <input type="submit" class="btn btn-sm btn-primary" value="Send">
+                        </div>
 
-                        <textarea class="form-control" aria-label="With textarea" placeholder="Please Comment here ...."></textarea>
                     </div>
                 </div>
+            </form>
 
-            </div>
         </section>
 
     </div>

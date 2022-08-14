@@ -51,46 +51,47 @@
 
                             @endforeach
                         </ul>
-{{--                        <div class="py-2 px-4 bg-dark text-white mb-3">--}}
-{{--                            <strong class="small text-uppercase fw-bold">Size</strong>--}}
-{{--                        </div>--}}
-                        <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
 
-
-{{--                            @foreach($size as $size)--}}
-{{--                            <div class="form-check mb-1">--}}
-{{--                                <a style="text-decoration: none" class="reset-anchor"--}}
-{{--                                href={{request()->fullUrlWithQuery(['sizeID' => $size->sizeID])}}>--}}
-{{--                                <p class="{{$size->sizeID == $sizeid ?'text-warning' : ''}}">{{$size->size_name}}</p>--}}
-{{--                            </div>--}}
-{{--                            @endforeach--}}
-
-                        </ul>
                         <div class="py-2 px-4 bg-dark text-white mb-3">
                             <strong class="small text-uppercase fw-bold">Price</strong>
 
                         </div>
+                        @php
+                            if(!isset($priceID)){
+                                $priceID =0;
+                            }
+                        @endphp
                         <ul class="list-unstyled small text-muted ps-lg-4 font-weight-normal">
-                            <div class="form-check mb-1">
-                                <input class="form-check-input" type="radio" id="price1" name="price">
-                                <label class="form-check-label" for="checkbox_2">< 20$</label>
-                            </div>
-                            <div class="form-check mb-1">
-                                <input class="form-check-input" type="radio" id="price2" name="price">
-                                <label class="form-check-label" for="checkbox_2">20$ - 40$</label>
-                            </div>
-                            <div class="form-check mb-1">
-                                <input class="form-check-input" type="radio" id="price3" name="price">
-                                <label class="form-check-label" for="checkbox_2">40$ - 60$</label>
-                            </div>
-                            <div class="form-check mb-1">
-                                <input class="form-check-input" type="radio" id="price4" name="price">
-                                <label class="form-check-label" for="checkbox_2">60$ - 80$</label>
-                            </div>
-                            <div class="form-check mb-1">
-                                <input class="form-check-input" type="radio" id="price5" name="price">
-                                <label class="form-check-label" for="checkbox_2"> > 80$</label>
-                            </div>
+                            <a style="text-decoration: none" class="reset-anchor"
+                               href={{route('client.price',[1])}}>
+                                <p
+                                    class="{{ $priceID == 1 ?'text-warning' : ''}} text-uppercase"
+                                ><20$</p>
+                            </a>
+                            <a style="text-decoration: none" class="reset-anchor"
+                               href={{route('client.price',[2])}}>
+                                <p
+                                    class="{{ $priceID == 2 ?'text-warning' : ''}} text-uppercase"
+                                >20$-40$</p>
+                            </a>
+                            <a style="text-decoration: none" class="reset-anchor"
+                               href={{route('client.price',[3])}}>
+                                <p
+                                    class="{{ $priceID == 3 ?'text-warning' : ''}} text-uppercase"
+                                ><40$-60$</p>
+                            </a>
+                            <a style="text-decoration: none" class="reset-anchor"
+                               href={{route('client.price',[4])}}>
+                                <p
+                                    class="{{ $priceID == 4 ?'text-warning' : ''}} text-uppercase"
+                                >60$-80$</p>
+                            </a>
+                            <a style="text-decoration: none" class="reset-anchor"
+                               href={{route('client.price',[5])}}>
+                                <p
+                                    class="{{ $priceID == 5 ?'text-warning' : ''}} text-uppercase"
+                                >>80$</p>
+                            </a>
                         </ul>
                     </div>
                     <!-- SHOP LISTING-->
@@ -104,10 +105,6 @@
                                     <li class="list-inline-item">
                                         <select data-customclass="form-control form-control-sm">
                                             <option value>Sort By </option>
-                                            <option value="default"> Default sorting </option>
-                                            <option value="popularity">Popularity </option>
-                                            <option value="low-high">Price: Low to High </option>
-                                            <option value="high-low">Price: High to Low </option>
                                         </select>
                                     </li>
                                 </ul>

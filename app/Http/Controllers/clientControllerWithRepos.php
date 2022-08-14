@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Repository\AdminRepos;
-use App\Repository\CustomerClass;
 use App\Repository\ProductRepos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Carbon\Carbon;
 class clientControllerWithRepos extends Controller
 {
     public function homepage()
@@ -52,6 +51,29 @@ class clientControllerWithRepos extends Controller
         ]);
     }
 
+    public function price($priceID){
+        if($priceID ==1){
+            $product = ProductRepos::getProductByPrice1();
+        } elseif ($priceID ==2){
+            $product = ProductRepos::getProductByPrice2();
+        } elseif ($priceID ==3){
+            $product = ProductRepos::getProductByPrice3();
+        } elseif ($priceID ==4){
+            $product = ProductRepos::getProductByPrice4();
+        } else{
+            $product = ProductRepos::getProductByPrice5();
+        }
+
+//        $color = ProductRepos::getAllColor();
+//            dd($priceID);
+
+        return view('client.shop', [
+            'product' => $product,
+//            'sizeID' => $sizeID
+              'priceID'=>$priceID,
+        ]);
+    }
+
     public function details($productID)
     {
         $product = ProductRepos::getAllProduct();
@@ -78,6 +100,26 @@ class clientControllerWithRepos extends Controller
     }
 
 
+
+    public function storeFeedback(Request $request)
+    {
+
+        $date = Carbon::now()->year . '/' . Carbon::now()->month . '/' . Carbon::now()->day;
+//        dd($date);
+        $this->validate($request,
+            [
+                'feedback' => 'required',
+            ]);
+
+        (array)$feedback = (object)[
+                'feedback' => $request->input('feedback'),
+                'date' => $date,
+            ];
+//        dd($date);
+       ProductRepos::insertFeedback($feedback);
+
+        return view('client.success');
+    }
     public function confirmUpdateInfo($username)
     {
         // get data from table "admin" in database and return index admin
@@ -133,6 +175,7 @@ class clientControllerWithRepos extends Controller
             ->with('msg', 'Update Successfully');
     }
 
+
     // amdin's password
     public function adminConfirmChangePassword($username)
     {
@@ -145,54 +188,55 @@ class clientControllerWithRepos extends Controller
     }
 
     // change admin's password anyway - Pham Quang Hung
-    public function adminChangePassword(Request $request, $username){
-        // check username's url same as username's database
-        if ($username != $request->input('username')) {
-            return redirect()->action('adminController@productIndex');
-        }
-        // Check old_password's input equal password from database
-        $this->validate($request,
-            [
-                'password' => ['required',
+    public function adminChangePassword(Request $request, $username)
+{
+    // check username's url same as username's database
+    if ($username != $request->input('username')) {
+        return redirect()->action('adminController@productIndex');
+    }
+    // Check old_password's input equal password from database
+    $this->validate($request,
+        [
+            'password' => ['required',
 //
-                    function($attribute, $value, $fails){
-                        global $request;
-                        $user = AdminRepos::getAdminById($request->input('username'));
-                        $passwordHash = sha1($request->input('password'));
+                function ($attribute, $value, $fails) {
+                    global $request;
+                    $user = AdminRepos::getAdminById($request->input('username'));
+                    $passwordHash = sha1($request->input('password'));
 
-                        if ($user[0]->password !== $passwordHash){
-                            $fails('Wrong password! Please try again');
-                        }
-                    },
-                ],
-                'new_password' => ['required'],
-                're_password' => ['required',
-                    function($attribute, $value, $fails){
-                        global $request;
-                        $new_password =  $request->input('new_password') ?? null;
-                        if($value !== $new_password && $new_password !== null ){
-                            $fails('Retire Password must same New Password');
-                        }
+                    if ($user[0]->password !== $passwordHash) {
+                        $fails('Wrong password! Please try again');
                     }
-                ]
+                },
             ],
-            [
-                'password.required' => 'password not be empty',
-                'new_password.required' => 'New Password not be empty',
-                're_password.required' => 'Retire Password not be empty',
+            'new_password' => ['required'],
+            're_password' => ['required',
+                function ($attribute, $value, $fails) {
+                    global $request;
+                    $new_password = $request->input('new_password') ?? null;
+                    if ($value !== $new_password && $new_password !== null) {
+                        $fails('Retire Password must same New Password');
+                    }
+                }
             ]
-        );
-        // create user with type varaiable is object
-        $passwordHash = sha1($request->input('new_password'));
-        $user = (object)[
-            'username' => $request->input('username'),
-            'password' => $passwordHash
-        ];
-        // change password's datatbase with varaiable is new password
-        AdminRepos::adminChangePassword($user);
+        ],
+        [
+            'password.required' => 'password not be empty',
+            'new_password.required' => 'New Password not be empty',
+            're_password.required' => 'Retire Password not be empty',
+        ]
+    );
+    // create user with type varaiable is object
+    $passwordHash = sha1($request->input('new_password'));
+    $user = (object)[
+        'username' => $request->input('username'),
+        'password' => $passwordHash
+    ];
+    // change password's datatbase with varaiable is new password
+    AdminRepos::adminChangePassword($user);
 
-        return redirect()
-            ->action('adminController@adminConfirmUpdateInfo', ['username' => $user->username])
-            ->with('msg', 'Change Password Successfully');
+    return redirect()
+        ->action('adminController@adminConfirmUpdateInfo', ['username' => $user->username])
+        ->with('msg', 'Change Password Successfully');
     }
 }
