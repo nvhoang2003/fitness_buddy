@@ -16,7 +16,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="username" id="username" placeholder="Your Name" value="{{old('usernamediv"/>
+                        <input type="text" name="username" id="username" placeholder="Your Name" value="{{old('username')}}"/>
                         @if($errors->has('username'))
                             @foreach($errors->get('username') as $e)
                                 <div class="danger help-box">
@@ -40,6 +40,9 @@
                     </div>
                     <div class="form-group form-button">
                         <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                        <a type="button" style="border: unset; margin-top: -2px;" href="{{route('client.homepage')}}" class="form-submit btn btn-dark">
+                            <i class="bi bi-box-arrow-left"></i>
+                        </a>
                     </div>
                 </form>
             </div>

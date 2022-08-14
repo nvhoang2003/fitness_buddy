@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repository\AdminRepos;
 use App\Repository\CustomerClass;
+use Cassandra\Custom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -61,7 +62,7 @@ class manualController extends Controller
 //                    check username's request input, if username's data from database empty return messeage, if not empty continue
                     function($attribute, $value, $fails){
                         global $request;
-                        $DBuser = CustomerClass::getCustomerById($value);
+                        $DBuser = CustomerClass::getCustomerByUsername($value);
 
                         if ($DBuser === []) {
                             $fails('Wrong user\'s name or password! Please try again');
@@ -69,6 +70,7 @@ class manualController extends Controller
                     },
 
                 ],
+//                check password's request input equal password's data from database
                 'password' => ['required',
 //
                     function($attribute, $value, $fails){
@@ -136,9 +138,7 @@ class manualController extends Controller
                     function($attribute, $value, $fails){
                         global $request;
                         $new_password =  $request->input('password') ?? null;
-                        if($value !== $new_password
-//                            && $new_password !== null
-                        ){
+                        if($value !== $new_password){
                             $fails('Re_Password must same New Password');
                         }
                     }
@@ -167,10 +167,11 @@ class manualController extends Controller
         ];
         // update from customer table with data is "$user"
 
-        CustomerClass::insert($user);
+        $newuser = CustomerClass::insert($user);
 
         return redirect()
-            ->action('manualController@customerAsk');
+            ->action('manualController@customerAsk')
+            ->with('msg', 'New Style with id: '.$newuser.' has been inserted');
     }
 
 //logout of customer's account
