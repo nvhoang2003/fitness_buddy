@@ -31,9 +31,12 @@ class CustomerClass
         $sql .= '(username, password, fullname, email, phonenumber) ';
         $sql .= 'values (?, ?, ?, ?, ?)';
 
-        return DB::insert($sql,[$user->username, $user->password, $user->fullname,
-            $user->email, $user->phonenumber]
-        );
+        $result = DB::insert($sql, [$user->username, $user->password, $user->fullname, $user->email, $user->phonenumber]);
+        if ($result){
+            return DB::getPdo()->lastInsertID();
+        }else {
+            return -1;
+        }
     }
 
     public static function getCustomerByUsername($username){
