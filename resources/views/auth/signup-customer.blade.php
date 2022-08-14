@@ -23,40 +23,9 @@
                     </div>
                     <div class="form-group">
                         <label for="phonenumber"><i class="bi bi-telephone-fill"></i></label>
-                        <input type="text" name="phonenumber" id="phonenumber" placeholder="Your Name" value="{{old('phonenumber')}}" />
+                        <input type="text" name="phonenumber" id="phonenumber" placeholder="Your Telephone" value="{{old('phonenumber')}}" />
                         @if($errors->has('phonenumber'))
                             @foreach($errors->get('phonenumber') as $e)
-                                <span class="danger help-box">
-                                    <i class="bi bi-x"></i>
-                                    {{$e}}
-                                </span>
-                            @endforeach
-                        @endif
-                        <i class="bi bi-gender-ambiguous"></i>
-                    </div>
-                    @php
-                        $gender = old('gender') ?? null;
-                    @endphp
-                    <div class="form-group">
-                        <label for="gender"><i class="bi bi-gender-ambiguous"></i></label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="genderM" value="Male"
-                                {{ ($gender == 'Male') ? 'checked' : '' }}>
-
-                            <label class="form-check-label" for="genderM">
-                                Male
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="genderF" value="Female"
-                                {{ ($gender == 'Female') ? 'checked' : '' }}
-                            >
-                            <label class="form-check-label" for="genderF">
-                                Female
-                            </label>
-                        </div>
-                        @if($errors->has('gender'))
-                            @foreach($errors->get('gender') as $e)
                                 <span class="danger help-box">
                                     <i class="bi bi-x"></i>
                                     {{$e}}

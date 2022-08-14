@@ -25,11 +25,11 @@ class CustomerClass
 //    add customer from table "customer" in database - Pham Quang Hung
     public static function insert($user){
         $sql = 'insert into ';
-        $sql .= '(username, password, fullname, email, phonenumber, gender) ';
+        $sql .= '(username, password, fullname, email, phonenumber) ';
         $sql .= 'values (?, ?, ?, ?, ?, ?)';
 
         return DB::select($sql,[$user->username, $user->password, $user->fullname,
-            $user->email, $user->phonenumber, $user->gender]
+            $user->email, $user->phonenumber]
         );
     }
 
@@ -42,12 +42,19 @@ class CustomerClass
     }
 
     public static function update($user){
-        $sql = 'update from customer ';
-        $sql .= '(username, password, fullname, email, phonenumber, gender) ';
-        $sql .= 'values (?, ?, ?, ?, ?, ?)';
+        $sql = 'update customer ';
+        $sql .= 'set password = ?, fullname = ?, email = ?, phonenumber = ?, gender = ? ';
+        $sql .= 'where username = ? ';
 
-        return DB::select($sql,[$user->username, $user->password, $user->fullname,
-                $user->email, $user->phonenumber, $user->gender]
+        return DB::select($sql,
+            [
+                $user->password,
+                $user->fullname,
+                $user->email,
+                $user->phonenumber,
+                $user->gender,
+                $user->username
+            ]
         );
     }
 
