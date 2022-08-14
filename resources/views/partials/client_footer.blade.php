@@ -5,7 +5,7 @@
                 <h6 class="text-uppercase mb-3">Customer services</h6>
                 <ul class="list-unstyled mb-0">
                     <li><a class="footer-link" href="{{route("client.contactUs")}}">Help &amp; Contact Us</a></li>
-                    <li><a class="footer-link" href="3">About US</a></li>
+                    <li><a class="footer-link" href="">About US</a></li>
                     <li><a class="footer-link" href="#!">Online Stores</a></li>
                     <li><a class="footer-link" href="#!">Terms &amp; Conditions</a></li>
                 </ul>
@@ -13,7 +13,7 @@
             <div class="col-md-4 mb-3 mb-md-0">
                 <h6 class="text-uppercase mb-3">Company</h6>
                 <ul class="list-unstyled mb-0">
-                    <li><a class="footer-link" href="{{route("client.aboutUs")}}">What We Do</a></li>
+                    <li><a class="footer-link" href="">What We Do</a></li>
                     <li><a class="footer-link" href="">Available Services</a></li>
                     <li><a class="footer-link" href="">Latest Posts</a></li>
                     <li><a class="footer-link" href="">FAQs</a></li>

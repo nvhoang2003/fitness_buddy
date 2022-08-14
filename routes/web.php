@@ -235,13 +235,18 @@ Route::group(['prefix' => 'client'], function (){
         'as' => 'client.checkout'
     ]);
 
-    Route::get('aboutUs',[
-        'uses' => 'clientControllerWithRepos@aboutUs',
-        'as' => 'client.aboutUs'
-    ]);
+//    Route::get('aboutUs',[
+//        'uses' => 'clientControllerWithRepos@aboutUs',
+//        'as' => 'client.aboutUs'
+//    ]);
 
     Route::get('contactUs',[
         'uses' => 'clientControllerWithRepos@contactUs',
         'as' => 'client.contactUs'
+    ]);
+
+    Route::get('feedback',[
+        'uses' => 'clientControllerWithRepos@feedback',
+        'as' => 'client.feedback'
     ]);
 });

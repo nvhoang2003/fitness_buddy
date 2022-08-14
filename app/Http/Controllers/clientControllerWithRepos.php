@@ -69,6 +69,14 @@ class clientControllerWithRepos extends Controller
 //            'size' => DB::table('size')->get()
         ]);
     }
+    public function contactUs(){
+        return view('client.contactUs');
+    }
+
+    public function feedback(){
+        return view('client.feedback');
+    }
+
 
     public function confirmUpdateInfo($username)
     {
