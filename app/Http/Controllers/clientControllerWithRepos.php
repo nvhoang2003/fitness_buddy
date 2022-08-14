@@ -175,7 +175,6 @@ class clientControllerWithRepos extends Controller
             ->with('msg', 'Update Successfully');
     }
 
-
     // amdin's password
     public function adminConfirmChangePassword($username)
     {

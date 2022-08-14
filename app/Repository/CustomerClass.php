@@ -29,7 +29,7 @@ class CustomerClass
     public static function insert($user){
         $sql = 'insert into ';
         $sql .= '(username, password, fullname, email, phonenumber) ';
-        $sql .= 'values (?, ?, ?, ?, ?, ?)';
+        $sql .= 'values (?, ?, ?, ?, ?)';
 
         return DB::select($sql,[$user->username, $user->password, $user->fullname,
             $user->email, $user->phonenumber]

@@ -61,7 +61,7 @@ class manualController extends Controller
 //                    check username's request input, if username's data from database empty return messeage, if not empty continue
                     function($attribute, $value, $fails){
                         global $request;
-                        $DBuser = CustomerClass::getAllCustomer();
+                        $DBuser = CustomerClass::getCustomerById($value);
 
                         if ($DBuser === []) {
                             $fails('Wrong user\'s name or password! Please try again');
@@ -130,7 +130,7 @@ class manualController extends Controller
                 ],
                 'email' => ['required', 'email:rfc,dns'],
                 'fullname' => ['required'],
-                'phonenumber' => ['required'],
+                'phonenumber' => ['required', 'min:10', 'max:10', 'starts_with: 0'],
                 'password' => ['required', 'min:8'],
                 're_password' => [
                     function($attribute, $value, $fails){
@@ -146,9 +146,11 @@ class manualController extends Controller
             ],
             [
                 'username.required' => 'Name can not be empty.',
-                'email.required' => 'Email can not be empty.',
                 'fullname.required' => 'Full Name can not be empty.',
                 'phonenumber.required' => 'Phonenumber can not be empty.',
+                'phonenumber.min' => 'Phonenumber must have 10 digits.',
+                'phonenumber.max' => 'Phonenumber must have 10 digits.',
+                'email.required' => 'Email can not be empty.',
                 'email.email' => 'Email must correct valid email.',
                 'password.required' => 'Password can not be empty.',
                 're_password.required' => 'Re_password can not be empty',

@@ -3,7 +3,6 @@
 @section('main')
     <div class="container">
         <h1 class="display-4 text-center">Edit Style</h1>
-        @include('partials.errors')
 
         <form action="{{route('style.edit',['styleID' => old('styleID') ?? $style->styleID])}}" method="post" enctype="multipart/form-data">
             @csrf

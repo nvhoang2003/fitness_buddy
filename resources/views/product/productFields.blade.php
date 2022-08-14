@@ -5,10 +5,10 @@
     <input type="text" class="form-control" id="product_name" name="product_name" value="{{old('product_name') ?? $product->product_name}}">
     @if($errors->has('product_name'))
         @foreach($errors->get('product_name') as $e)
-            <span class="danger help-box">
+            <div class="danger help-box">
                 <i class="bi bi-x"></i>
                 {{$e}}
-            </span>
+            </div>
         @endforeach
     @endif
 </div>
@@ -25,10 +25,10 @@
     </label>
     @if($errors->has('image'))
         @foreach($errors->get('image') as $e)
-            <span class="danger help-box">
+            <div class="danger help-box">
                 <i class="bi bi-x"></i>
                 {{$e}}
-            </span>
+            </div>
         @endforeach
     @endif
 </div>
@@ -46,10 +46,10 @@
     <input type="text" class="form-control" id="product_status" name="product_status" value="{{old('product_status') ?? $product->product_status}}">
     @if($errors->has('product_status'))
         @foreach($errors->get('product_status') as $e)
-            <span class="danger help-box">
+            <div class="danger help-box">
                 <i class="bi bi-x"></i>
                 {{$e}}
-            </span>
+            </div>
         @endforeach
     @endif
 </div>
@@ -62,10 +62,10 @@
     <input type="number" step="any" class="form-control" id="price" name="price" value="{{old('price') ?? $product->price}}">
     @if($errors->has('price'))
         @foreach($errors->get('price') as $e)
-            <span class="danger help-box">
+            <div class="danger help-box">
                 <i class="bi bi-x"></i>
                 {{$e}}
-            </span>
+            </div>
         @endforeach
     @endif
 </div>
@@ -75,10 +75,10 @@
     <input type="date" class="form-control" id="launch_date" name="launch_date" value="{{old('launch_date') ?? $product->launch_date}}">
     @if($errors->has('launch_date'))
         @foreach($errors->get('launch_date') as $e)
-            <span class="danger help-box">
+            <div class="danger help-box">
                 <i class="bi bi-x"></i>
                 {{$e}}
-            </span>
+            </div>
         @endforeach
     @endif
 </div>
@@ -88,10 +88,10 @@
     <input type="text" class="form-control" id="material" name="material" value="{{old('material') ?? $product->material}}">
     @if($errors->has('material'))
         @foreach($errors->get('material') as $e)
-            <span class="danger help-box">
+            <div class="danger help-box">
                 <i class="bi bi-x"></i>
                 {{$e}}
-            </span>
+            </div>
         @endforeach
     @endif
 </div>
@@ -102,10 +102,10 @@
 
     @if($errors->has('size'))
         @foreach($errors->get('size') as $e)
-            <span class="danger help-box">
+            <div class="danger help-box">
                 <i class="bi bi-x"></i>
                 {{$e}}
-            </span>
+            </div>
         @endforeach
     @endif
 </div>
@@ -115,10 +115,10 @@
     <input type="text" class="form-control" id="color" name="color" value="{{old('color') ?? $product->color}}">
     @if($errors->has('color'))
         @foreach($errors->get('color') as $e)
-            <span class="danger help-box">
+            <div class="danger help-box">
                 <i class="bi bi-x"></i>
                 {{$e}}
-            </span>
+            </div>
         @endforeach
     @endif
 </div>

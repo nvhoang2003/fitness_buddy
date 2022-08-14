@@ -15,10 +15,10 @@
                     <input type="text" class="form-control" id="contact" name="contact" value="{{old('contact') ?? $user->contact}}">
                     @if($errors->has('contact'))
                         @foreach($errors->get('contact') as $e)
-                            <span class="danger help-box">
-                            <i class="bi bi-x"></i>
-                            {{$e}}
-                        </span>
+                            <div class="danger help-box">
+                                <i class="bi bi-x"></i>
+                                {{$e}}
+                            </div>
                         @endforeach
                     @endif
                 </div>
@@ -27,10 +27,10 @@
                     <input type="email" class="form-control" id="email" name="email" value="{{old('email') ?? $user->email}}">
                     @if($errors->has('email'))
                         @foreach($errors->get('email') as $e)
-                            <span class="danger help-box">
-                            <i class="bi bi-x"></i>
-                            {{$e}}
-                        </span>
+                            <div class="danger help-box">
+                                <i class="bi bi-x"></i>
+                                {{$e}}
+                            </div>
                         @endforeach
                     @endif
                 </div>
@@ -39,10 +39,10 @@
                     <input type="password" class="form-control" id="password" name="password" >
                     @if($errors->has('password'))
                         @foreach($errors->get('password') as $e)
-                            <span class="danger help-box">
-                            <i class="bi bi-x"></i>
-                            {{$e}}
-                        </span>
+                            <div class="danger help-box">
+                                <i class="bi bi-x"></i>
+                                {{$e}}
+                            </div>
                         @endforeach
                     @endif
                 </div>

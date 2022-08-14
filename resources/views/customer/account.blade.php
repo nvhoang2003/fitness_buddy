@@ -16,10 +16,10 @@
                 <input type="tel" class="form-control" name="phonenumber" id="phonenumber" placeholder="Your Phonenumber" value="{{old('phonenumber' ?? $user->phonenumber)}}" />
                 @if($errors->has('phonenumber'))
                     @foreach($errors->get('phonenumber') as $e)
-                        <span class="danger help-box">
+                        <div class="danger help-box">
                             <i class="bi bi-x"></i>
                             {{$e}}
-                        </span>
+                        </div>
                     @endforeach
                 @endif
                 <i class="bi bi-gender-ambiguous"></i>
@@ -48,10 +48,10 @@
                 </div>
                 @if($errors->has('gender'))
                     @foreach($errors->get('gender') as $e)
-                        <span class="danger help-box">
+                        <div class="danger help-box">
                             <i class="bi bi-x"></i>
                             {{$e}}
-                        </span>
+                        </div>
                     @endforeach
                 @endif
             </div>
@@ -61,10 +61,10 @@
                 <input type="email" class="form-control" id="email" name="email" value="{{old('email') ?? $user->email}}">
                 @if($errors->has('email'))
                     @foreach($errors->get('email') as $e)
-                        <span class="danger help-box">
+                        <div class="danger help-box">
                             <i class="bi bi-x"></i>
                             {{$e}}
-                        </span>
+                        </div>
                     @endforeach
                 @endif
             </div>
@@ -74,10 +74,10 @@
                 <input type="password" class="form-control" id="password" name="password" >
                 @if($errors->has('password'))
                     @foreach($errors->get('password') as $e)
-                        <span class="danger help-box">
+                        <div class="danger help-box">
                             <i class="bi bi-x"></i>
                             {{$e}}
-                        </span>
+                        </div>
                     @endforeach
                 @endif
             </div>
