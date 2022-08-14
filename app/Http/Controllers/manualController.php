@@ -114,7 +114,7 @@ class manualController extends Controller
 //  sign in of admin's login and set session for display
     public function customerSignup(Request $request){
 
-//  check input can't empty, username cannot duplicate
+//  check input can't empty, username cannot duplicate and all input cannot be empty
         $this->validate($request,
             [
                 'username' => ['required',
@@ -131,7 +131,6 @@ class manualController extends Controller
                 'email' => ['required', 'email:rfc,dns'],
                 'fullname' => ['required'],
                 'phonenumber' => ['required'],
-                'gender' => ['required'],
                 'password' => ['required'],
                 're_password' => ['required',
                     function($attribute, $value, $fails){
@@ -148,7 +147,6 @@ class manualController extends Controller
                 'email.required' => 'Email can not be empty.',
                 'fullname.required' => 'Full Name can not be empty.',
                 'phonenumber.required' => 'Phonenumber can not be empty.',
-                'gender.required' => 'Gender can not be empty.',
                 'email.email' => 'Email must correct valid email.',
                 'password.required' => 'Password can not be empty.',
                 're_password.required' => 'Re_password can not be empty',
