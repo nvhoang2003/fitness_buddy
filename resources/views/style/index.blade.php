@@ -3,7 +3,6 @@
 @section('main')
     <div class="container">
         <h1 class="display-4 text-center">Style All</h1>
-        @include('partials.sessionMessage')
         <table class="table table-hover">
             <thead class="thead" style="background-color: #acb2c7">
             <tr>

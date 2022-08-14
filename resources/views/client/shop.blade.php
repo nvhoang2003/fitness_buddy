@@ -97,9 +97,6 @@
                     <!-- SHOP LISTING-->
                     <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                         <div class="row mb-3 align-items-center">
-                            <div class="col-lg-6 mb-2 mb-lg-0">
-                                <p class="text-sm text-muted mb-0">Showing 1–12 of 53 results</p>
-                            </div>
                             <div class="offset-6 col-lg-6">
                                 <ul class="list-inline d-flex align-items-center justify-content-lg-end mb-0">
                                     <li class="list-inline-item">
@@ -125,16 +122,7 @@
                                         <div class="product-overlay">
                                             <ul class="mb-0 list-inline">
                                                 <li class="list-inline-item m-0 p-0">
-                                                    <a class="btn btn-sm btn-outline-dark" href="#!">
-                                                        <i class="far fa-heart"></i></a>
-                                                </li>
-                                                <li class="list-inline-item m-0 p-0">
-                                                    <a class="btn btn-sm btn-dark" href="">Add to cart</a>
-                                                </li>
-                                                <li class="list-inline-item mr-0">
-                                                    <a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal">
-                                                        <i class="fas fa-expand"></i>
-                                                    </a>
+                                                    <a class="btn btn-sm btn-dark" href="{{route("client.cart")}}">Add to cart</a>
                                                 </li>
                                             </ul>
                                         </div>

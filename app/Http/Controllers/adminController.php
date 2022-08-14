@@ -224,7 +224,16 @@ class adminController extends Controller
             return redirect()->action('adminController@styleindex');
         }
 
-        $this->formValidate($request)->validate();
+        $this->validate($request,
+            [
+                'style_name' => ['required'],
+                'description' => ['required'],
+            ],
+            [
+                'style_name.required' => 'Style name can not be empty',
+                'description.required' => 'description can not be empty',
+            ]
+        );
         if($request->has('image')){
             $file = $request-> image;
             $file_name = $file->getClientoriginalName();
@@ -239,8 +248,12 @@ class adminController extends Controller
             'description' => $request->input('description'),
         ];
 
+        if ($style->image === null){
+            AdminRepos::updatestylewithoutimage($style);
+        }else{
+            AdminRepos::updatestylewithimage($style);
+        }
 
-        AdminRepos::updatestyle($style);
 
         return redirect()->action('adminController@styleindex')
             ->with('msg', 'Update Successfully');

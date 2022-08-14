@@ -62,13 +62,11 @@
     <!-- HERO SECTION-->
     <div class="container">
         <section class="hero pb-3 bg-cover bg-center d-flex align-items-center"
-                 style="background: url({{asset('images/hero-banner-alt.jpg')}})">
+                 style="background: url({{asset('images/icons/banner.png')}})">
             <div class="container py-5">
                 <div class="row px-4 px-lg-5">
                     <div class="col-lg-6">
-                        <p class="text-muted small text-uppercase mb-2">New Inspiration 2020</p>
-                        <h1 class="h2 text-uppercase mb-3">20% off on new season</h1><a class="btn btn-dark"
-                                href={{route("client.homepage")}}>Browse collections</a>
+                        <a class="text-uppercase btn btn-dark" href="{{route("client.homepage")}}">Browse collections</a>
                     </div>
                 </div>
             </div>

@@ -148,7 +148,7 @@
 
 <div class="form-group">
     <label for="description" class="font-weight-bold">Description</label>
-    <textarea type="text" class="form-control" id="description" name="description" value="{{old('description') ?? $product->description}}">
-    </textarea>
+    <input type="text" class="form-control" id="description" name="description" value="{{old('description') ?? $product->description}}">
 </div>
+
 

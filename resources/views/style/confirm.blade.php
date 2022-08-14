@@ -24,7 +24,7 @@
             @csrf
             <input type="hidden" name="styleID" value="{{$style->styleID}}">
             @if($product === [])
-                <button type="submit" class="btn btn-danger"> Delete </button>
+                <button type="submit" class="btn btn-danger">  <i class="fa-solid fa-trash-can"></i> </button>
             @else
                 <button type="button" class="btn btn-dark">Product of this Category already exist !</button>
             @endif

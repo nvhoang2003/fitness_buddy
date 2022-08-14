@@ -64,6 +64,8 @@ class ProductRepos
         $sql .= 'from product as p ';
         $sql .='join style on p.styleID = style.styleID ';
         $sql .= 'where p.price >= 50 ';
+        $sql .= 'Order by p.price desc ';
+        $sql .= 'limit 4';
 
         return DB::select($sql);
     }

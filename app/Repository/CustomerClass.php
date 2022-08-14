@@ -14,6 +14,9 @@ class CustomerClass
 
         return DB::select($sql);
     }
+
+
+
 //    get customer from table "customer" in database follow customerID - Pham Quang Hung
     public static function getCustomerById($customerID){
         $sql = 'select c.* ';

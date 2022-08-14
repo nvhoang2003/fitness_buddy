@@ -74,9 +74,9 @@ class AdminRepos
     }
 
     public static function getProductByStyleId($styleID){
-        $sql = 'select s.*, s.styleID ';
+        $sql = 'select s.*, p.styleID ';
         $sql .= 'from style as s ';
-        $sql .= 'join product as p on s.styleID = p.SID ';
+        $sql .= 'join product as p on s.styleID = p.styleID ';
         $sql .= 'where s.styleID = ? ';
 
         return DB::select($sql, [$styleID]);
@@ -106,7 +106,7 @@ class AdminRepos
     }
 
     // update style by id form DB - Do Khac Duong
-    public static function updatestyle($style)
+    public static function updatestylewithimage($style)
     {
         $sql = 'update style ';
         $sql .= 'set style_name = ?, image = ?, description = ? ';
@@ -114,6 +114,16 @@ class AdminRepos
 
         DB::update($sql, [$style->style_name, $style->image, $style->description, $style->styleID]);
     }
+
+    public static function updatestylewithoutimage($style)
+    {
+        $sql = 'update style ';
+        $sql .= 'set style_name = ?, description = ? ';
+        $sql .= 'where styleID = ? ';
+
+        DB::update($sql, [$style->style_name, $style->description, $style->styleID]);
+    }
+
 
     public static function getProductById($productID){
         $sql = 'select p.*, style.style_name as style  ';

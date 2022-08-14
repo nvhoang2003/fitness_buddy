@@ -37,11 +37,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href={{route("client.cart")}}>
                                 <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart
-                                <small class="text-gray fw-normal">(2)</small>
                             </a>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart me-1"></i>
-                                <small class="text-gray fw-normal"> (0)</small></a></li>
                         @php
                             $userSession=   Illuminate\Support\Facades\Session::has('customer_name') ?
                             Illuminate\Support\Facades\Session::get('customer_name') : null;
