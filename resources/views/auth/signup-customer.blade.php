@@ -41,8 +41,8 @@
                         <label for="gender"><i class="bi bi-gender-ambiguous"></i></label>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="gender" id="genderM" value="Male"
-                                {{ ($gender == 'Male') ? 'checked' : '' }}
-                            >
+                                {{ ($gender == 'Male') ? 'checked' : '' }}>
+
                             <label class="form-check-label" for="genderM">
                                 Male
                             </label>

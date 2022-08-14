@@ -81,7 +81,7 @@ class clientControllerWithRepos extends Controller
     public function confirmUpdateInfo($username)
     {
         // get data from table "admin" in database and return index admin
-        $user = CustomerClass::getCustomerById($username);
+        $user = CustomerClass::getCustomerByUsername($username);
 
         return view('customer.account', [
             'user' => $user[0],
