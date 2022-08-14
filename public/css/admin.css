@@ -48,6 +48,7 @@ button.search{
 }
 
 .danger{
+    margin-top: 3px;
     color:orangered;
     size: 20px;
     transition-property: color;

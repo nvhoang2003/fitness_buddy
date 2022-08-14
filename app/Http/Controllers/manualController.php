@@ -130,7 +130,7 @@ class manualController extends Controller
                 ],
                 'email' => ['required', 'email:rfc,dns'],
                 'fullname' => ['required'],
-                'phonenumber' => ['required', 'min:10', 'max:10', 'starts_with: 0'],
+                'phonenumber' => ['required', 'min:10', 'max:10', 'starts_with:0'],
                 'password' => ['required', 'min:8'],
                 're_password' => [
                     function($attribute, $value, $fails){
