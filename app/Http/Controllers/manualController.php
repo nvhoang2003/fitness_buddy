@@ -171,7 +171,7 @@ class manualController extends Controller
 
         return redirect()
             ->action('manualController@customerAsk')
-            ->with('msg', 'New Style with id: '.$newuser.' has been inserted');
+            ->with('msg', 'New Customer with id: '.$newuser.' has been inserted');
     }
 
 //logout of customer's account
