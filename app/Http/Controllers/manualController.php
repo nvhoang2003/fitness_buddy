@@ -8,6 +8,7 @@ use Cassandra\Custom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use function GuzzleHttp\Promise\all;
 
 class manualController extends Controller
 {
@@ -115,7 +116,7 @@ class manualController extends Controller
     }
 //  sign in of admin's login and set session for display
     public function customerSignup(Request $request){
-
+//        dd($request->all());
 //  check input can't empty, username cannot duplicate and all input cannot be empty
         $this->validate($request,
             [
@@ -161,17 +162,14 @@ class manualController extends Controller
         $user = (object)[
             'username' => $request->input('username'),
             'phonenumber' => $request->input('phonenumber'),
-            'gender' => $request->input('gender'),
             'password' => $passwordHash,
             'email' => $request->input('email'),
         ];
         // update from customer table with data is "$user"
 
-        $newuser = CustomerClass::insert($user);
+        CustomerClass::insert($user);
 
-        return redirect()
-            ->action('manualController@customerAsk')
-            ->with('msg', 'New Customer with id: '.$newuser.' has been inserted');
+        return redirect()->action('client.homepage');
     }
 
 //logout of customer's account

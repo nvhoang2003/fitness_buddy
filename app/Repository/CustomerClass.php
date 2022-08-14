@@ -28,15 +28,10 @@ class CustomerClass
 //    add customer from table "customer" in database - Pham Quang Hung
     public static function insert($user){
         $sql = 'insert into customer ';
-        $sql .= '(username, password, fullname, email, phonenumber) ';
-        $sql .= 'values (?, ?, ?, ?, ?)';
+        $sql .= '(username, password, email, phonenumber) ';
+        $sql .= 'values (?, ?, ?, ?)';
 
-        $result = DB::insert($sql, [$user->username, $user->password, $user->fullname, $user->email, $user->phonenumber]);
-        if ($result){
-            return DB::getPdo()->lastInsertID();
-        }else {
-            return -1;
-        }
+        return DB::insert($sql, [$user->username, $user->password, $user->email, $user->phonenumber]);
     }
 
     public static function getCustomerByUsername($username){
