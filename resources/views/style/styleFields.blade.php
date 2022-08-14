@@ -17,7 +17,7 @@
 
 <div class="form-group">
     <label for="image" class="font-weight-bold">Image</label>
-    <input type="file" class="form-control" id="image" name="image" value="{{old('image') ?? $style->image}}">
+    <input type="file" class="form-control inputfile" id="image" name="image" value="{{old('image') ?? $style->image}}">
     @if($errors->has('image'))
         @foreach($errors->get('image') as $e)
             <div class="danger help-box">
