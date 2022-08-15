@@ -11,7 +11,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="username" id="username" placeholder="Your Name" value="{{old('username')}}"/>
+                        <input type="text" name="username" id="username" placeholder="Your Username" value="{{old('username')}}"/>
                     </div>
                     @if($errors->has('username'))
                         @foreach($errors->get('username') as $e)
@@ -30,6 +30,18 @@
                     </div>
                     @if($errors->has('phonenumber'))
                         @foreach($errors->get('phonenumber') as $e)
+                            <div class="danger help-box">
+                                <i class="bi bi-x"></i>
+                                {{$e}}
+                            </div>
+                        @endforeach
+                    @endif
+                    <div class="form-group">
+                        <label for="fullname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="fullname" id="fullname" placeholder="Your Full Name" value="{{old('username')}}"/>
+                    </div>
+                    @if($errors->has('fullname'))
+                        @foreach($errors->get('fullname') as $e)
                             <div class="danger help-box">
                                 <i class="bi bi-x"></i>
                                 {{$e}}

@@ -53,7 +53,7 @@ class manualController extends Controller
         return view('auth.signin-customer');
     }
 
-//  sign in of admin's login and set session for display
+//  sign in of customer's login and set session for display
 
     public function customerSignin(Request $request){
 //  check input can't empty, correct user name and password
@@ -116,7 +116,6 @@ class manualController extends Controller
     }
 //  sign in of admin's login and set session for display
     public function customerSignup(Request $request){
-//        dd($request->all());
 //  check input can't empty, username cannot duplicate and all input cannot be empty
         $this->validate($request,
             [
@@ -158,10 +157,12 @@ class manualController extends Controller
             ]
         );
         $passwordHash = sha1($request->input('password'));
-//
+
         $user = (object)[
             'username' => $request->input('username'),
             'phonenumber' => $request->input('phonenumber'),
+            'gender' => 'Male',
+            'fullname' => $request->input('fullname'),
             'password' => $passwordHash,
             'email' => $request->input('email'),
         ];
@@ -169,7 +170,9 @@ class manualController extends Controller
 
         CustomerClass::insert($user);
 
-        return redirect()->action('client.homepage');
+        return redirect()
+            ->action('manualController@customerAsk')
+            ->with('msg', 'Sign up successfully. Please sign in, thanks!');
     }
 
 //logout of customer's account

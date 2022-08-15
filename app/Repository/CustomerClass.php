@@ -28,10 +28,19 @@ class CustomerClass
 //    add customer from table "customer" in database - Pham Quang Hung
     public static function insert($user){
         $sql = 'insert into customer ';
-        $sql .= '(username, password, email, phonenumber) ';
-        $sql .= 'values (?, ?, ?, ?)';
+        $sql .= '(username, password, fullname, email, phonenumber, gender) ';
+        $sql .= 'values (?, ?, ?, ?, ?, ?)';
 
-        return DB::insert($sql, [$user->username, $user->password, $user->email, $user->phonenumber]);
+        return DB::insert($sql,
+            [
+                $user->username,
+                $user->password,
+                $user->fullname,
+                $user->email,
+                $user->phonenumber,
+                $user->gender
+            ]
+        );
     }
 
     public static function getCustomerByUsername($username){

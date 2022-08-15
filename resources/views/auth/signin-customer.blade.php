@@ -12,6 +12,7 @@
 
             <div class="signin-form">
                 <h2 class="form-title">Sign in</h2>
+                @include('partials.sessionMessage')
                 <form action="{{route('auth.customerSignin')}}" method="POST" class="register-form" id="login-form">
                     @csrf
                     <div class="form-group">
